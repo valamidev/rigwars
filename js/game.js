@@ -16,11 +16,14 @@ game.rigdetails = 0;
 game.rigpart = [];
 game.upgrades = [];
 
+game.totalminer = 0;
 game.networkpot = "";
 game.networkpot_share = 0;
 game.networkhodl = 0;
 game.networkhash = 0;
 game.unclaimedPot = 0;
+game.jackpot = 0;
+game._nextDistributionTime = 0;
 
 // BOOSTER
 game.hasbooster = false;
@@ -106,15 +109,12 @@ function plotdata (error, result) // NETWORK ETH
 {
         if(!error)
         {   
-            // (uint _honeyPotAmount, uint _devFunds, uint _potShare) */
+           /* GetPotInfo() public constant returns (uint _honeyPotAmount, uint _devFunds, uint _jaskPot, uint _nextDistributionTime)*/
             game.networkpot =  web3.fromWei(result[0],'ether');   
 
-            if(result[2].toString() > 1)
-            game.networkpot_share =  result[2].toString(); 
-            else
-            {
-            game.networkpot_share = "Less than 0.01% ";   
-            }
+         //   game.jackpot = result[2].toString();
+          //  game.nextdistributiontime = result[3].toString();
+
 
             for (let index = 0; index < result.length; index++) {
               console.log('Plotdata - Index: '+index+" Value: "+result[index].toString());
@@ -450,9 +450,11 @@ function update_balance()
 
 //SLOW LOOP!
 
-function update_leaderboard(counter)
+function update_leaderboard()
 {
-  
+       let  address = "";        
+
+
             if(game.totalminer>0 && counter<game.totalminer)
             {
 
@@ -485,7 +487,8 @@ function update_leaderboard(counter)
                     }) 
                 });
             }
-            else
+
+            if(game.totalminer == 0)
             {
                 GetTotalMinerCount(function(result)
                 {
@@ -494,8 +497,7 @@ function update_leaderboard(counter)
                 });  
             }      
 
-    setTimeout(update_leaderboard, 3000,counter);
-}
+};
 
 
 
@@ -524,13 +526,11 @@ $( document ).ready(function() {
              update_leaderboard();
         };
 
-        update_leaderboard(0); // 3000 millisec 
-
         setInterval(update, 100); // Main Loop every 100ms
 
         setInterval(startTime,1000);
 
-
+        setInterval(slow_update,1000);
 
         function startTime() {
             window.windowage = window.windowage+1;

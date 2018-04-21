@@ -45,7 +45,7 @@ function personal_share ()
     return share_pct;
     else
     {
-    return "Less than 0.01%";    
+    return "Less than 0.01";    
     }
 }
 
@@ -146,7 +146,7 @@ function generate_leaderboard()
     for (let index = 0; index < game.leaderboard.length; index++) {
             let user_data = game.leaderboard[index];
 
-            content+= game.leaderboard[index][18]+" Balance: "+show_big_values(7687825)+" Attack: "+game.leaderboard[index][19]+" Defense: "+game.leaderboard[index][20];
+            content+= game.leaderboard[index][18]+" Balance: "+show_big_values(game.leaderboard[index][0])+" Attack: "+game.leaderboard[index][19]+" Defense: "+game.leaderboard[index][20];
 
             content+= "<br>";
 
