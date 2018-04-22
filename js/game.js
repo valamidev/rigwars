@@ -1,8 +1,9 @@
-
 window.showrig = 1;
 window.showarmy = 0;
 
 game = [];
+
+game.debug = 1; // TRUE DEBUG!
 
 game.lastupdate = 0;
 game.prodPerSec = 0;

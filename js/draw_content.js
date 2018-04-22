@@ -10,10 +10,11 @@ function update_dash()
 
 function update_dash_slow()
 {
-    $('#networkhodl').html('Network HODL Coin: '+show_big_values(game.networkhodl));
-    $('#networkpot').html('Network HODL <i class="fab fa-ethereum"></i>: '+game.networkpot);
+    $('#networkhodl').html('Network HODL: '+show_big_values(game.networkhodl));
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values(game.networkhash)+' Hash /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
+    $('#unclaimedshare').html('Unlcaimed share: : '+personal_share_eth(personal_share()));
 
     $('.mining-anim').html(generate_output());
 
@@ -51,6 +52,19 @@ function personal_share ()
     {
     return "Less than 0.01";    
     }
+}
+
+function personal_share_eth(share_pct)
+{
+    if(share_pct>= 0.01)
+    {
+     return precisionRound(game.networkpot/(share_pct*100),4)+'<i class="fab fa-ethereum"></i>';
+    }
+    else
+    {
+      return 'Less than 0.0001 <i class="fab fa-ethereum"></i>';  
+    }
+
 }
 
 
@@ -137,7 +151,7 @@ function update_booster_ui (own,price)
 {
     let id = 0;
 
-    $('.card').find('[data-price-booster="' + id+ '"]').html(web3.fromWei(price,'ether'));
+    $('.card').find('[data-price-booster="' + id+ '"]').html(precisionRound(web3.fromWei(price,'ether'),4));
 
     if(own == "true")
     {
@@ -166,13 +180,11 @@ function generate_leaderboard()
             */
             // game.leaderboard[index][21] immunity en
 
-            console.log(user_data);
-
           if(game.leaderboard[index][21] < game.current_unixtime)  
             {
 
                 if(game.attackpower > parseInt(game.leaderboard[index][20])) //Attackable!
-                    button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Attackable</button>';
+                    button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';
                 else // Protected
                 {
                     button = '<a class="btn btn-outline-secondary" >Protected</a>';  
@@ -183,6 +195,11 @@ function generate_leaderboard()
           {
             button = '<a class="btn btn-outline-secondary" >Immune</a>';    
           } 
+
+          if(game.debug == 1)
+          {
+            button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';  
+          }
 
             content+= "<tr>"+
             "<td>"+game.leaderboard[index][18]+"</td>"+ 
@@ -197,6 +214,10 @@ function generate_leaderboard()
 }
 
 
+function precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+  }
 
 function show_big_values (labelValue) 
 {
@@ -265,7 +286,6 @@ function generate_output()
     if(game.console_output.length == 0)
     {
         game.console_output.push("<span>C:/Mining/RigWars >RigWarsMiner.exe --load miner</span> <br>");
-        console.log(game.console_output);
     }
 
     // LOOP STARTED

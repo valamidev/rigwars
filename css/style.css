@@ -133,3 +133,10 @@ table.light tr td {
 .leaderboard{
    max-width: 750px;  
 }
+
+.market_buttons {
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+}
+
