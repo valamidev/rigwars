@@ -12,7 +12,7 @@ game.sincedbalance = 0;
 game.futurebalance = 0;
 game.time = 0;
 game.current_unixtime = 0;
-
+game.console_output = [];
 
 game.rigdetails = 0;
 game.rigpart = [];
@@ -549,11 +549,16 @@ $( document ).ready(function() {
              update_leaderboard();
         };
 
+
+        update_dash_slow();
+
         setInterval(update, 100); // Main Loop every 100ms
 
         setInterval(startTime,1000);
 
         setInterval(slow_update,1000);
+
+        setInterval(update_dash_slow,3000);
 
         function startTime() {
             window.windowage = window.windowage+1;

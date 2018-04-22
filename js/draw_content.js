@@ -25,9 +25,14 @@ function update_dash()
     $('#defensepower').html(parseInt(game.defensepower*1.25));
 
 
-    $('.mining-anim').html(generate_output());
- 
+    
 }
+
+function update_dash_slow()
+{
+    $('.mining-anim').html(generate_output());
+}
+
 
 function personal_share ()
 {
@@ -239,28 +244,63 @@ function generate_output()
 {
     let content = ""
 
-   // if(game.prodPerSec==0)
-   // {
-    content = gametext.welcome;
+    
+
+    if(game.prodPerSec==0)
+    {
+        content = gametext.welcome;
+
+        return content;
+    }
+
+    if(game.console_output.length == 0)
+    {
+        game.console_output.push("<span>C:\Mining\RigWars >RigWarsMiner.exe --load miner</span> <br>");
+        console.log(game.console_output);
+    }
+
+    // LOOP STARTED
+    if(game.console_output.length > 0)
+    {
+         let value_factor = Math.random()*100;
+         let random_text = Math.floor(Math.random() * (5 - 0) ) + 0;
+
+        switch (random_text) 
+        {
+            case 0:
+            game.console_output.push( '<span>FUTURE: 08/04/18 - 10:10:03 - New job from pool.rigwars.io:4414</span>  <br>');
+                break;
+            case 1:
+            game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: 184:56</span><br>');
+                break;
+            case 2:
+            game.console_output.push( '<span class="claymore-green">FUTURE: 08/04/18 - 10:10:04 - SHARE FOUND - (RIG 0)</span><br>');
+                break;
+            case 3:
+            game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
+                break;
+            case 4:
+            game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
+                break;
+
+            default:
+            game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
+                break;
+        }
+
+            if(game.console_output.length>6)
+            {
+                game.console_output.shift();  
+            }     
+
+    }
+
+    for (let index = 0; index < game.console_output.length; index++) 
+    {
+        content += game.console_output[index]; 
+    }
 
     return content;
-   // }
-
-    /*
-    '<span>FUTURE: 08/04/18 - 10:10:03 - New job from pool.rigwars.io:4414</span>'
-
-
-    '<span class="claymore-blue">FUTURE: - Total Speed: 4323.123 Mh/s, Total Shares: 31231, Rejected: 0, Time: 184:56</span>'
-
-    '<span class="claymore-green">FUTURE: 08/04/18 - 10:10:04 - SHARE FOUND - (RIG 0)</span> '
-
-    '<span class="claymore-green">FUTURE: Share accepted(45ms)!</span> '
-
-    '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span> '
-    */
-
-
-
 
 }
 
