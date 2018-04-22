@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x001b97e59364edb62bd4f48f7628748ec58c7c8a";
+      const contract_address = "0xaac05423139938be725504ffdcdd3fb23e180c50";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -52,6 +52,15 @@
           // GET PVP DATA
           rig_wars_contract.GetPVPData.call(account,{},pvpdata);
 
+          // GET ETH BALANCE OF USER
+          web3.eth.getBalance(web3.eth.accounts[0],function(err,ress){
+           if(!err)
+           {
+             game.ethbalance =  ress;
+             console.log("ETH balance: "+ress); 
+           } 
+          })
+
         }
         else // No Metamask Address Found!
         {
@@ -78,18 +87,38 @@
         }  
       }
 
-      function buy_rig (ridID,count)
+      function buy_rig (rigID,count)
       {
-         ridID = parseInt(ridID);
+         rigID = parseInt(rigID);
          count = parseInt(count);
 
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        console.log(ridID,count);
+        console.log(rigID,count);
 
-        rig_wars_contract.UpgradeRig.sendTransaction(ridID,count,{from:account},callback);
+        rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account},callback);
 
       }
+
+      function buy_rig_eth (rigID,count)
+      {
+         rigID = parseInt(rigID);
+         count = parseInt(count);
+
+        rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+        console.log(rigID,count);
+
+          let wei_price = web3.toWei((rigData[rigID].eth*count), 'ether');
+
+            console.log(wei_price);
+
+        rig_wars_contract.UpgradeRigETH.sendTransaction(rigID,count,{from:account, value: wei_price},callback);
+
+      }
+
+
+
 
       function buy_army(id,count,eth)
       {
@@ -127,6 +156,13 @@
 
       }
 
+
+      function jackpot_claim()
+      {
+        rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account},callback);
+      }
 
 
       function buy_boost(price)

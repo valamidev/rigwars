@@ -74,13 +74,13 @@ function update_rig_ui(id,count,possible_buy,cost_next)
     $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next));  
 
 
-    if(possible_buy >= 1)
+    if(possible_buy >= 1 && rigData[id].price > 0)
     {
             $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next));
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
             $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-primary" ); 
     }
-    if(possible_buy >= 5)
+    if(possible_buy >= 5 && rigData[id].price > 0)
     {
         $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
     }
@@ -146,11 +146,22 @@ function generate_leaderboard()
     for (let index = 0; index < game.leaderboard.length; index++) {
             let user_data = game.leaderboard[index];
 
-            content+= game.leaderboard[index][18]+" Balance: "+show_big_values(game.leaderboard[index][0])+" Attack: "+game.leaderboard[index][19]+" Defense: "+game.leaderboard[index][20];
+            /*
+            <tr>
+                      <td>Address</td>
+                      <td>Balance</td>
+                      <td>Defense</td>
+                      <td>Action</td>
+            </tr>
+            */
+           let button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-danger">Attack!</button>';
 
-            content+= "<br>";
-
-          
+            content+= "<tr>"+
+            "<td>"+game.leaderboard[index][18]+"</td>"+ 
+            "<td>"+show_big_values(game.leaderboard[index][0])+"</td>"+
+            "<td>"+game.leaderboard[index][20]+"</td>"+
+            "<td>"+button+"</td>"+
+            "</tr>";
     }
 
 

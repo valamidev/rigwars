@@ -129,3 +129,7 @@ table.light tr td {
 .jumbotron {
     padding: 1rem 1rem;
 }
+
+.leaderboard{
+   max-width: 750px;  
+}

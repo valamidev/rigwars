@@ -7,6 +7,7 @@ game = [];
 game.lastupdate = 0;
 game.prodPerSec = 0;
 game.balance = 0;
+game.ethbalance = 0;
 game.sincedbalance = 0;
 game.futurebalance = 0;
 game.time = 0;
@@ -241,9 +242,19 @@ function buy_action_rig (data)
     // Check money!
     //console.log(game.rigpart[res[1]]);
 
+    let rigID = res[1];
+
     var owned_supply = parseInt(game.rigpart[res[1]]);
     var buying_count = parseInt(res[2]);
-    var base_data = rigData[res[1]];
+    var base_data = rigData[rigID];
+
+    if(base_data.eth !=0) // ETH SHOPING!
+    {
+        console.log(rigID);
+        buy_rig_eth(rigID,limit_check(buying_count,owned_supply,base_data.limit));
+
+       return 0; 
+    }
 
 
     if(buying_count != 1000 && buying_count>0)
@@ -252,13 +263,11 @@ function buy_action_rig (data)
 
         if(price <= game.futurebalance)
         {
-           console.log(price); 
-           // VASARLAS
-           buy_rig(res[1],buying_count);
+           buy_rig(rigID,limit_check(buying_count,owned_supply,base_data.limit)); // Coin buy!
         }
         else
         {
-            console.log(price); 
+            console.log(price); // TODO NOT POSSIBLE BUY!
         }
     }
     else
@@ -268,15 +277,22 @@ function buy_action_rig (data)
 
         if(count>=1)
         {
-            if(count+owned_supply > 100)
-            {
-              count = 100-owned_supply; 
-            }
-            buy_rig(res[1],count);
+            buy_rig(rigID,limit_check(count,owned_supply,base_data.limit));
         }
 
     }
 }
+
+function limit_check(count,owned,limit)
+{
+    if(count+owned > limit)
+    {
+      count = limit-owned; 
+    }
+
+    return count;
+}
+
 
 // Calculate Buy Price ALL -- UPDATED VERSION
 function buy_price_all(basePrice , pricePerLevel, owned, balance) 
@@ -453,7 +469,7 @@ function update_balance()
 function update_leaderboard()
 {
        let  address = "";        
-
+       let counter = game.leaderboard.length;
 
             if(game.totalminer>0 && counter<game.totalminer)
             {
@@ -479,7 +495,7 @@ function update_leaderboard()
             
                                             game.leaderboard.sort(function(a, b)
                                                     {
-                                                        return a[0] - b[0];
+                                                        return b[0]-a[0];
                                                     });   
                                 counter++;  
                             });
@@ -493,7 +509,6 @@ function update_leaderboard()
                 GetTotalMinerCount(function(result)
                 {
                  game.totalminer =  result;  
-                 counter = 0;
                 });  
             }      
 

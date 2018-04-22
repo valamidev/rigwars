@@ -1,4 +1,4 @@
- abi  = [
+ abi  =[
 	{
 		"constant": false,
 		"inputs": [
@@ -35,11 +35,48 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "ATTACKER_END_IDX",
+		"name": "name",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint8"
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "approvee",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -71,6 +108,10 @@
 			{
 				"name": "limit",
 				"type": "uint256"
+			},
+			{
+				"name": "priceETH",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -93,11 +134,52 @@
 	},
 	{
 		"constant": false,
+		"inputs": [
+			{
+				"name": "miner",
+				"type": "address"
+			},
+			{
+				"name": "recipient",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
 		"inputs": [],
 		"name": "UpdateMoney",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -144,20 +226,6 @@
 			{
 				"name": "price",
 				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "NUMBER_OF_TROOPS",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint8"
 			}
 		],
 		"payable": false,
@@ -249,7 +317,11 @@
 				"type": "uint256"
 			},
 			{
-				"name": "_potShare",
+				"name": "_jackPot",
+				"type": "uint256"
+			},
+			{
+				"name": "_nextDistributionTime",
 				"type": "uint256"
 			}
 		],
@@ -270,38 +342,24 @@
 			}
 		],
 		"name": "UpgradeRig",
-		"outputs": [
-			{
-				"name": "success",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "SnapshotAndDistributePot",
-		"outputs": [
-			{
-				"name": "networkMoney",
-				"type": "uint256"
-			}
-		],
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "DEFENDER_END_IDX",
+		"inputs": [
+			{
+				"name": "miner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint8"
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -309,13 +367,22 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [],
+		"name": "SnapshotAndDistributePot",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
-		"name": "NUMBER_OF_RIG_TYPES",
+		"name": "owner",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint8"
+				"type": "address"
 			}
 		],
 		"payable": false,
@@ -356,11 +423,11 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "ATTACKER_START_IDX",
+		"name": "symbol",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint8"
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -382,20 +449,6 @@
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "NUMBER_OF_UPGRADES",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -407,6 +460,29 @@
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "recipient",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -469,6 +545,24 @@
 			}
 		],
 		"name": "BuyTroop",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "rigIdx",
+				"type": "uint8"
+			},
+			{
+				"name": "count",
+				"type": "uint256"
+			}
+		],
+		"name": "UpgradeRigETH",
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
@@ -578,8 +672,17 @@
 	},
 	{
 		"constant": true,
-		"inputs": [],
-		"name": "NUMBER_OF_BOOSTERS",
+		"inputs": [
+			{
+				"name": "miner",
+				"type": "address"
+			},
+			{
+				"name": "approvee",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
 		"outputs": [
 			{
 				"name": "",
@@ -593,11 +696,11 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "DEFENDER_START_IDX",
+		"name": "NUMBER_OF_BOOSTERS",
 		"outputs": [
 			{
 				"name": "",
-				"type": "uint8"
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -632,5 +735,49 @@
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "tokenOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
 	}
 ];

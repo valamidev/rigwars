@@ -25,8 +25,8 @@ $(function(){
 });
 
 $(function(){
-    $("#debug_attack").click(function(){
-        attack_address("0x6c9ab3a2cd5a104cec2bf019c7377d16dc54de96"); // DEBUG ADDRESS!
+    $("#jackpot").click(function(){
+        jackpot_claim();
     });
 });
 
@@ -38,6 +38,16 @@ $(function(){
         
     });
 });
+
+// Button Click event added frontend!
+function leader_attack(leader_id)
+{
+    let address = game.leaderboard[leader_id][18];
+
+    console.log(address);
+
+    attack_address(address);
+}
 
 $(function(){
     $("#showrig").click(function(){
