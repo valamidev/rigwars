@@ -1,36 +1,39 @@
 function update_dash()
 {
+    $('#balance').html(show_big_values(game.futurebalance));
+    $('#prodPerSec').html(show_big_values(game.prodPerSec)+" Hash/s");
 
+    $('#exhaust').html(game.countdownexhaust);
+    $('#immunity').html(game.countdownimmune);
+
+}
+
+function update_dash_slow()
+{
     $('#networkhodl').html('Network HODL Coin: '+show_big_values(game.networkhodl));
     $('#networkpot').html('Network HODL <i class="fab fa-ethereum"></i>: '+game.networkpot);
     $('#networkhash').html('Network hash: '+show_big_values(game.networkhash)+' Hash /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
 
-
-    $('#balance').html(show_big_values(game.futurebalance));
-    $('#prodPerSec').html(show_big_values(game.prodPerSec)+" Hash/s");
+    $('.mining-anim').html(generate_output());
 
     if(game.prodPerSec>0)
     {
         $('#start').hide();  
+        $('#save_game').show();
+        $('#withdraw1').show();
+    }
+    else
+    {
+        $('#save_game').hide();
+        $('#withdraw1').hide(); 
     }
 
     var daily_income =  parseInt(game.prodPerSec)*86400;
     $('#prodPerDay').html(show_big_values(daily_income)+" /day");
 
-    $('#exhaust').html(game.countdownexhaust);
-    $('#immunity').html(game.countdownimmune);
-
     $('#attackpower').html(game.attackpower);
     $('#defensepower').html(parseInt(game.defensepower*1.25));
-
-
-    
-}
-
-function update_dash_slow()
-{
-    $('.mining-anim').html(generate_output());
 }
 
 
@@ -269,24 +272,31 @@ function generate_output()
     if(game.console_output.length > 0)
     {
          let value_factor = Math.random()*100;
-         let random_text = Math.floor(Math.random() * (5 - 0) ) + 0;
+         let random_text = Math.floor(Math.random() * (6 - 0) ) + 0;
+         let random_temp = Math.floor(Math.random() * (90 - 56) ) + 56;
+         let random_vent = Math.floor(Math.random() * (95 - 80) ) + 80;
+
+        let date = new Date();
 
         switch (random_text) 
         {
             case 0:
-            game.console_output.push( '<span>FUTURE: 08/04/18 - 10:10:03 - New job from pool.rigwars.io:4414</span>  <br>');
+            game.console_output.push( '<span>FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - New job from pool.rigwars.io:4414</span>  <br>');
                 break;
             case 1:
-            game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: 184:56</span><br>');
+            game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
                 break;
             case 2:
-            game.console_output.push( '<span class="claymore-green">FUTURE: 08/04/18 - 10:10:04 - SHARE FOUND - (RIG 0)</span><br>');
-                break;
+                game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
+                break;    
             case 3:
-            game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
+            game.console_output.push( '<span class="claymore-green">FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - SHARE FOUND - (RIG '+random_text+')</span><br>');
                 break;
             case 4:
-            game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
+            game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
+                break;
+            case 5:
+            game.console_output.push( '<span class="claymore-purple">RIG 0 t='+random_temp+'C fan='+random_vent+'%, RIG 1 t='+(random_temp-7)+'C fan='+(random_vent-3)+'%, RIG 3 t='+(random_temp+2)+'C fan='+(random_vent+5)+'%, RIG 4 t='+(random_temp-4)+'C fan='+(random_vent+3)+'%</span><br>');
                 break;
 
             default:

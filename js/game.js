@@ -531,6 +531,7 @@ function update_leaderboard()
 // START GAME -> AFTER LOADED!
 $( document ).ready(function() {
 
+    update_dash_slow();
 
         function update(){
         
