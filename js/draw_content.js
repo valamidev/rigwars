@@ -98,7 +98,13 @@ function update_army_ui(id,count,possible_buy,cost_next)
 
 
     $('.card').find('[data-owned-count-army="' + id + '"]').html(count+'X');
-    $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));
+
+    if(troopData[id].ether == 0)
+    {
+        $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));
+    }
+
+
 
     if(possible_buy >= 1)
     {

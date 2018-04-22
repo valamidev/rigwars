@@ -349,6 +349,8 @@ function buy_price(basePrice , pricePerLevel, owned, count)
  // Update Owned Rig Parts -- FINISHED
  function update_army()
  {
+
+
     for (let index = 0; index < game.attacker.length; index++) 
     {
         if(typeof game.attacker[index]  != 'undefined')
@@ -557,6 +559,7 @@ $( document ).ready(function() {
 
         setInterval(slow_update,1000);
 
+        setInterval(update_dash_slow,5000);  // 5 sec
 
         function startTime() {
             window.windowage = window.windowage+1;

@@ -66,5 +66,5 @@ troopData[1] = {attack: 100,  deffense: 0,  price: 80000000,    ether: 0};
 troopData[2] = {attack: 10000, deffense: 0, price: 0,           ether: 0.01};
 troopData[3] = {attack: 0,    deffense: 1,  price: 100000,      ether: 0};
 troopData[4] = {attack: 0,  deffense: 100,  price: 80000000,    ether: 0};
-troopData[5] = {attack: 0, deffense: 10000,  price: 0,          ether: 0.01};
+troopData[5] = {attack: 0, deffense: 10000, price: 0,           ether: 0.01};
 
