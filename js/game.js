@@ -11,6 +11,7 @@ game.ethbalance = 0;
 game.sincedbalance = 0;
 game.futurebalance = 0;
 game.time = 0;
+game.current_unixtime = 0;
 
 
 game.rigdetails = 0;
@@ -415,8 +416,14 @@ function buy_price(basePrice , pricePerLevel, owned, count)
 
 
 // MAIN LOOP
-function update_balance()
+function update_balance(force)
 {
+
+    if(force == 1)
+    {
+        game.time = 0;  
+        first_update = 0;
+    }
 
    if(game.time==0)
    {
@@ -438,6 +445,7 @@ function update_balance()
     if(first_update==1)
         {
         game.futurebalance = game.balance + game.prodPerSec*window.windowage;
+        game.current_unixtime = game.time+window.windowage;
         }
 
         if(game.immunityTime > 0 && game.immunityTime > game.time)
@@ -523,7 +531,7 @@ $( document ).ready(function() {
 
         function update(){
         
-            update_balance();
+            update_balance(0); // Non force update!
 
             if(first_update == 1)
             {

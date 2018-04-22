@@ -1,11 +1,5 @@
 function update_dash()
 {
-    /*
-    <li id="networkhodl" class="list-group-item">Network HODL Coin: </li>
-        <li id="networkpot" class="list-group-item">Network HODL <i class="fab fa-ethereum"></i>: </li>
-        <li id="networkhash" class="list-group-item">Network hash: 0 Hash/s </li>
-        <li id="networkshare" class="list-group-item">Network Share: 12%</li>
-    */
 
     $('#networkhodl').html('Network HODL Coin: '+show_big_values(game.networkhodl));
     $('#networkpot').html('Network HODL <i class="fab fa-ethereum"></i>: '+game.networkpot);
@@ -16,21 +10,23 @@ function update_dash()
     $('#balance').html(show_big_values(game.futurebalance));
     $('#prodPerSec').html(show_big_values(game.prodPerSec)+" Hash/s");
 
+    if(game.prodPerSec>0)
+    {
+        $('#start').hide();  
+    }
+
     var daily_income =  parseInt(game.prodPerSec)*86400;
     $('#prodPerDay').html(show_big_values(daily_income)+" /day");
 
-    // <span id="exhaust"></span>   / Immunity: <span id="immunity"></span>
-    //   game.countdownimmune = "";
-    //game.countdownexhaust = "";
     $('#exhaust').html(game.countdownexhaust);
     $('#immunity').html(game.countdownimmune);
-    // game.attackpower = 0;
-    // game.defensepower = 0;
 
     $('#attackpower').html(game.attackpower);
     $('#defensepower').html(parseInt(game.defensepower*1.25));
-    
 
+
+    $('.mining-anim').html(generate_output());
+ 
 }
 
 function personal_share ()
@@ -145,7 +141,7 @@ function generate_leaderboard()
 
     for (let index = 0; index < game.leaderboard.length; index++) {
             let user_data = game.leaderboard[index];
-
+            let button = "";
             /*
             <tr>
                       <td>Address</td>
@@ -154,7 +150,25 @@ function generate_leaderboard()
                       <td>Action</td>
             </tr>
             */
-           let button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-danger">Attack!</button>';
+            // game.leaderboard[index][21] immunity en
+
+            console.log(user_data);
+
+          if(game.leaderboard[index][21] < game.current_unixtime)  
+            {
+
+                if(game.attackpower > parseInt(game.leaderboard[index][20])) //Attackable!
+                    button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Attackable</button>';
+                else // Protected
+                {
+                    button = '<a class="btn btn-outline-secondary" >Protected</a>';  
+                }
+
+            }
+          if(game.leaderboard[index][21] > game.current_unixtime) 
+          {
+            button = '<a class="btn btn-outline-secondary" >Immune</a>';    
+          } 
 
             content+= "<tr>"+
             "<td>"+game.leaderboard[index][18]+"</td>"+ 
@@ -219,3 +233,34 @@ function countdown (distance)
   }
 
 }
+
+
+function generate_output()
+{
+    let content = ""
+
+   // if(game.prodPerSec==0)
+   // {
+    content = gametext.welcome;
+
+    return content;
+   // }
+
+    /*
+    '<span>FUTURE: 08/04/18 - 10:10:03 - New job from pool.rigwars.io:4414</span>'
+
+
+    '<span class="claymore-blue">FUTURE: - Total Speed: 4323.123 Mh/s, Total Shares: 31231, Rejected: 0, Time: 184:56</span>'
+
+    '<span class="claymore-green">FUTURE: 08/04/18 - 10:10:04 - SHARE FOUND - (RIG 0)</span> '
+
+    '<span class="claymore-green">FUTURE: Share accepted(45ms)!</span> '
+
+    '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span> '
+    */
+
+
+
+
+}
+

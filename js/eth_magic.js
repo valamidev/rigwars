@@ -78,7 +78,18 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.StartNewMiner.sendTransaction({from:account},callback);
+          rig_wars_contract.StartNewMiner.sendTransaction({from:account},function(err,ress)
+          {
+            waitForReceipt(ress, function (receipt) 
+            {
+              console.log('Force!');
+              update_balance(1);
+              contract_init();
+            });  
+          }
+        );
+
+
         }
         else // No Metamask Address Found!
         {
@@ -360,3 +371,24 @@ function callback (error, result)
             console.log(error);
         }
 };
+
+
+function waitForReceipt(hash, callback) {
+  web3.eth.getTransactionReceipt(hash, function (err, receipt) {
+    if (err) {
+      error(err);
+    }
+
+    if (receipt !== null) {
+      // Transaction went through
+      if (callback) {
+        callback(receipt);
+      }
+    } else {
+      // Try again in 1 second
+      window.setTimeout(function () {
+        waitForReceipt(hash, callback);
+      }, 1000);
+    }
+  });
+}
