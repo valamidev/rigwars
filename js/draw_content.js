@@ -255,7 +255,7 @@ function generate_output()
 
     if(game.console_output.length == 0)
     {
-        game.console_output.push("<span>C:\Mining\RigWars >RigWarsMiner.exe --load miner</span> <br>");
+        game.console_output.push("<span>C:/Mining/RigWars >RigWarsMiner.exe --load miner</span> <br>");
         console.log(game.console_output);
     }
 

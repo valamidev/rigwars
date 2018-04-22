@@ -6,7 +6,7 @@ gametext.error = [];
 gametext.error[0] = "<p>Please install or activate your Metamask Plugin in your browser. <br> You can't play RigWars without Metamask installed.</p>";
 gametext.error[1] = "<p>Your Metamask locked or you have no valid address please reload the page!</p>";
 gametext.welcome = 
-"<span>C:\Mining\Start > RigWarsBeta0.1.exe --tutorial</span> <br> Welcome on RigWars.io the Original Crypto Mining Idle game DAPP <br><br>"+
+"<span>C:/Mining/Start > RigWarsBeta0.1.exe --tutorial</span> <br> Welcome on RigWars.io the Original Crypto Mining Idle game DAPP <br><br>"+
 "- Setup your own Mining Rig and help the Futurehash network to mint more and more Coin. "+
 "Being a miner is a dangerous profession recruit your own Cyber Army to protect your Coins or attack others and steal theirs.<br>"+
 "Keep it up the network and your will be rewarded from the Network HODL daily!<br><br>"+

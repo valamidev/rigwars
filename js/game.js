@@ -440,6 +440,7 @@ function update_balance(force)
 
         game.balance = parseInt(game.balance)+new_balance_diff;
         first_update = 1;
+        update_dash_slow();
     }
 
     if(first_update==1)
@@ -544,13 +545,11 @@ $( document ).ready(function() {
 
         };
 
-        function slow_update()
+        function slow_update() 
         {
              update_leaderboard();
         };
 
-
-        update_dash_slow();
 
         setInterval(update, 100); // Main Loop every 100ms
 
@@ -558,7 +557,6 @@ $( document ).ready(function() {
 
         setInterval(slow_update,1000);
 
-        setInterval(update_dash_slow,3000);
 
         function startTime() {
             window.windowage = window.windowage+1;
