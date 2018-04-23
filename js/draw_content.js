@@ -18,6 +18,11 @@ function update_dash_slow()
 
     $('.mining-anim').html(generate_output());
 
+    if(game.debug==0)
+    {
+       $('#debug').hide();   
+    }
+
     if(game.prodPerSec>0)
     {
         $('#start').hide();  
