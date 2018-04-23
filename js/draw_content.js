@@ -1,7 +1,7 @@
 function update_dash()
 {
     $('#balance').html(show_big_values(game.futurebalance));
-    $('#prodPerSec').html(show_big_values(game.prodPerSec)+" Hash/s");
+    $('#prodPerSec').html(show_big_values_hash(game.prodPerSec)+" /s");
 
     $('#exhaust').html(game.countdownexhaust);
     $('#immunity').html(game.countdownimmune);
@@ -12,7 +12,7 @@ function update_dash_slow()
 {
     $('#networkhodl').html('Network HODL: '+show_big_values(game.networkhodl));
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
-    $('#networkhash').html('Network hash: '+show_big_values(game.networkhash)+' Hash /s');
+    $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
     $('#unclaimedshare').html('Unlcaimed share: : '+personal_share_eth(personal_share()));
 
@@ -86,25 +86,28 @@ function update_rig_ui(id,count,possible_buy,cost_next)
     /*<!-- Data: category,id -->*/
     $('.card').find('[data-owned-count-rig="' + id + '"]').html(count+'X');
 
-    if(count==100)
+    if(count==rigData[id].limit)
     {
         $('.card').find('[data-buyrig-button="' + id + '"]').hide();
 
         $('.card').find('[data-maxrig-button="' + id + '"]').show();  
+
+        $('.card').find('[data-price-next-rig="' + id+'-1"]').html("-");
     }
+    else
+    {
+        $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" Coin");    
+    }
+  
 
-    // Change Color of Select Buy Buttons!
 
-    $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next));  
-
-
-    if(possible_buy >= 1 && rigData[id].price > 0)
+    if(possible_buy >= 1 && rigData[id].price > 0 && count!=rigData[id].limit)
     {
             $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next));
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
             $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-primary" ); 
     }
-    if(possible_buy >= 5 && rigData[id].price > 0)
+    if(possible_buy >= 5 && rigData[id].price > 0 && count!=rigData[id].limit)
     {
         $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
     }
@@ -230,6 +233,30 @@ function precisionRound(number, precision) {
     var factor = Math.pow(10, precision);
     return Math.round(number * factor) / factor;
   }
+
+
+  function show_big_values_hash (labelValue) 
+  {
+      // Nine Zeroes for Billions
+      return Math.abs(Number(labelValue)) >= 1.0e+12
+  
+      ? Math.round(Math.abs(Number(labelValue) / 1.0e+12)*100) /100 + " THash"
+      // Six Zeroes for Millions 
+      : Math.abs(Number(labelValue)) >= 1.0e+9
+  
+      ? Math.round(Math.abs(Number(labelValue) / 1.0e+9)*100) /100 + " GHash"
+      // Six Zeroes for Millions 
+      : Math.abs(Number(labelValue)) >= 1.0e+6
+  
+      ? Math.round(Math.abs(Number(labelValue) / 1.0e+6)*100) /100 + " MHash"
+      // Three Zeroes for Thousands
+      : Math.abs(Number(labelValue)) >= 1.0e+3
+  
+      ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + " kKash"
+  
+      : String(Math.abs(Number(labelValue))+ " Hash");
+  }
+
 
 function show_big_values (labelValue) 
 {

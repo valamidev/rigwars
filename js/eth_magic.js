@@ -109,7 +109,15 @@
 
         console.log(rigID,count);
 
-        rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account,gasPrice: game.default_gas_price},callback);
+        rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
 
       }
 
@@ -126,7 +134,15 @@
 
             console.log(wei_price);
 
-        rig_wars_contract.UpgradeRigETH.sendTransaction(rigID,count,{from:account, value: wei_price,gasPrice: game.default_gas_price},callback);
+        rig_wars_contract.UpgradeRigETH.sendTransaction(rigID,count,{from:account, value: wei_price,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
 
       }
 
@@ -219,7 +235,15 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.UpdateMoney.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
+          rig_wars_contract.UpdateMoney.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
+          {
+            waitForReceipt(ress, function (receipt) 
+            {
+              console.log('Force!');
+              update_balance(1);
+              contract_init();
+            });  
+          });
         }
         else // No Metamask Address Found!
         {
@@ -287,7 +311,15 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.WithdrawPotShare.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
+          rig_wars_contract.WithdrawPotShare.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
+          {
+            waitForReceipt(ress, function (receipt) 
+            {
+              console.log('Force!');
+              update_balance(1);
+              contract_init();
+            });  
+          });
         }
         else // No Metamask Address Found!
         {
