@@ -332,36 +332,45 @@ function generate_output()
     {
          let value_factor = Math.random()*100;
          let random_text = Math.floor(Math.random() * (6 - 0) ) + 0;
+         let random_text2 = Math.floor(Math.random() * (4 - 0) ) + 0;
          let random_temp = Math.floor(Math.random() * (90 - 56) ) + 56;
          let random_vent = Math.floor(Math.random() * (95 - 80) ) + 80;
 
         let date = new Date();
 
-        switch (random_text) 
+        if(game.hasbooster == "true" && value_factor>97)
         {
-            case 0:
-            game.console_output.push( '<span>FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - New job from pool.rigwars.io:4414</span>  <br>');
-                break;
-            case 1:
-            game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
-                break;
-            case 2:
-                game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
-                break;    
-            case 3:
-            game.console_output.push( '<span class="claymore-green">FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - SHARE FOUND - (RIG '+random_text+')</span><br>');
-                break;
-            case 4:
-            game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
-                break;
-            case 5:
-            game.console_output.push( '<span class="claymore-purple">RIG 0 t='+random_temp+'C fan='+random_vent+'%, RIG 1 t='+(random_temp-7)+'C fan='+(random_vent-3)+'%, RIG 3 t='+(random_temp+2)+'C fan='+(random_vent+5)+'%, RIG 4 t='+(random_temp-4)+'C fan='+(random_vent+3)+'%</span><br>');
-                break;
-
-            default:
-            game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
-                break;
+            game.console_output.push('<span class="claymore-gold">FUTURE: Ponzy scheme found(BITCONNEEEEEEEEEEEEEEEEEEEEEEEEEECT!)</span><br>');
         }
+        else
+        {
+                switch (random_text) 
+                {
+                    case 0:
+                    game.console_output.push( '<span>FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - New job from pool.rigwars.io:4414</span>  <br>');
+                        break;
+                    case 1:
+                    game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
+                        break;
+                    case 2:
+                        game.console_output.push( '<span class="claymore-blue">FUTURE: - Total Speed: '+show_big_values(game.prodPerSec)+' H/s, Total Shares: '+Math.floor((value_factor*34))+', Rejected: 0, Time: '+date.getHours()+':'+date.getMinutes()+'</span><br>');
+                        break;    
+                    case 3:
+                    game.console_output.push( '<span class="claymore-green">FUTURE: '+date.getUTCDate()+'/'+date.getMonth()+'/18 - '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+' - SHARE FOUND - (RIG '+random_text2+')</span><br>');
+                        break;
+                    case 4:
+                    game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
+                        break;
+                    case 5:
+                    game.console_output.push( '<span class="claymore-purple">RIG 0 t='+random_temp+'C fan='+random_vent+'%, RIG 1 t='+(random_temp-7)+'C fan='+(random_vent-3)+'%, RIG 3 t='+(random_temp+2)+'C fan='+(random_vent+5)+'%, RIG 4 t='+(random_temp-4)+'C fan='+(random_vent+3)+'%</span><br>');
+                        break;
+
+                    default:
+                    game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
+                        break;
+                }
+        }
+
 
             if(game.console_output.length>6)
             {

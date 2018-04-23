@@ -46,7 +46,7 @@ rigData[8] = {price: 100000000000000,  eth:  0,         prod: 30000000,       up
 */
 boostData = [];
 
-boostData[0] = {bonus: 30, price: 0.001};
+boostData[0] = {bonus: 30, price: 0.01};
 boostData[1] = {bonus: 50, price: 0.1};
 boostData[2] = {bonus: 100, price: 1};
 

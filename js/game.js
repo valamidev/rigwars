@@ -479,7 +479,7 @@ function update_balance(force)
         if(game.exhaustTime > 0 && game.exhaustTime > game.time)
         {
            distance_immune = game.exhaustTime-game.time-window.windowage;  
-           game.countdownexhaust = countdown(distance_immune);
+           game.countdownexhaust = "Ready in: "+countdown(distance_immune);
         }
         else
         {
