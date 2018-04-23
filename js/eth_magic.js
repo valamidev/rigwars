@@ -80,7 +80,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.StartNewMiner.sendTransaction({from:account},function(err,ress)
+          rig_wars_contract.StartNewMiner.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
           {
             waitForReceipt(ress, function (receipt) 
             {
@@ -109,7 +109,7 @@
 
         console.log(rigID,count);
 
-        rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account},callback);
+        rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account,gasPrice: game.default_gas_price},callback);
 
       }
 
@@ -126,7 +126,7 @@
 
             console.log(wei_price);
 
-        rig_wars_contract.UpgradeRigETH.sendTransaction(rigID,count,{from:account, value: wei_price},callback);
+        rig_wars_contract.UpgradeRigETH.sendTransaction(rigID,count,{from:account, value: wei_price,gasPrice: game.default_gas_price},callback);
 
       }
 
@@ -138,11 +138,11 @@
 
             if(eth>0) // ETH-s shoping
             {
-              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account, value: web3.toWei(eth,'ether')},callback);
+              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account, value: web3.toWei(eth,'ether'),gasPrice: game.default_gas_price},callback);
             }
             else
             {
-              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account},callback);
+              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account,gasPrice: game.default_gas_price},callback);
             }
       
        // BuyTroop(uint idx, uint count) public payable 
@@ -152,7 +152,7 @@
       function price_army(id,count,owned)
       {
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
-        rig_wars_contract.GetPriceOfTroops.call(id,count,owned,{from:account},function(error,ress)
+        rig_wars_contract.GetPriceOfTroops.call(id,count,owned,{from:account,gasPrice: game.default_gas_price},function(error,ress)
       {
         if(!error)
                   {
@@ -173,7 +173,7 @@
       {
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account},callback);
+        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
       }
 
 
@@ -189,7 +189,7 @@
 
         console.log(price);
 
-        rig_wars_contract.BuyBooster.sendTransaction({from:account, value: value},callback);
+        rig_wars_contract.BuyBooster.sendTransaction({from:account, value: value,gasPrice: game.default_gas_price},callback);
 
       }
 
@@ -206,7 +206,7 @@
 
           console.log(value);
 
-         rig_wars_contract.BuyUpgrade.sendTransaction(id,{from:account, value: web3.toWei(boost_data.price)},callback);
+         rig_wars_contract.BuyUpgrade.sendTransaction(id,{from:account, value: web3.toWei(boost_data.price),gasPrice: game.default_gas_price},callback);
 
       }
 
@@ -219,7 +219,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.UpdateMoney.sendTransaction({from:account},callback);
+          rig_wars_contract.UpdateMoney.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
@@ -237,7 +237,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.DEBUGSetMoney.sendTransaction(500000000000000,{from:account},callback);
+          rig_wars_contract.DEBUGSetMoney.sendTransaction(500000000000000,{from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
@@ -254,7 +254,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.Attack.sendTransaction(address,{from:account},callback);
+          rig_wars_contract.Attack.sendTransaction(address,{from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
@@ -271,7 +271,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.WithdrawDevFunds.sendTransaction(0,{from:account},callback);
+          rig_wars_contract.WithdrawDevFunds.sendTransaction(0,{from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
@@ -287,7 +287,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.WithdrawPotShare.sendTransaction({from:account},callback);
+          rig_wars_contract.WithdrawPotShare.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {

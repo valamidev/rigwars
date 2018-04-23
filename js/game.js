@@ -3,6 +3,8 @@ window.showarmy = 0;
 
 game = [];
 
+game.default_gas_price = web3.toHex(1000000000);
+
 game.debug = 0; // TRUE DEBUG!
 
 game.user_address = "";
