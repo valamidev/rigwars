@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x79f645d4aaa1138b63aab0241c876e58f36b38d6";
+      const contract_address = "0xc8f5980c0a55992c8ccbbddd99f945c070e71082";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -129,8 +129,6 @@
       }
 
 
-
-
       function buy_army(id,count,eth)
       {
 
@@ -138,7 +136,7 @@
 
             if(eth>0) // ETH-s shoping
             {
-              //rig_wars_contract.BuyTroop.sendTransaction(id,{from:account, value: web3.toWei(boost_data.price)},callback);
+              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account, value: web3.toWei(eth,'ether')},callback);
             }
             else
             {
@@ -147,6 +145,7 @@
       
        // BuyTroop(uint idx, uint count) public payable 
       }
+
 
       function price_army(id,count,owned)
       {
@@ -236,7 +235,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.DEBUGSetMoney.sendTransaction(100000000,{from:account},callback);
+          rig_wars_contract.DEBUGSetMoney.sendTransaction(500000000000000,{from:account},callback);
         }
         else // No Metamask Address Found!
         {
@@ -263,6 +262,21 @@
       }
 
 
+      function debug_devfund()
+      {
+        if(typeof web3.eth.accounts[0]  != 'undefined')
+        {
+
+          rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+          rig_wars_contract.WithdrawDevFunds.sendTransaction(0,{from:account},callback);
+        }
+        else // No Metamask Address Found!
+        {
+          $('#metamask_alert_message').html(gametext.error[1]);
+          $('#metamask_alert').modal('show');
+        }  
+      }
 
       function ClaimPersonalShare()
       {

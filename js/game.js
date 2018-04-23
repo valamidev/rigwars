@@ -202,6 +202,13 @@ function buy_action_army (data)
     var buy_id = parseInt(res[1]);
     var base_data = troopData[buy_id];
     
+    if(base_data.eth !=0) // ETH SHOPING!
+    {
+        console.log(buy_id,base_data.eth);
+        buy_army(buy_id,buying_count,(base_data.eth*buying_count));
+
+       return 0; 
+    }
 
 
     if(buying_count != 1000 && buying_count>0)

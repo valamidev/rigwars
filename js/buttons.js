@@ -19,6 +19,11 @@ $(function(){
 });
 
 
+$(function(){
+    $("#debug_devfund").click(function(){
+        debug_devfund();
+    });
+});
 
 $(function(){
     $("#debug_gold").click(function(){
