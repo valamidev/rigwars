@@ -34,6 +34,8 @@
         {
           $('#user_address').html(web3.eth.accounts[0]);
 
+          game.user_address = web3.eth.accounts[0];
+
           // CALLBACK IN GAME.JS!!!!
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 

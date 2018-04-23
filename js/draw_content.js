@@ -202,6 +202,12 @@ function generate_leaderboard()
             button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';  
           }
 
+          if(game.leaderboard[index][18] == game.user_address)
+          {
+            button = "";  
+          }
+
+
             content+= "<tr>"+
             "<td>"+game.leaderboard[index][18]+"</td>"+ 
             "<td>"+show_big_values(game.leaderboard[index][0])+"</td>"+

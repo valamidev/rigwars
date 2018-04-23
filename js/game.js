@@ -3,7 +3,9 @@ window.showarmy = 0;
 
 game = [];
 
-game.debug = 1; // TRUE DEBUG!
+game.debug = 0; // TRUE DEBUG!
+
+game.user_address = "";
 
 game.lastupdate = 0;
 game.prodPerSec = 0;
