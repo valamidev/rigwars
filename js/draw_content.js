@@ -34,7 +34,7 @@ function update_dash_slow()
     $('#prodPerDay').html(show_big_values(daily_income)+" /day");
 
     $('#attackpower').html(game.attackpower);
-    $('#defensepower').html(parseInt(game.defensepower*1.25));
+    $('#defensepower').html(game.defensepower);
 }
 
 

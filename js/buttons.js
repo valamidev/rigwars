@@ -25,6 +25,12 @@ $(function(){
 });
 
 $(function(){
+    $("#debug_attack").click(function(){
+        attack_address('0x8664BC082b4C8541A23c8eD3558B45643402C3F1');
+    });
+});
+
+$(function(){
     $("#jackpot").click(function(){
         jackpot_claim();
     });
