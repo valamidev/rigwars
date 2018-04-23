@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0xf99662323087ff0b229395a44e921e5e6e216375";
+      const contract_address = "0x79f645d4aaa1138b63aab0241c876e58f36b38d6";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -264,7 +264,7 @@
 
 
 
-      function WithdrawDevFunds()
+      function ClaimPersonalShare()
       {
         if(typeof web3.eth.accounts[0]  != 'undefined')
         {
@@ -279,6 +279,8 @@
           $('#metamask_alert').modal('show');
         }  
       }
+
+
 
       // TESTED FINISHED!
       function GetTotalMinerCount(callback)

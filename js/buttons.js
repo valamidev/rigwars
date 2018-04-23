@@ -14,9 +14,11 @@ $(function(){
 
 $(function(){
     $("#withdraw1").click(function(){
-        WithdrawDevFunds();
+        ClaimPersonalShare();
     });
 });
+
+
 
 $(function(){
     $("#debug_gold").click(function(){

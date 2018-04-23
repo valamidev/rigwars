@@ -62,7 +62,8 @@ function minerdata (error, result)
             game.prodPerSec = result[2].toString();
             game.rigdetails = result[3].toString();
             game.upgrades = result[4].toString();
-            game.unclaimedPot = result[5].toString();
+            game.unclaimedPot = web3.fromWei(result[5],'ether');
+
           //  game.unused = result[6].toString();
             game.hasbooster = result[7].toString();
 
@@ -424,8 +425,10 @@ function update_balance(force)
 
     if(force == 1)
     {
+        // Equal with reload the page!
         game.time = 0;  
         first_update = 0;
+        window.windowage = 0;
     }
 
    if(game.time==0)

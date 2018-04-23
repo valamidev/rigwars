@@ -54,11 +54,12 @@ function personal_share ()
     }
 }
 
-function personal_share_eth(share_pct)
+function personal_share_eth()
 {
-    if(share_pct>= 0.01)
+    if(game.unclaimedPot>= 0.0001 )
     {
-     return precisionRound(game.networkpot/(share_pct*100),4)+'<i class="fab fa-ethereum"></i>';
+
+     return precisionRound(game.unclaimedPot,4)+'<i class="fab fa-ethereum"></i>';
     }
     else
     {
