@@ -122,20 +122,6 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "idx",
-				"type": "uint8"
-			}
-		],
-		"name": "DEBUGSetUpgrades",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
 				"name": "miner",
 				"type": "address"
 			},
@@ -283,24 +269,6 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "rigIdx",
-				"type": "uint8"
-			},
-			{
-				"name": "count",
-				"type": "uint256"
-			}
-		],
-		"name": "DEBUGSetRig",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
