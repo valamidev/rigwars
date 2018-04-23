@@ -39,7 +39,7 @@
           // CALLBACK IN GAME.JS!!!!
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.GetMinerData.call(account,{},minerdata);  
+          rig_wars_contract.GetMinerData.call(game.user_address,{},minerdata);  
 
           // GET GLOBAL POT
           rig_wars_contract.GetPotInfo.call({},plotdata);  
@@ -52,16 +52,26 @@
           rig_wars_contract.GetBoosterData.call({},booster_init);
 
           // GET PVP DATA
-          rig_wars_contract.GetPVPData.call(account,{},pvpdata);
+          rig_wars_contract.GetPVPData.call(game.user_address,{},pvpdata);
 
           // GET ETH BALANCE OF USER
-          web3.eth.getBalance(web3.eth.accounts[0],function(err,ress){
+          web3.eth.getBalance(game.user_address,function(err,ress){
            if(!err)
            {
              game.ethbalance =  ress;
              console.log("ETH balance: "+ress); 
            } 
-          })
+          });
+
+          // WHY IT IS SO UGLY JS WHY?!
+         (async ()=> { await web3.eth.getBlockNumber(
+           function(err,ress)
+           {
+            web3.eth.getBlock(ress,function(err,ress){
+              game.time = ress.timestamp;
+            });
+           }
+         ) })();
 
         }
         else // No Metamask Address Found!

@@ -441,14 +441,14 @@ function update_balance(force)
         first_update = 0;
         window.windowage = 0;
     }
-
-   if(game.time==0)
-   {
-    lastblock = window.web4.eth.blockNumber;
-    lastblock_data = window.web4.eth.getBlock(lastblock);
-    game.time = lastblock_data.timestamp;
-   } 
-
+        /*
+        if(game.time==0 && typeof window.web4  != 'undefined')
+        {
+            lastblock = window.web4.eth.blockNumber;
+            lastblock_data = window.web4.eth.getBlock(lastblock);
+            game.time = lastblock_data.timestamp;
+        } 
+        */
 
     if(first_update != 1 && parseInt(game.balance) > 0)
     {
