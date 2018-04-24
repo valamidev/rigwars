@@ -441,24 +441,18 @@ function update_balance(force)
         first_update = 0;
         window.windowage = 0;
     }
-        /*
-        if(game.time==0 && typeof window.web4  != 'undefined')
+
+        // FIRST UPDATE
+        if(first_update != 1 && parseInt(game.balance) > 0 && game.time!=0)
         {
-            lastblock = window.web4.eth.blockNumber;
-            lastblock_data = window.web4.eth.getBlock(lastblock);
-            game.time = lastblock_data.timestamp;
-        } 
-        */
+            timediff = game.time - game.lastupdate;
+            new_balance_diff = (game.time-game.lastupdate) * game.prodPerSec;     
 
-    if(first_update != 1 && parseInt(game.balance) > 0)
-    {
-        timediff = game.time - game.lastupdate;
-        new_balance_diff = (game.time-game.lastupdate) * game.prodPerSec;     
-
-        game.balance = parseInt(game.balance)+new_balance_diff;
-        first_update = 1;
-        update_dash_slow();
-    }
+            game.balance = parseInt(game.balance)+new_balance_diff;
+            first_update = 1;
+            update_dash_slow();
+        }
+        // FIRST UPDATE
 
     if(first_update==1)
         {
@@ -554,11 +548,8 @@ $( document ).ready(function() {
 
             if(first_update == 1)
             {
-                update_dash();   
-                update_rig();
-                update_upgrades();
-                update_booster();
-                update_army();
+                update_dash();     
+               
             }
 
         };
@@ -566,6 +557,13 @@ $( document ).ready(function() {
         function slow_update() 
         {
              update_leaderboard();
+             if(first_update == 1)
+                {
+                update_rig();
+                update_upgrades();
+                update_booster();
+                update_army();
+                }
         };
 
 

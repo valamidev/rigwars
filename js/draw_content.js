@@ -99,12 +99,18 @@ function update_rig_ui(id,count,possible_buy,cost_next)
         $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" Coin");    
     }
   
-
+        if(possible_buy == 0)
+        {
+            $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
+            $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
+            $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
+        }
 
     if(possible_buy >= 1 && rigData[id].price > 0 && count!=rigData[id].limit)
     {
             $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next));
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
+            $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
             $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-primary" ); 
     }
     if(possible_buy >= 5 && rigData[id].price > 0 && count!=rigData[id].limit)
