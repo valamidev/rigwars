@@ -17,6 +17,7 @@ game.sincedbalance = 0;
 game.futurebalance = 0;
 game.time = 0;
 game.current_unixtime = 0;
+game.nextjackpot = 0;
 game.console_output = [];
 
 game.rigdetails = 0;
@@ -119,7 +120,7 @@ function plotdata (error, result) // NETWORK ETH
         {   
            /* GetPotInfo() public constant returns (uint _honeyPotAmount, uint _devFunds, uint _jaskPot, uint _nextDistributionTime)*/
             game.networkpot =  web3.fromWei(result[0],'ether');   
-
+            game.nextjackpot = parseInt(result[3]);
          //   game.jackpot = result[2].toString();
           //  game.nextdistributiontime = result[3].toString();
 

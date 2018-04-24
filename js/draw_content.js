@@ -40,6 +40,17 @@ function update_dash_slow()
 
     $('#attackpower').html(game.attackpower);
     $('#defensepower').html(game.defensepower);
+
+    // SUPER BLOCK
+            if(game.time >= game.nextjackpot && game.time>0)
+            {
+              $('#jackpot').show();
+            }
+            else
+            {
+              console.log(game.time,game.nextjackpot);
+              $('#jackpot').hide();   
+            }
 }
 
 

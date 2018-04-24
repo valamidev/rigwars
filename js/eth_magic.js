@@ -164,14 +164,28 @@
 
             if(eth>0) // ETH-s shoping
             {
-              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account, value: web3.toWei(eth,'ether'),gasPrice: game.default_gas_price},callback);
+              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account, value: web3.toWei(eth,'ether'),gasPrice: game.default_gas_price},function(err,ress)
+              {
+                waitForReceipt(ress, function (receipt) 
+                {
+                  console.log('Force!');
+                  update_balance(1);
+                  contract_init();
+                }); 
+            });
             }
             else
             {
-              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account,gasPrice: game.default_gas_price},callback);
-            }
-      
-       // BuyTroop(uint idx, uint count) public payable 
+              rig_wars_contract.BuyTroop.sendTransaction(id,count,{from:account,gasPrice: game.default_gas_price},function(err,ress)
+              {
+                waitForReceipt(ress, function (receipt) 
+                {
+                  console.log('Force!');
+                  update_balance(1);
+                  contract_init();
+                }); 
+            });
+          }
       }
 
 
@@ -199,7 +213,15 @@
       {
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
+        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
       }
 
 
