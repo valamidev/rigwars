@@ -53,18 +53,22 @@ How to start new game:
    A is exhausted for 2 hours (cannot attack).
  
 Miners can earn real money(ETH) while playing the game!
+
 And it is even better, they have four(!) ways to get ETH while playing:
-	1: Invest in "Bitconeeeeeect" upgrade. There are only 5 of this upgrade exist at any one time. 
-	   When someone buys the upgrade another person loses it and gains 120% of the money spent on the upgrade.
+
+1: Invest in "Bitconeeeeeect" upgrade. There are only 5 of this upgrade exist at any one time. When someone buys the upgrade another person loses it and gains 120% of the money spent on the upgrade.
        Example: You buy the booster for 1.0ETH, you will get 1.2124ETH back when you lose the bonus.
-	2: Get share from Network HODL: 90% of all ETH transaction amounts goes to the Network HODL pot.
-       20% of the Network HODL is distributed from time to time (roughly once every 24h). Every player gets their share of the pot based on their "Your Network Share" stat. If it is higher than 0.01% they will receive the reward.
-	   Example: The Total Balance is 10.000M and the HODL pot is 10.0ETH and you have 1.000M balance. 
-	            2.0ETH will be distributed and 8.0ETH will remain for future distributions. 
-	            You will get 10% of the pot which is 0.2ETH.
-	3: Hit the SuperBlock! Every 24 hours anyone has the chance to trigger the pot distribution described above. The lucky miner get 2% of all ETH transaction amount since the last SuperBlock hit.
+       
+2: Get share from Network HODL: 90% of all ETH transaction amounts goes to the Network HODL pot. 20% of the Network HODL is distributed from time to time (roughly once every 24h). Every player gets their share of the pot based on their "Your Network Share" stat. If it is higher than 0.01% they will receive the reward.
+
+Example: The Total Balance is 10.000M and the HODL pot is 10.0ETH and you have 1.000M balance. 
+2.0ETH will be distributed and 8.0ETH will remain for future distributions. 
+You will get 10% of the pot which is 0.2ETH.
+	
+3: Hit the SuperBlock! Every 24 hours anyone has the chance to trigger the pot distribution described above. The lucky miner get 2% of all ETH transaction amount since the last SuperBlock hit.
        Example: The pot increased 5.0ETH until the last SuperBlock hit. You will get 0.1ETH if you hit the SuperBlock.
-	4: Trade your Balance on any crypto Exchange. The currency of this game is ERC20 compatible token, and can be traded freely between miners (only between miners).
-       NOTE: Both trade partners have to start the game before being able to sell/buy in-game currency!
-	NOTE: ETH payout is not automatic, you have to press "Claim ETH" to get your money!
-	NOTE: ETH share CANNOT be stolen by attack, once you earned any amount of ETH is is yours, period!	
+       
+4: Trade your Balance on any crypto Exchange. The currency of this game is ERC20 compatible token, and can be traded freely between miners (only between miners).
+NOTE: Both trade partners have to start the game before being able to sell/buy in-game currency!
+NOTE: ETH payout is not automatic, you have to press "Claim ETH" to get your money!
+NOTE: ETH share CANNOT be stolen by attack, once you earned any amount of ETH is is yours, period!	
