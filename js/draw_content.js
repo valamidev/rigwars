@@ -10,7 +10,7 @@ function update_dash()
 
 function update_dash_slow()
 {
-    $('#networkhodl').html('Network HODL: '+show_big_values(game.networkhodl));
+    $('#networkhodl').html('Total Supply: '+show_big_values(game.networkhodl));
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
@@ -99,7 +99,7 @@ function update_rig_ui(id,count,possible_buy,cost_next)
         $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" Coin");    
     }
   
-        if(possible_buy == 0)
+        if(possible_buy == 0 || count==rigData[id].limit)
         {
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
             $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
@@ -258,7 +258,7 @@ function precisionRound(number, precision) {
       // Three Zeroes for Thousands
       : Math.abs(Number(labelValue)) >= 1.0e+3
   
-      ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + " kKash"
+      ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + " kHash"
   
       : String(Math.abs(Number(labelValue))+ " Hash");
   }
