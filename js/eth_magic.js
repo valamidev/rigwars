@@ -128,6 +128,8 @@
 
         console.log(rigID,count);
 
+
+
         rig_wars_contract.UpgradeRig.sendTransaction(rigID,count,{from:account,gasPrice: game.default_gas_price},function(err,ress)
         {
           waitForReceipt(ress, function (receipt) 
@@ -240,13 +242,19 @@
 
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        /* BuyBooster() public payable */
-
         let value = price;
 
         console.log(price);
 
-        rig_wars_contract.BuyBooster.sendTransaction({from:account, value: value,gasPrice: game.default_gas_price},callback);
+        rig_wars_contract.BuyBooster.sendTransaction({from:account, value: value,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
 
       }
 
@@ -263,7 +271,15 @@
 
           console.log(value);
 
-         rig_wars_contract.BuyUpgrade.sendTransaction(id,{from:account, value: web3.toWei(boost_data.price),gasPrice: game.default_gas_price},callback);
+         rig_wars_contract.BuyUpgrade.sendTransaction(id,{from:account, value: web3.toWei(boost_data.price),gasPrice: game.default_gas_price},function(err,ress)
+         {
+           waitForReceipt(ress, function (receipt) 
+           {
+             console.log('Force!');
+             update_balance(1);
+             contract_init();
+           });  
+         });
 
       }
 
@@ -293,7 +309,7 @@
         }  
       }
 
-
+      /*
       function debug_gold()
       {
 
@@ -310,6 +326,7 @@
           $('#metamask_alert').modal('show');
         }  
       }
+      */
 
       function attack_address(address) // Attack(address defenderAddr) public
       {
@@ -319,7 +336,15 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.Attack.sendTransaction(address,{from:account,gasPrice: game.default_gas_price},callback);
+          rig_wars_contract.Attack.sendTransaction(address,{from:account,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
         }
         else // No Metamask Address Found!
         {
@@ -328,7 +353,7 @@
         }  
       }
 
-
+      /*
       function debug_devfund()
       {
         if(typeof web3.eth.accounts[0]  != 'undefined')
@@ -344,7 +369,9 @@
           $('#metamask_alert').modal('show');
         }  
       }
+      */
 
+      
       function ClaimPersonalShare()
       {
         if(typeof web3.eth.accounts[0]  != 'undefined')
