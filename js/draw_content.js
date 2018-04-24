@@ -51,7 +51,10 @@ function update_dash_slow()
               $('#jackpot').hide();   
             }
     // SAVE GAME
-    if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
+
+            console.log(game.lastupdate);
+
+    if(game.time >= parseInt(game.lastupdate+game.optimalsavetime) && game.time>0)
     {
         $('#save_game').removeClass( "btn-outline-success" ).addClass( "btn-success" ); 
     }     
@@ -377,6 +380,10 @@ function generate_output()
         if(game.hasbooster == "true" && value_factor>97)
         {
             game.console_output.push('<span class="claymore-gold">FUTURE: Ponzy scheme found(BITCONNEEEEEEEEEEEEEEEEEEEEEEEEEECT!)</span><br>');
+        }
+        else if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
+        {
+            game.console_output.push('<span class="claymore-red">NVML: CUDA error 4 - Use "Save Game" button to snapshot your balance!</span><br>');
         }
         else
         {

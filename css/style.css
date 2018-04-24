@@ -118,7 +118,10 @@ table.light tr td {
     .claymore-gold{
         color: #c09a28; 
     }
-    
+    .claymore-red{
+        color: #800000; 
+    }
+
 
 .system_stat {
     height: 220px;

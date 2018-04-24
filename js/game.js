@@ -64,10 +64,10 @@ function minerdata (error, result)
         if(!error)
         {
             /* uint money, uint lastupdate, uint prodPerSec, uint[9] rigs, uint[3] upgrades, uint unclaimedPot, uint lastPot, has booster) */
-            game.balance = result[0].toString(); game.balance = parseInt(game.balance)+1; // Add +1 To avoid start game stuck!
+            game.balance = result[0].toNumber()+1;  // Add +1 To avoid start game stuck!
             game.sincedbalance = game.balance;
-            game.lastupdate = result[1].toString();
-            game.prodPerSec = result[2].toString();
+            game.lastupdate = result[1].toNumber();
+            game.prodPerSec = result[2].toNumber();
             game.rigdetails = result[3].toString();
             game.upgrades = result[4].toString();
             game.unclaimedPot = web3.fromWei(result[5],'ether');
@@ -96,10 +96,10 @@ function pvpdata (error, result)
           /*  GetPVPData(address addr) public constant returns (uint attackpower, uint defensepower, uint immunityTime, uint exhaustTime,
                 uint[3] attacker, uint[3] defender)*/
 
-                game.attackpower = result[0].toString();
-                game.defensepower = result[1].toString();
-                game.immunityTime = result[2].toString();
-                game.exhaustTime = result[3].toString();
+                game.attackpower = result[0].toNumber();
+                game.defensepower = result[1].toNumber();
+                game.immunityTime = result[2].toNumber();
+                game.exhaustTime = result[3].toNumber();
 
                 let attacker = result[4].toString()
                 game.attacker = attacker.split(",");
@@ -143,8 +143,8 @@ function network_money (error, result) // NETWORK VIRTUAL CURRENCY STATS
         if(!error)
         {
            
-            game.networkhodl = result[0].toString();
-            game.networkhash = result[1].toString();
+            game.networkhodl = result[0].toNumber();
+            game.networkhash = result[1].toNumber();
 
             for (let index = 0; index < result.length; index++) {
               console.log('Network money - Index: '+index+" Value: "+result[index].toString());
@@ -162,7 +162,7 @@ function booster_init (error, result)
         {
            /* public constant returns (address[5] _boosterHolders, uint currentPrice, uint currentIndex)*/ 
 
-            game.boosterprice = result[1].toString();
+            game.boosterprice = result[1].toNumber();
 
             for (let index = 0; index < result.length; index++) {
               console.log('Booster init: - Index: '+index+" Value: "+result[index].toString());
@@ -552,8 +552,9 @@ $( document ).ready(function() {
 
             if(first_update == 1)
             {
-                update_dash();     
-               
+                update_dash();   
+                update_rig();  
+                update_army();
             }
 
         };
@@ -563,15 +564,13 @@ $( document ).ready(function() {
              update_leaderboard();
              if(first_update == 1)
                 {
-                update_rig();
                 update_upgrades();
                 update_booster();
-                update_army();
                 }
         };
 
 
-        setInterval(update, 100); // Main Loop every 100ms
+        setInterval(update, 300); // Main Loop every 100ms
 
         setInterval(startTime,1000);
 
