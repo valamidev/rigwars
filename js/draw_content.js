@@ -14,7 +14,7 @@ function update_dash_slow()
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
-    $('#unclaimedshare').html('Unlcaimed share: : '+personal_share_eth(personal_share()));
+    $('#unclaimedshare').html('Unlcaimed share: '+personal_share_eth(personal_share()));
 
     $('.mining-anim').html(generate_output());
 
@@ -50,6 +50,25 @@ function update_dash_slow()
             {
               $('#jackpot').hide();   
             }
+    // SAVE GAME
+    if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
+    {
+        $('#save_game').removeClass( "btn-outline-success" ).addClass( "btn-success" ); 
+    }     
+    else
+    {
+        $('#save_game').removeClass( "btn-success" ).addClass( "btn-outline-success" );   
+    }   
+    // Claim ETH
+    if(game.unclaimedPot >= 0.001)
+    {
+        $('#withdraw1').removeClass( "btn-outline-warning" ).addClass( "btn-warning" ); 
+    }     
+    else
+    {
+        $('#withdraw1').removeClass( "btn-warning" ).addClass( "btn-outline-warning" );   
+    } 
+
 }
 
 

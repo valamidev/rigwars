@@ -9,6 +9,9 @@ game.debug = 0; // TRUE DEBUG!
 
 game.user_address = "";
 
+
+game.optimalsavetime = 3600;
+game.optimalclaim = 86400;
 game.lastupdate = 0;
 game.prodPerSec = 0;
 game.balance = 0;

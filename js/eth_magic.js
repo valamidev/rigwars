@@ -68,7 +68,16 @@
            function(err,ress)
            {
             web3.eth.getBlock(ress,function(err,ress){
+
+              if(!ress)
+              {
+                setTimeout(function () {contract_init()}, 2000);
+              }
+              else
+              {
               game.time = ress.timestamp;
+              }
+
             });
            }
          ) })();
