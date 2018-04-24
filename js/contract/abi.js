@@ -170,20 +170,6 @@
 	},
 	{
 		"constant": false,
-		"inputs": [
-			{
-				"name": "money",
-				"type": "uint256"
-			}
-		],
-		"name": "DEBUGSetMoney",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
 		"inputs": [],
 		"name": "WithdrawPotShare",
 		"outputs": [],
