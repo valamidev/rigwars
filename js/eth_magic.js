@@ -19,10 +19,10 @@
 
       function startApp(web3) 
       {
-
-          web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
-
-          window.web4 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+          // MAINNET
+          web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
+          // ROPSTEN
+         // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
 
           contract_init(); // GAME LOAD!
       }    

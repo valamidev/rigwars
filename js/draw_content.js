@@ -43,7 +43,7 @@ function update_dash_slow()
     $('#attackpower').html(game.attackpower);
     $('#defensepower').html(game.defensepower);
 
-    // SUPER BLOCK
+    // SUPER BLOCK BUTTON SHOW/HIDE
             if(game.time >= game.nextjackpot && game.time>0)
             {
               $('#jackpot').show();
@@ -52,27 +52,27 @@ function update_dash_slow()
             {
               $('#jackpot').hide();   
             }
-    // SAVE GAME
 
-            console.log(game.lastupdate);
+    // SAVE GAME BUTTON SHOW/HIDE
+            if(game.time >= parseInt(game.lastupdate+game.optimalsavetime) && game.time>0)
+            {
+                $('#save_game').removeClass( "btn-outline-success" ).addClass( "btn-success" ); 
+            }     
+            else
+            {
+                $('#save_game').removeClass( "btn-success" ).addClass( "btn-outline-success" );   
+            }   
 
-    if(game.time >= parseInt(game.lastupdate+game.optimalsavetime) && game.time>0)
-    {
-        $('#save_game').removeClass( "btn-outline-success" ).addClass( "btn-success" ); 
-    }     
-    else
-    {
-        $('#save_game').removeClass( "btn-success" ).addClass( "btn-outline-success" );   
-    }   
-    // Claim ETH
-    if(game.unclaimedPot >= 0.001)
-    {
-        $('#withdraw1').removeClass( "btn-outline-warning" ).addClass( "btn-warning" ); 
-    }     
-    else
-    {
-        $('#withdraw1').removeClass( "btn-warning" ).addClass( "btn-outline-warning" );   
-    } 
+
+    // Claim ETH BUTTON SHOW/HIDE
+            if(game.unclaimedPot >= 0.001)
+            {
+                $('#withdraw1').removeClass( "btn-outline-warning" ).addClass( "btn-warning" ); 
+            }     
+            else
+            {
+                $('#withdraw1').removeClass( "btn-warning" ).addClass( "btn-outline-warning" );   
+            } 
 
 }
 
