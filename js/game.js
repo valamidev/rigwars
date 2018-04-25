@@ -18,6 +18,7 @@ game.balance = 0;
 game.ethbalance = 0;
 game.sincedbalance = 0;
 game.futurebalance = 0;
+game.unconfirmedbalance = 0;
 game.time = 0;
 game.current_unixtime = 0;
 game.nextjackpot = 0;
@@ -63,7 +64,7 @@ function minerdata (error, result)
 {
         if(!error)
         {
-            /* uint money, uint lastupdate, uint prodPerSec, uint[9] rigs, uint[3] upgrades, uint unclaimedPot, uint lastPot, has booster) */
+            /* (uint money, uint lastupdate, uint prodPerSec, uint[9] rigs, uint[3] upgrades, uint unclaimedPot, uint lastPot, bool hasBooster, uint unconfirmedMoney) */
             game.balance = result[0].toNumber()+1;  // Add +1 To avoid start game stuck!
             game.sincedbalance = game.balance;
             game.lastupdate = result[1].toNumber();
@@ -74,6 +75,7 @@ function minerdata (error, result)
 
           //  game.unused = result[6].toString();
             game.hasbooster = result[7].toString();
+            game.unconfirmedbalance = result[8].toNumber();
 
             for (let index = 0; index < result.length; index++) {
               console.log('Minerdata - Index: '+index+" Value: "+result[index].toString());
@@ -510,7 +512,7 @@ function update_leaderboard()
                             {
 
                                 game.leaderboard[counter] = minerdata;
-                                    game.leaderboard[counter][18] = address;
+                                    game.leaderboard[counter][19] = address;
                                             let pvpdata =  result.toString();
                                                 pvpdata = pvpdata.split(",");
 

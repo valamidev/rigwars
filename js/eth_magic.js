@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x1a894b5b130a51edab2aee725a8e1d4d1b1fc823";
+      const contract_address = "0xcd004a49aa662f9038d113b713469ec892c65aea";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];

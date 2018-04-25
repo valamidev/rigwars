@@ -599,6 +599,10 @@
 			{
 				"name": "hasBooster",
 				"type": "bool"
+			},
+			{
+				"name": "unconfirmedMoney",
+				"type": "uint256"
 			}
 		],
 		"payable": false,

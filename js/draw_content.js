@@ -1,7 +1,9 @@
 function update_dash()
 {
     $('#balance').html(show_big_values(game.futurebalance));
+    $('#wallet_balance').html(show_big_values(game.sincedbalance));
     $('#prodPerSec').html(show_big_values_hash(game.prodPerSec)+" /s");
+
 
     $('#exhaust').html(game.countdownexhaust);
     $('#immunity').html(game.countdownimmune);
@@ -10,7 +12,7 @@ function update_dash()
 
 function update_dash_slow()
 {
-    $('#networkhodl').html('Total Supply: '+show_big_values(game.networkhodl));
+    $('#networkhodl').html('Total Supply: '+show_big_values(game.networkhodl)+" Coin");
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
@@ -226,12 +228,12 @@ function generate_leaderboard()
                       <td>Action</td>
             </tr>
             */
-            // game.leaderboard[index][21] immunity en
+            // game.leaderboard[index][22] immunity en
 
-          if(game.leaderboard[index][21] < game.current_unixtime)  
+          if(game.leaderboard[index][22] < game.current_unixtime)  
             {
 
-                if(game.attackpower > parseInt(game.leaderboard[index][20])) //Attackable!
+                if(game.attackpower > parseInt(game.leaderboard[index][21])) //Attackable!
                     button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';
                 else // Protected
                 {
@@ -239,7 +241,7 @@ function generate_leaderboard()
                 }
 
             }
-          if(game.leaderboard[index][21] > game.current_unixtime) 
+          if(game.leaderboard[index][22] > game.current_unixtime) 
           {
             button = '<a class="btn btn-outline-secondary" >Immune</a>';    
           } 
@@ -249,16 +251,16 @@ function generate_leaderboard()
             button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';  
           }
 
-          if(game.leaderboard[index][18] == game.user_address)
+          if(game.leaderboard[index][19] == game.user_address)
           {
             button = "";  
           }
 
 
             content+= "<tr>"+
-            "<td>"+game.leaderboard[index][18]+"</td>"+ 
-            "<td>"+show_big_values(game.leaderboard[index][0])+"</td>"+
-            "<td>"+game.leaderboard[index][20]+"</td>"+
+            "<td>"+game.leaderboard[index][19]+"</td>"+ 
+            "<td>"+show_big_values(game.leaderboard[index][8])+"</td>"+
+            "<td>"+game.leaderboard[index][21]+"</td>"+
             "<td>"+button+"</td>"+
             "</tr>";
     }
