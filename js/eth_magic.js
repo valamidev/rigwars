@@ -353,7 +353,7 @@
         }  
       }
 
-      /*
+   
       function debug_devfund()
       {
         if(typeof web3.eth.accounts[0]  != 'undefined')
@@ -369,7 +369,7 @@
           $('#metamask_alert').modal('show');
         }  
       }
-      */
+  
 
       
       function ClaimPersonalShare()
