@@ -246,6 +246,16 @@
 
         console.log(price);
 
+        if(game.debug==1)
+        {
+          rig_wars_contract.BuyBooster.call({from:account},function(err,ress)
+          {
+            console.log(ress);
+            console.log(err);
+          });
+        }
+
+
         rig_wars_contract.BuyBooster.sendTransaction({from:account, value: value,gasPrice: game.default_gas_price},function(err,ress)
         {
           waitForReceipt(ress, function (receipt) 

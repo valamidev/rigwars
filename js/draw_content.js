@@ -77,6 +77,7 @@ function update_dash_slow()
 }
 
 
+
 function personal_share ()
 {
     let share =  (parseInt(game.sincedbalance)*10000) / parseInt(game.networkhodl);
@@ -219,10 +220,12 @@ function update_army_ui(id,count,possible_buy,cost_next)
 }
 
 
+
 function hide_upgrade(id)
 {
 
     $('.card').find('[data-upgrade-button="' + id + '"]').hide();
+
 
     $('.card').find('[data-upgrade-own-button="' + id + '"]').show();
 
@@ -235,12 +238,18 @@ function update_booster_ui (own,price)
 
     $('.card').find('[data-price-booster="' + id+ '"]').html(precisionRound(web3.fromWei(price,'ether'),4));
 
+    if(game.prodPerSec>0)
+    {
+        $('.card').find('[data-booster-button="' + id + '"]').show();    
+    }
+
     if(own == "true")
     {
     $('.card').find('[data-booster-button="' + id + '"]').hide();
 
     $('.card').find('[data-booster-own-button="' + id + '"]').show();
     }
+
 
 }
 
@@ -435,6 +444,10 @@ function generate_output()
 
         let date = new Date();
 
+        let superblock_time = game.nextjackpot - (game.time+window.windowage);
+
+        console.log('Superblock: '+superblock_time);
+
         if(game.hasbooster == "true" && value_factor>97)
         {
             game.console_output.push('<span class="claymore-gold">FUTURE: Ponzy scheme found(BITCONNEEEEEEEEEEEEEEEEEEEEEEEEEECT!)</span><br>');
@@ -442,6 +455,10 @@ function generate_output()
         else if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
         {
             game.console_output.push('<span class="claymore-red">NVML: CUDA error 4 - Use "Save Game" button to snapshot your balance!</span><br>');
+        }
+        else if(superblock_time > 0 && value_factor>95)
+        {
+            game.console_output.push('<span class="claymore-red">FUTURE: Next Super Block in '+countdown(superblock_time)+' </span><br>');
         }
         else
         {
