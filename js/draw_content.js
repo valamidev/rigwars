@@ -12,7 +12,7 @@ function update_dash()
 
 function update_dash_slow()
 {
-    $('#networkhodl').html('Total Supply: '+show_big_values(game.networkhodl)+" Coin");
+    $('#networkhodl').html('Total Supply: '+show_big_values(game.networkhodl)+" Token");
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
@@ -347,7 +347,32 @@ function show_big_values (labelValue)
     // Three Zeroes for Thousands
     : Math.abs(Number(labelValue)) >= 1.0e+3
 
-    ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + "K"
+    ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + "k"
+
+    : Math.abs(Number(labelValue));
+}
+
+
+function show_token_value (labelValue) 
+{
+    labelValue = precisionRound(labelValue/100000000,4);
+
+    // Nine Zeroes for Billions
+    return Math.abs(Number(labelValue)) >= 1.0e+12
+
+    ? Math.round(Math.abs(Number(labelValue) / 1.0e+12)*100) /100 + "T"
+    // Six Zeroes for Millions 
+    : Math.abs(Number(labelValue)) >= 1.0e+9
+
+    ? Math.round(Math.abs(Number(labelValue) / 1.0e+9)*100) /100 + "B"
+    // Six Zeroes for Millions 
+    : Math.abs(Number(labelValue)) >= 1.0e+6
+
+    ? Math.round(Math.abs(Number(labelValue) / 1.0e+6)*100) /100 + "M"
+    // Three Zeroes for Thousands
+    : Math.abs(Number(labelValue)) >= 1.0e+3
+
+    ? Math.round(Math.abs(Number(labelValue) / 1.0e+3)*100) /100 + "k"
 
     : Math.abs(Number(labelValue));
 }
