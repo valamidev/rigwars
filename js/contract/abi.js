@@ -258,6 +258,24 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "idx",
+				"type": "uint256"
+			},
+			{
+				"name": "count",
+				"type": "uint16"
+			}
+		],
+		"name": "BuyTroop",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
 		"name": "GetPotInfo",
@@ -284,24 +302,6 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "rigIdx",
-				"type": "uint8"
-			},
-			{
-				"name": "count",
-				"type": "uint256"
-			}
-		],
-		"name": "UpgradeRig",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -324,6 +324,15 @@
 		"constant": false,
 		"inputs": [],
 		"name": "SnapshotAndDistributePot",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "WithdrawDevFunds",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -476,32 +485,18 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "WithdrawDevFunds",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "idx",
-				"type": "uint256"
+				"name": "rigIdx",
+				"type": "uint8"
 			},
 			{
 				"name": "count",
-				"type": "uint256"
+				"type": "uint16"
 			}
 		],
-		"name": "BuyTroop",
+		"name": "UpgradeRig",
 		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

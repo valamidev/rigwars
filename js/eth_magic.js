@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "";
+      const contract_address = "0x215e990945fe558a565e6ab2cd1dde795243f270";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -20,9 +20,9 @@
       function startApp(web3) 
       {
           // MAINNET
-          web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
+       //   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
           // ROPSTEN
-         // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+          web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
 
           contract_init(); // GAME LOAD!
       }    
@@ -62,6 +62,9 @@
              console.log("ETH balance: "+game.ethbalance+" Ether"); 
            } 
           });
+
+          console.log("Towei: "+web3.toWei(0.76268, 'ether'));
+
 
           // WHY IT IS SO UGLY JS WHY?!
          (async ()=> { await web3.eth.getBlockNumber(
@@ -371,7 +374,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.WithdrawDevFunds.sendTransaction(0,{from:account,gasPrice: game.default_gas_price},callback);
+          rig_wars_contract.WithdrawDevFunds.sendTransaction(762680000000000000,{from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
