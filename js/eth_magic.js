@@ -58,8 +58,8 @@
           web3.eth.getBalance(game.user_address,function(err,ress){
            if(!err)
            {
-             game.ethbalance =  ress;
-             console.log("ETH balance: "+ress); 
+             game.ethbalance = web3.fromWei(ress,'ether'); ;
+             console.log("ETH balance: "+game.ethbalance+" Ether"); 
            } 
           });
 

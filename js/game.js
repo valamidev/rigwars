@@ -5,7 +5,7 @@ game = [];
 
 game.default_gas_price = web3.toHex(1000000000);
 
-game.debug = 1; // TRUE DEBUG!
+game.debug = 0; // TRUE DEBUG!
 
 game.user_address = "";
 
@@ -270,8 +270,15 @@ function buy_action_rig (data)
 
     if(base_data.eth !=0) // ETH SHOPING!
     {
-        console.log(rigID);
+        if(buying_count != 1000)
+        {
         buy_rig_eth(rigID,limit_check(buying_count,owned_supply,base_data.limit));
+        }
+        else
+        {
+            var count = parseInt(game.ethbalance / base_data.eth); 
+            buy_rig_eth(rigID,limit_check(count,owned_supply,base_data.limit));  
+        }
 
        return 0; 
     }
@@ -301,6 +308,8 @@ function buy_action_rig (data)
         }
 
     }
+
+    return 0;
 }
 
 function limit_check(count,owned,limit)
