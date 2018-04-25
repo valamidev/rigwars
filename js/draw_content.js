@@ -256,10 +256,9 @@ function generate_leaderboard()
             button = "";  
           }
 
-
             content+= "<tr>"+
             "<td>"+game.leaderboard[index][19]+"</td>"+ 
-            "<td>"+show_big_values(game.leaderboard[index][8])+"</td>"+
+            "<td>"+show_big_values(game.leaderboard[index][18])+"</td>"+
             "<td>"+game.leaderboard[index][21]+"</td>"+
             "<td>"+button+"</td>"+
             "</tr>";

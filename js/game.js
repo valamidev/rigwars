@@ -535,6 +535,7 @@ function update_leaderboard()
                 GetTotalMinerCount(function(result)
                 {
                  game.totalminer =  result;  
+                 console.log("Totalminer: "+game.totalminer);
                 });  
             }      
 
