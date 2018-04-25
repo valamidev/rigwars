@@ -117,6 +117,8 @@ function update_rig_ui(id,count,possible_buy,cost_next)
         if(window.showrig==1)
             $('[data-card="1-' + id + '-1"]').show();
 
+    let can_buy = 0;
+
     /*<!-- Data: category,id -->*/
     $('.card').find('[data-owned-count-rig="' + id + '"]').html(count+'X');
 
@@ -138,6 +140,7 @@ function update_rig_ui(id,count,possible_buy,cost_next)
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
             $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
             $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
+            can_buy = 0;
         }
 
     if(possible_buy >= 1 && rigData[id].price > 0 && count!=rigData[id].limit)
@@ -146,26 +149,39 @@ function update_rig_ui(id,count,possible_buy,cost_next)
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
             $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
             $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-primary" ); 
+            can_buy = 1;
     }
     if(possible_buy >= 5 && rigData[id].price > 0 && count!=rigData[id].limit)
     {
         $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
+        can_buy = 1;
     }
 
     // ETH RIG SHOW 1 PIECE
     if(game.ethbalance > rigData[id].eth && rigData[id].eth > 0 && count!=rigData[id].limit)
     {
          $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
+         can_buy = 1;
     }
     if(game.ethbalance > (rigData[id].eth*5) && rigData[id].eth > 0 && count!=rigData[id].limit)
     {
          $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
+         can_buy = 1;
     }
     if(game.ethbalance > (rigData[id].eth*10) && rigData[id].eth > 0 && count!=rigData[id].limit)
     {
-         $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
+         $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );  
+         can_buy = 1;  
     }
 
+    if(can_buy==1)
+    {
+        $('.card').find('[data-buyrig-button="' + id + '"]').removeClass( "btn-outline-success" ).addClass( "btn-success" );
+    }
+    else
+    {
+        $('.card').find('[data-buyrig-button="' + id + '"]').removeClass( "btn-success" ).addClass( "btn-outline-success" );  
+    }
 
 }
 
