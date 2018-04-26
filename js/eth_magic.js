@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x43ce8c4446fe32541733c30c69cb4f0dec6b207f";
+      const contract_address = "0xfe8d166f49e685847fac18e59dc80a623881e6d3";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -22,7 +22,9 @@
           // MAINNET
        //   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
           // ROPSTEN
-          web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+          //web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+          // Rinkeby
+          web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/anb94achAHWObifKnoZ7"));
 
           contract_init(); // GAME LOAD!
       }    
