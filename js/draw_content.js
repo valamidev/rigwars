@@ -16,7 +16,7 @@ function update_dash_slow()
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
-    $('#unclaimedshare').html('Unlcaimed share: '+personal_share_eth(personal_share()));
+    $('#unclaimedshare').html('Unlcaimed share: '+personal_share_eth(game.ico_unclaimed));
 
     $('.mining-anim').html(generate_output());
 

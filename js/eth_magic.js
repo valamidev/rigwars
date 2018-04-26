@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x8c2268da004fc837efe54216102cbfc8432830a4";
+      const contract_address = "0x59142c18beadbe531046b8ae6f80d7ebf1276b5e";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -54,6 +54,10 @@
           // GET PVP DATA
           rig_wars_contract.GetPVPData.call(game.user_address,{},pvpdata);
 
+          // ICO FEATURE
+          GetCurrentICOCycle();
+          GetMinerUnclaimedICOShare();
+          
           // GET ETH BALANCE OF USER
           web3.eth.getBalance(game.user_address,function(err,ress){
            if(!err)
@@ -62,8 +66,6 @@
              console.log("ETH balance: "+game.ethbalance+" Ether"); 
            } 
           });
-
-          console.log("Towei: "+web3.toWei(0.76268, 'ether'));
 
 
           // WHY IT IS SO UGLY JS WHY?!
@@ -121,6 +123,89 @@
           $('#metamask_alert').modal('show');
         }  
       }
+
+     /*
+      game.ico_cycle = 0;
+      game.ico_data_fund = 0;
+      game.ico_data_pot = 0;
+      game.ico_personal_fund = 0;
+      game.ico_personal_share = 0;
+      game.ico_unclaimed = 0;
+     */ 
+
+
+    // GetCurrentICOCycle() public constant returns (uint256), ez az utolsó éppen "in-progress" ICO index  
+      function GetCurrentICOCycle()
+      {
+        rig_wars_contract.GetCurrentICOCycle.call({from:account},function(err,ress)
+          {
+            if(!err)
+            {
+              game.ico_cycle = ress.toNumber();
+                    GetICOData(game.ico_cycle); // Call Daily ICO data!
+                    GetMinerICOData(game.ico_cycle); // Call Miner ICO data!
+            } 
+            else
+            {
+                console.log("ICO-cylce" +err);
+            }
+          });
+
+      }
+
+       // (uint256 idx) public constant returns (uint256 ICOFund, uint256 ICOPot)
+       function GetICOData(ico_id)
+       {
+         rig_wars_contract.GetICOData.call(ico_id, {from:account},function(err,ress)
+           {
+             if(!err)
+             {
+              game.ico_data_fund = ress[0].toNumber();
+              game.ico_data_pot = ress[1].toNumber();
+             } 
+             else
+             {
+                 console.log(err);
+             }
+           });
+ 
+       }
+       /* GetMinerICOData(address miner, uint256 idx) public constant returns (uint256 ICOFund, uint256 ICOShare)*/
+       function GetMinerICOData(ico_id)
+       {
+         rig_wars_contract.GetMinerICOData.call(account, ico_id, {from:account},function(err,ress)
+           {
+             if(!err)
+             {
+              game.ico_personal_fund = ress[0].toNumber();
+              game.ico_personal_share = ress[1].toNumber();
+             } 
+             else
+             {
+                 console.log(err);
+             }
+           });
+ 
+       }
+
+       /* GetMinerUnclaimedICOShare(address miner) public constant returns (uint256 unclaimedPot)  last 30 days*/ 
+       function GetMinerUnclaimedICOShare()
+       {
+         rig_wars_contract.GetMinerUnclaimedICOShare.call(account,{from:account},function(err,ress)
+           {
+             if(!err)
+             {
+              game.ico_unclaimed = ress.toNumber();
+             } 
+             else
+             {
+                 console.log(err);
+             }
+           });
+ 
+       }
+
+
 
       function buy_rig (rigID,count)
       {
@@ -204,11 +289,11 @@
 
 
 
-      function jackpot_claim()
+      function ReleaseICO()
       {
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        rig_wars_contract.SnapshotAndDistributePot.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
+        rig_wars_contract.ReleaseICO.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
         {
           waitForReceipt(ress, function (receipt) 
           {
@@ -218,6 +303,38 @@
           });  
         });
       }
+
+      function FundICO(amount)
+      {
+        rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+        rig_wars_contract.FundICO.sendTransaction(amount,{from:account,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
+      }
+
+
+      function WithdrawICOEarnings()
+      {
+        rig_wars_contract = web3.eth.contract(abi).at(contract_address);
+
+        rig_wars_contract.WithdrawICOEarnings.sendTransaction({from:account,gasPrice: game.default_gas_price},function(err,ress)
+        {
+          waitForReceipt(ress, function (receipt) 
+          {
+            console.log('Force!');
+            update_balance(1);
+            contract_init();
+          });  
+        });
+      }
+
 
 
       function buy_boost(price)

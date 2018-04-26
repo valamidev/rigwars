@@ -10,6 +10,13 @@ game.debug = 1; // TRUE DEBUG!
 game.user_address = "";
 
 
+game.ico_cycle = 0;
+game.ico_data_fund = 0;
+game.ico_data_pot = 0;
+game.ico_personal_fund = 0;
+game.ico_personal_share = 0;
+game.ico_unclaimed = 0;
+
 game.optimalsavetime = 10800;
 game.optimalclaim = 86400;
 game.lastupdate = 0;
@@ -21,7 +28,6 @@ game.futurebalance = 0;
 game.unconfirmedbalance = 0;
 game.time = 0;
 game.current_unixtime = 0;
-game.nextjackpot = 0;
 game.console_output = [];
 
 game.rigdetails = 0;
@@ -33,9 +39,6 @@ game.networkpot = "";
 game.networkpot_share = 0;
 game.networkhodl = 0;
 game.networkhash = 0;
-game.unclaimedPot = 0;
-game.jackpot = 0;
-game._nextDistributionTime = 0;
 
 // BOOSTER
 game.hasbooster = false;
