@@ -33,11 +33,13 @@ function update_dash_slow()
         $('#start').hide();  
         $('#claim_ico_share').show();
         $('#withdraw1').show();
+        $('.slidecontainer').show();
     }
     else
     {
         $('#claim_ico_share').hide();
         $('#withdraw1').hide(); 
+        $('.slidecontainer').hide();
     }
 
     var daily_income =  parseInt(game.prodPerSec)*86400;
@@ -58,7 +60,7 @@ function update_dash_slow()
 
 
     // Claim ETH BUTTON SHOW/HIDE
-            if(game.unclaimedPot >= 0.001)
+            if(toETH(game.unclaimedPot) >= 0.001)
             {
                 $('#withdraw1').removeClass( "btn-outline-warning" ).addClass( "btn-warning" ); 
             }     
@@ -66,6 +68,16 @@ function update_dash_slow()
             {
                 $('#withdraw1').removeClass( "btn-warning" ).addClass( "btn-outline-warning" );   
             } 
+
+        if(toETH(game.ico_unclaimed) >= 0.001)
+        {
+            $('#claim_ico_share').removeClass( "btn-outline-success " ).addClass( "btn-success " ); 
+        }     
+        else
+        {
+            $('#claim_ico_share').removeClass( "btn-success " ).addClass( "btn-outline-success " );   
+        } 
+
 
 }
 
@@ -79,12 +91,26 @@ function update_ico()
     $('.ico_pot_eth').html('ICO pot equals: '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
 
     if(game.countdown_ico > 0)
+    {
     $('.ico_countdown').html(countdown(game.countdown_ico));
+    $('#debug_newico').hide();
+    $('.ico-buy-button').show();
+    }
+
+    if(game.ico_personal_fund > 0)
+    $('#ico_by_you').html(', '+show_big_values(game.ico_personal_fund)+' by you');
+
+    if(game.countdown_ico<=0 && game.prodPerSec>0)
+    {
+        $('#debug_newico').show();
+        $('.ico-buy-button').hide();
+    }
+
 
     let personal_pct = precisionRound(game.ico_personal_share/game.ico_data_pot*100,2);
-
+  
     // Personal ICO
-    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),2)+'<i class="fab fa-ethereum"></i> ('+personal_pct+'%)');
+    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<i class="fab fa-ethereum"></i> ('+personal_pct+'%)');
 
 }
 

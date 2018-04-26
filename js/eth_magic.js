@@ -631,3 +631,8 @@ function waitForReceipt(hash, callback) {
     }
   });
 }
+
+function toETH(number)
+{
+  return web3.fromWei(number,'ether');
+}
