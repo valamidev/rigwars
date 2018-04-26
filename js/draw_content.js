@@ -461,7 +461,6 @@ function generate_output()
 {
     let content = ""
 
-    
 
     if(game.prodPerSec==0)
     {
@@ -479,7 +478,7 @@ function generate_output()
     if(game.console_output.length > 0)
     {
          let value_factor = Math.random()*100;
-         let random_text = Math.floor(Math.random() * (6 - 0) ) + 0;
+         let random_text = Math.floor(Math.random() * (7 - 0) ) + 0;
          let random_text2 = Math.floor(Math.random() * (4 - 0) ) + 0;
          let random_temp = Math.floor(Math.random() * (90 - 56) ) + 56;
          let random_vent = Math.floor(Math.random() * (95 - 80) ) + 80;
@@ -517,6 +516,9 @@ function generate_output()
                     case 5:
                     game.console_output.push( '<span class="claymore-purple">RIG 0 t='+random_temp+'C fan='+random_vent+'%, RIG 1 t='+(random_temp-7)+'C fan='+(random_vent-3)+'%, RIG 3 t='+(random_temp+2)+'C fan='+(random_vent+5)+'%, RIG 4 t='+(random_temp-4)+'C fan='+(random_vent+3)+'%</span><br>');
                         break;
+                    case 6:
+                    game.console_output.push( '<span class="claymore-green">FUTURE: Share accepted('+(Math.floor(value_factor+12))+'ms)!</span><br>');
+                    break;    
 
                     default:
                     game.console_output.push( '<span class="claymore-purple">RIG 0 t=55C fan=85%, RIG 1 t=58C fan=92%, RIG 3 t=58C fan=92%, RIG 4 t=58C fan=92%</span><br>');
@@ -525,7 +527,7 @@ function generate_output()
         }
 
 
-            if(game.console_output.length>8)
+            if(game.console_output.length>11)
             {
                 game.console_output.shift();  
             }     
