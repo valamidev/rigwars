@@ -19,6 +19,17 @@ $(function(){
 });
 
 
+// ICO INVEST
+$(function(){
+    $(".ico-buy-button").click(function(){
+       var slider_val = $("#myRange").val();
+         var invest_amount = (slider_val*game.futurebalance)/100;
+         FundICO(invest_amount);
+    });
+});
+// ICO INVEST  
+
+
 $(function(){
     $("#debug_devfund").click(function(){
         debug_devfund();
@@ -26,8 +37,8 @@ $(function(){
 });
 
 $(function(){
-    $("#jackpot").click(function(){
-        jackpot_claim();
+    $("#debug_newico").click(function(){
+        ReleaseICO();
     });
 });
 

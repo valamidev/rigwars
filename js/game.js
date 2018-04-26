@@ -16,6 +16,8 @@ game.ico_data_pot = 0;
 game.ico_personal_fund = 0;
 game.ico_personal_share = 0;
 game.ico_unclaimed = 0;
+game.next_ico = 0;
+game.countdown_ico = 0;
 
 game.optimalsavetime = 10800;
 game.optimalclaim = 86400;
@@ -127,7 +129,7 @@ function plotdata (error, result) // NETWORK ETH
         {   
            /* GetPotInfo() public constant returns (uint _honeyPotAmount, uint _devFunds, uint _jaskPot, uint _nextDistributionTime)*/
             game.networkpot =  web3.fromWei(result[0],'ether');   
-            game.nextjackpot = parseInt(result[3]);
+            game.next_ico = result[3].toNumber();
          //   game.jackpot = result[2].toString();
           //  game.nextdistributiontime = result[3].toString();
 
@@ -476,25 +478,31 @@ function update_balance(force)
         game.current_unixtime = game.time+window.windowage;
         }
 
-        if(game.immunityTime > 0 && game.immunityTime > game.time)
-        {
-           let distance_immune = game.immunityTime-game.time-window.windowage;  
-           game.countdownimmune = countdown(distance_immune);
-        }
-        else
-        {
-            game.countdownimmune = "Attackable!";  
-        }
+                if(game.immunityTime > 0 && game.immunityTime > game.time)
+                {
+                let distance_immune = game.immunityTime-game.time-window.windowage;  
+                game.countdownimmune = countdown(distance_immune);
+                }
+                else
+                {
+                    game.countdownimmune = "Attackable!";  
+                }
 
-        if(game.exhaustTime > 0 && game.exhaustTime > game.time)
-        {
-           distance_immune = game.exhaustTime-game.time-window.windowage;  
-           game.countdownexhaust = "Ready in: "+countdown(distance_immune);
-        }
-        else
-        {
-            game.countdownexhaust = "Ready!";  
-        }
+                    if(game.exhaustTime > 0 && game.exhaustTime > game.time)
+                    {
+                    distance_immune = game.exhaustTime-game.time-window.windowage;  
+                    game.countdownexhaust = "Ready in: "+countdown(distance_immune);
+                    }
+                    else
+                    {
+                        game.countdownexhaust = "Ready!";  
+                    }
+
+                    if(game.next_ico > 0 && game.next_ico > game.time)
+                    {
+                      game.countdown_ico  = game.next_ico-game.time-window.windowage; 
+                    }
+
 
 }
 // MAIN LOOP 
@@ -579,6 +587,7 @@ $( document ).ready(function() {
                 {
                 update_upgrades();
                 update_booster();
+                update_ico();
                 }
         };
 
@@ -605,7 +614,7 @@ $( document ).ready(function() {
 
                 if(game.futurebalance > 2)
                 {
-                    output.innerHTML = show_big_values(this.value*game.futurebalance);   
+                    output.innerHTML = show_big_values((this.value*game.futurebalance)/100);   
                 }
                 else
                 {

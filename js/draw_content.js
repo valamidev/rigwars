@@ -77,6 +77,21 @@ function update_dash_slow()
 }
 
 
+function update_ico()
+{
+    // Token ivested
+    $('.ico_pot').html(game.ico_data_fund+" RIG");
+
+    // ETH invested
+    $('.ico_pot_eth').html('ICO Pot equal with '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
+
+    if(game.countdown_ico > 0)
+    $('.ico_countdown').html(countdown(game.countdown_ico));
+
+
+
+}
+
 
 function personal_share ()
 {
@@ -444,9 +459,6 @@ function generate_output()
 
         let date = new Date();
 
-        let superblock_time = game.nextjackpot - (game.time+window.windowage);
-
-        console.log('Superblock: '+superblock_time);
 
         if(game.hasbooster == "true" && value_factor>97)
         {
@@ -455,10 +467,6 @@ function generate_output()
         else if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
         {
             game.console_output.push('<span class="claymore-red">NVML: CUDA error 4 - Use "Save Game" button to snapshot your balance!</span><br>');
-        }
-        else if(superblock_time > 0 && value_factor>95)
-        {
-            game.console_output.push('<span class="claymore-red">FUTURE: Next Super Block in '+countdown(superblock_time)+' </span><br>');
         }
         else
         {

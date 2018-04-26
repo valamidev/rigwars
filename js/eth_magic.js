@@ -162,6 +162,7 @@
              {
               game.ico_data_fund = ress[0].toNumber();
               game.ico_data_pot = ress[1].toNumber();
+              console.log("Ico data pot: "+game.ico_data_pot);
              } 
              else
              {
@@ -177,8 +178,11 @@
            {
              if(!err)
              {
-              game.ico_personal_fund = ress[0].toNumber();
-              game.ico_personal_share = ress[1].toNumber();
+                  if(typeof ress[0]  != 'undefined') 
+                  {
+                      game.ico_personal_fund = ress[0].toNumber();
+                      game.ico_personal_share = ress[1].toNumber();
+                  }
              } 
              else
              {
@@ -287,7 +291,7 @@
           }
       }
 
-
+      // ICO
 
       function ReleaseICO()
       {
@@ -335,6 +339,7 @@
         });
       }
 
+   // ICO   
 
 
       function buy_boost(price)
