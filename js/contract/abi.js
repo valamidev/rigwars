@@ -265,7 +265,15 @@
 		"name": "GetMinerICOData",
 		"outputs": [
 			{
-				"name": "",
+				"name": "ICOFund",
+				"type": "uint256"
+			},
+			{
+				"name": "ICOShare",
+				"type": "uint256"
+			},
+			{
+				"name": "lastClaimIndex",
 				"type": "uint256"
 			}
 		],

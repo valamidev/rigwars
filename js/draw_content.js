@@ -80,7 +80,7 @@ function update_dash_slow()
 function update_ico()
 {
     // Token ivested
-    $('.ico_pot').html(game.ico_data_fund+" RIG");
+    $('.ico_pot').html(show_big_values(game.ico_data_fund)+" RIG");
 
     // ETH invested
     $('.ico_pot_eth').html('ICO Pot equal with '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
@@ -88,7 +88,8 @@ function update_ico()
     if(game.countdown_ico > 0)
     $('.ico_countdown').html(countdown(game.countdown_ico));
 
-
+    // Personal ICO
+    $('.ico_pot_yours').html('Your investment so far: '+web3.fromWei(((game.ico_personal_share*game.ico_data_pot)/100),'ether')+'<i class="fab fa-ethereum"></i> ('+game.ico_personal_share+' %)');
 
 }
 

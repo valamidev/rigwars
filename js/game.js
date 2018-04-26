@@ -15,6 +15,7 @@ game.ico_data_fund = 0;
 game.ico_data_pot = 0;
 game.ico_personal_fund = 0;
 game.ico_personal_share = 0;
+game.ico_personal_lastclaim = 0;
 game.ico_unclaimed = 0;
 game.next_ico = 0;
 game.countdown_ico = 0;

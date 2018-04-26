@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x59142c18beadbe531046b8ae6f80d7ebf1276b5e";
+      const contract_address = "0xbe14cffda0ea442653a9fe3e35eab162d7ffb480";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -171,7 +171,7 @@
            });
  
        }
-       /* GetMinerICOData(address miner, uint256 idx) public constant returns (uint256 ICOFund, uint256 ICOShare)*/
+       /* GetMinerICOData(address miner, uint256 idx) public constant returns (uint256 ICOFund, uint256 ICOShare , uint256 lastClaimIndex)*/
        function GetMinerICOData(ico_id)
        {
          rig_wars_contract.GetMinerICOData.call(account, ico_id, {from:account},function(err,ress)
@@ -182,6 +182,7 @@
                   {
                       game.ico_personal_fund = ress[0].toNumber();
                       game.ico_personal_share = ress[1].toNumber();
+                      game.ico_personal_lastclaim = ress[2].toNumber();
                   }
              } 
              else
