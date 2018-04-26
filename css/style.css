@@ -340,3 +340,10 @@ table.light tr td {
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
 }
+
+
+
+body{
+    min-width:1213px;        /* Suppose you want minimum width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+ }
