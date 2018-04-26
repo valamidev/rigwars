@@ -7,8 +7,8 @@ $(function(){
 });
 
 $(function(){
-    $("#save_game").click(function(){
-        save_game();
+    $("#claim_ico_share").click(function(){
+        WithdrawICOEarnings();
     });
 });
 

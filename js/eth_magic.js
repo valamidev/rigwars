@@ -142,6 +142,7 @@
             if(!err)
             {
               game.ico_cycle = ress.toNumber();
+                console.log("ICO cycle: "+game.ico_cycle);
                     GetICOData(game.ico_cycle); // Call Daily ICO data!
                     GetMinerICOData(game.ico_cycle); // Call Miner ICO data!
             } 
@@ -183,6 +184,8 @@
                       game.ico_personal_fund = ress[0].toNumber();
                       game.ico_personal_share = ress[1].toNumber();
                       game.ico_personal_lastclaim = ress[2].toNumber();
+
+                      console.log(game.ico_personal_fund,game.ico_personal_share,game.ico_personal_lastclaim);
                   }
              } 
              else
@@ -201,6 +204,7 @@
              if(!err)
              {
               game.ico_unclaimed = ress.toNumber();
+              console.log("Unclaimed ICO: "+game.ico_unclaimed);
              } 
              else
              {

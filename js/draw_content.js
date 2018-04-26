@@ -28,12 +28,12 @@ function update_dash_slow()
     if(game.prodPerSec>0)
     {
         $('#start').hide();  
-        $('#save_game').show();
+        $('#claim_ico_share').show();
         $('#withdraw1').show();
     }
     else
     {
-        $('#save_game').hide();
+        $('#claim_ico_share').hide();
         $('#withdraw1').hide(); 
     }
 
@@ -53,16 +53,6 @@ function update_dash_slow()
               $('#jackpot').hide();   
             }
 
-    // SAVE GAME BUTTON SHOW/HIDE
-            if(game.time >= parseInt(game.lastupdate+game.optimalsavetime) && game.time>0)
-            {
-                $('#save_game').removeClass( "btn-outline-success" ).addClass( "btn-success" ); 
-            }     
-            else
-            {
-                $('#save_game').removeClass( "btn-success" ).addClass( "btn-outline-success" );   
-            }   
-
 
     // Claim ETH BUTTON SHOW/HIDE
             if(game.unclaimedPot >= 0.001)
@@ -80,7 +70,7 @@ function update_dash_slow()
 function update_ico()
 {
     // Token ivested
-    $('.ico_pot').html(show_big_values(game.ico_data_fund)+" RIG");
+    $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
 
     // ETH invested
     $('.ico_pot_eth').html('ICO Pot equal with '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
@@ -110,12 +100,14 @@ function personal_share ()
     }
 }
 
-function personal_share_eth()
+function personal_share_eth(ico_unclaimed)
 {
-    if(game.unclaimedPot>= 0.0001 )
+    ico_unclaimed = web3.fromWei(ico_unclaimed,'ether');
+
+    if(ico_unclaimed>= 0.0001 )
     {
 
-     return precisionRound(game.unclaimedPot,4)+'<i class="fab fa-ethereum"></i>';
+     return precisionRound(ico_unclaimed,4)+'<i class="fab fa-ethereum"></i>';
     }
     else
     {

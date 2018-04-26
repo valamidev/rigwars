@@ -109,7 +109,7 @@ table.light tr td {
 
     .console-text{
         display: inline-block;
-        height: 240px;
+        height: 230px;
     }
 
     .static-anim {
@@ -119,6 +119,12 @@ table.light tr td {
         font-size: 14px;
         width: 100%;
     }
+
+    .static-anim ul{
+        list-style-type: none;
+    }
+    
+
     .network-stat {
         display: inline-block;
         position: absolute;
@@ -136,7 +142,16 @@ table.light tr td {
         width: 100%;  
         background-color:  #01abab;
         color: #000;
+        margin-bottom: 10px;
     }
+
+    #balance{
+        font-weight: 800; 
+    }
+    #prodPerSec{
+        font-weight: 800; 
+    }
+
 
 
 

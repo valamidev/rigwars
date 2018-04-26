@@ -499,7 +499,7 @@ function update_balance(force)
                         game.countdownexhaust = "Ready!";  
                     }
 
-                    if(game.next_ico > 0 && game.next_ico > game.time)
+                    if(game.next_ico > 0 && game.next_ico > game.time && game.time!=0)
                     {
                       game.countdown_ico  = game.next_ico-game.time-window.windowage; 
                     }
