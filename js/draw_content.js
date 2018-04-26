@@ -95,8 +95,11 @@ function update_ico()
     if(game.countdown_ico > 0)
     {
     $('.ico_countdown').html(countdown(game.countdown_ico));
-    $('#debug_newico').hide();
-    $('.ico-buy-button').show();
+            if(game.prodPerSec>0)
+            {
+            $('#debug_newico').hide();
+            $('.ico-buy-button').show();
+            }
     }
 
     if(game.ico_personal_fund > 0)
@@ -216,6 +219,8 @@ function update_rig_ui(id,count,possible_buy,cost_next)
          $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );  
          can_buy = 1;  
     }
+    // ETH RIG SHOW 1 PIECE
+
 
     if(can_buy==1)
     {
@@ -231,6 +236,8 @@ function update_rig_ui(id,count,possible_buy,cost_next)
 
 function update_army_ui(id,count,possible_buy,cost_next)
 {
+    let can_buy = 0;
+
     if(window.showarmy==0)
     $('[data-card="3-' + id + '-1"]').hide();
 
@@ -241,22 +248,58 @@ function update_army_ui(id,count,possible_buy,cost_next)
     $('.card').find('[data-owned-count-army="' + id + '"]').html(count+'X');
 
 
-    if(troopData[id].eth == 0)
+    if(troopData[id].eth > 0 || possible_buy == 0 )
     {
         $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));
+
+            $('.card').find('[data-army-count="' + id+'-1"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
+            $('.card').find('[data-army-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
+            $('.card').find('[data-army-count="' + id+'-1000"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
+            can_buy = 0;
     }
 
 
 
-    if(possible_buy >= 1)
+    if(possible_buy >= 1  && troopData[id].price > 0)
     {
             $('.card').find('[data-army-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
             $('.card').find('[data-army-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-primary" ); 
+            can_buy = 1; 
     }
-    if(possible_buy >= 5)
+    if(possible_buy >= 5 && troopData[id].price > 0)
     {
         $('.card').find('[data-army-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-primary" );  
+        can_buy = 1; 
     }
+
+
+         // ETH TROOP SHOW 1 PIECE
+                if(game.ethbalance > troopData[id].eth && troopData[id].eth > 0 )
+                {
+                    $('.card').find('[data-army-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
+                    can_buy = 1;
+                }
+                if(game.ethbalance > (troopData[id].eth*5) && troopData[id].eth > 0 )
+                {
+                    $('.card').find('[data-army-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
+                    can_buy = 1;
+                }
+                if(game.ethbalance > (troopData[id].eth*10) && troopData[id].eth > 0 )
+                {
+                    $('.card').find('[data-army-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );  
+                    can_buy = 1;  
+                }
+    // ETH TROOP SHOW 1 PIECE
+
+            if(can_buy==1)
+            {
+                $('.card').find('[data-buyarmy-button="' + id + '"]').removeClass( "btn-outline-success" ).addClass( "btn-success" );
+            }
+            else
+            {
+                $('.card').find('[data-buyarmy-button="' + id + '"]').removeClass( "btn-success" ).addClass( "btn-outline-success" );  
+            }
+
 
 
 }
