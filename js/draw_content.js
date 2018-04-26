@@ -533,10 +533,6 @@ function generate_output()
         {
             game.console_output.push('<span class="claymore-gold">FUTURE: Ponzy scheme found(BITCONNEEEEEEEEEEEEEEEEEEEEEEEEEECT!)</span><br>');
         }
-        else if(game.time >= game.lastupdate+game.optimalsavetime && game.time>0)
-        {
-            game.console_output.push('<span class="claymore-red">NVML: CUDA error 4 - Use "Save Game" button to snapshot your balance!</span><br>');
-        }
         else
         {
                 switch (random_text) 
