@@ -9,8 +9,8 @@ gametext.welcome =
 "<span>C:/Mining/Start > RigWarsBeta0.1.exe --tutorial</span> <br> Welcome on RigWars.io the Original Crypto Mining Idle game DAPP <br><br>"+
 "- Setup your own Mining Rig and help the Futurehash network to mint more and more Coin. "+
 "Being a miner is a dangerous profession recruit your own Cyber Army to protect your Coins or attack others and steal theirs.<br>"+
-"Keep it up the network and your will be rewarded from the Network HODL daily up to 20% Dividens!<br><br>"+
-"Press Start Game Button to continue...";
+"Invest your Coins to ICO everyday and get back up to 20% dividens from Network HODL!<br><br><br><br>"+
+"Press Start Game Button on the right side to continue...";
 
 
 //                   price,           prod.     upgrade,        priceETH, limit

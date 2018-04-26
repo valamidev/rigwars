@@ -18,7 +18,7 @@ function update_dash_slow()
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
     $('#unclaimedshare').html('Unlcaimed share: '+personal_share_eth(game.ico_unclaimed));
 
-    $('.mining-anim').html(generate_output());
+    $('.console-text').html(generate_output());
 
     if(game.debug==0)
     {
@@ -499,7 +499,7 @@ function generate_output()
         }
 
 
-            if(game.console_output.length>6)
+            if(game.console_output.length>8)
             {
                 game.console_output.shift();  
             }     

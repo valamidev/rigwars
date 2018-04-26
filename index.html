@@ -88,34 +88,53 @@ and open the template in the editor.
                 <div class="row">
                   <div class="minestat col-8">
                      <div class="mining-anim">
+                      <div class="console-text">
+                        
+                      </div>
+                      <div class="mining-text">
+                        <table class="dos-mining">
+                          <tr>
+                            <td>Algorithm</td>
+                            <td>Accepted speed</td>
+                            <td>Profitability</td>
+                            <td>Total Balance</td>
+                          </tr> 
+                          <tr>
+                            <td >FutureHash</td>
+                            <td id="prodPerSec">N/A Hash/s </td>
+                            <td id="prodPerDay">N/A /day</td>
+                            <td id="balance">N/A</td>
+                          </tr> 
+                        </table>
+                      </div>
+
+                      <div class="static-anim">
+                        <div class="network-stat">* Future Network *
+                          <ul class="">
+                            <li id="networkhodl" class="">Total Supply: </li>
+                            <li id="networkpot" class="">Network HODL: N/A <i class="fab fa-ethereum"></i></li>
+                            <li id="networkhash" class="">Network hash: 0 Hash/s </li>
+                            <li id="unclaimedshare" class="">Unlcaimed share: Less than 0.001 <i class="fab fa-ethereum"></i></li>
+                          </ul>
+                        </div> 
+                        <div class="pvp-stat">* Hacking Stats *
+                          <ul class="">
+                            <li id="" class="">Attack power: <span id="attackpower"></span> <i class="fas fa-keyboard"></i></li>
+                            <li id="" class="">Defense power: <span id="defensepower"></span> <i class="fas fa-shield-alt"></i></li>
+                            <li id="" class=""> Attack: <span id="exhaust"></span> </li>
+                            <li id="" class="">Immunity: <span id="immunity"></span></li>
+                            <li class="">Maximum stealing: 50% </li>
+                          </ul>
+                        </div> 
+
+                       
+                      </div>
 
                      </div>
 
                      <br> 
 
-
                      
-                     <table class="table light">
-                            <thead>
-                              <tr>
-                                <th scope="col">Algorithm</th>
-                                <th scope="col">Accepted speed</th>
-                                <th scope="col">Profitability</th>
-                                <th scope="col">Wallet Balance</th>
-                                <th scope="col">Total Balance</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th class="algo" scope="row">FutureHash</th>
-                                <td id="prodPerSec">N/A Hash/s </td>
-                                <td id="prodPerDay">N/A /day</td>
-                                <td id="wallet_balance">N/A</td>
-                                <td id="balance">N/A</td>
-                              </tr>
-                            </tbody>
-                          </table>     
-
                     <!-- Market Selector -->
                     <div class="market_buttons">
                     <button type="button" id="showrig"  class="btn btn-outline-primary">Mining equipments</button>      
@@ -151,9 +170,6 @@ and open the template in the editor.
                         <div class="ico_pot_yours">Your investment so far: n/a<i class="fab fa-ethereum"></i></div> 
                     </div>
               
-
-                  <button type="button" class="btn btn-primary btn-sm">Network Stat:</button>
-                  <button type="button" class="btn btn-secondary btn-sm">ICO Of The Day:</button>
                   <div class="divider_small"></div>
                       <div class="divider_small"></div>
                     <button type="button" id="start" class="btn btn-success btn-lg beauty_button beauty_button_big">Start game</button>

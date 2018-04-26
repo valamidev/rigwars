@@ -96,15 +96,49 @@ table.light tr td {
         background-position: left top;
         background-size: 400px ;
         padding: 5px;
-        width: 500px;
-        height: 220px;
+        width: 730px;
+        height: 430px;
         display: inline-block;
         float: left;
         margin-bottom: 5px;
         color: #c0c0c0;
-        font-size: 12px;
+        font-size: 13px;
         font-family: Lucida Console, Lucida Sans Typewriter, monaco, Bitstream Vera Sans Mono, monospace;
+        position: relative;
     }
+
+    .console-text{
+        display: inline-block;
+        height: 240px;
+    }
+
+    .static-anim {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        font-size: 14px;
+        width: 100%;
+    }
+    .network-stat {
+        display: inline-block;
+        position: absolute;
+        width:55%;
+        top:0px;
+    }
+    .pvp-stat {
+        display: inline-block;
+        width:40%;
+        position: absolute;
+        right:0px;
+    }
+
+    .dos-mining{
+        width: 100%;  
+        background-color:  #01abab;
+        color: #000;
+    }
+
+
 
     .claymore-green{
     color: #006700; 
