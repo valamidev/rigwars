@@ -79,7 +79,7 @@ function minerdata (error, result)
             game.prodPerSec = result[2].toNumber();
             game.rigdetails = result[3].toString();
             game.upgrades = result[4].toString();
-            game.unclaimedPot = web3.fromWei(result[5],'ether');
+            game.unclaimedPot = result[5].toNumber();
 
             game.hasbooster = result[6].toString();
             game.unconfirmedbalance = result[7].toNumber();
