@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x215e990945fe558a565e6ab2cd1dde795243f270";
+      const contract_address = "0x8c2268da004fc837efe54216102cbfc8432830a4";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -202,25 +202,6 @@
           }
       }
 
-
-      function price_army(id,count,owned)
-      {
-        rig_wars_contract = web3.eth.contract(abi).at(contract_address);
-        rig_wars_contract.GetPriceOfTroops.call(id,count,owned,{from:account,gasPrice: game.default_gas_price},function(error,ress)
-      {
-        if(!error)
-                  {
-                    return console.log("Price: "+ress);
-                  } 
-                  else
-                  {
-                      console.log(error);
-                  }
-
-      }
-      );
-
-      }
 
 
       function jackpot_claim()

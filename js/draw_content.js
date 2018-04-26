@@ -269,12 +269,12 @@ function generate_leaderboard()
                       <td>Action</td>
             </tr>
             */
-            // game.leaderboard[index][22] immunity en
+            // game.leaderboard[index][21] immunity en
 
-          if(game.leaderboard[index][22] < game.current_unixtime)  
+          if(game.leaderboard[index][21] < game.current_unixtime)  
             {
 
-                if(game.attackpower > parseInt(game.leaderboard[index][21])) //Attackable!
+                if(game.attackpower > parseInt(game.leaderboard[index][20])) //Attackable!
                     button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';
                 else // Protected
                 {
@@ -282,7 +282,7 @@ function generate_leaderboard()
                 }
 
             }
-          if(game.leaderboard[index][22] > game.current_unixtime) 
+          if(game.leaderboard[index][21] > game.current_unixtime) 
           {
             button = '<a class="btn btn-outline-secondary" >Immune</a>';    
           } 
@@ -292,15 +292,15 @@ function generate_leaderboard()
             button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';  
           }
 
-          if(game.leaderboard[index][19] == game.user_address)
+          if(game.leaderboard[index][18] == game.user_address)
           {
             button = "";  
           }
 
             content+= "<tr>"+
-            "<td>"+game.leaderboard[index][19]+"</td>"+ 
-            "<td>"+show_big_values(game.leaderboard[index][18])+"</td>"+
-            "<td>"+game.leaderboard[index][21]+"</td>"+
+            "<td>"+game.leaderboard[index][18]+"</td>"+ 
+            "<td>"+show_big_values(game.leaderboard[index][17])+"</td>"+
+            "<td>"+game.leaderboard[index][20]+"</td>"+
             "<td>"+button+"</td>"+
             "</tr>";
     }
@@ -505,4 +505,6 @@ function generate_output()
     return content;
 
 }
+
+
 

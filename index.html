@@ -15,6 +15,7 @@ and open the template in the editor.
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js" ></script>
 
         <script src="./js/constants/game_constant.js" ></script>
         <script src="./js/contract/abi.js" ></script>
@@ -23,6 +24,7 @@ and open the template in the editor.
         <script src="./js/eth_magic.js" ></script>
         <script src="./js/buttons.js" ></script>
         <script src="./js/draw_content.js" ></script>
+        
         
 
         <link rel="stylesheet" href="./css/style.css">    
@@ -144,7 +146,35 @@ and open the template in the editor.
                     
                   </div>
                   <div  class="col-4">
-                    <h4>Network Stat: </h4>
+
+                  <!--  
+                    <div class="ico_box">
+                        <h5>ICO Of The Day:</h5>
+                        <h6>Daily SALE is live, ends in</h6>
+                        <span class="ico_countdown">14:49:25</span>
+                              <div class="pull-mid">
+                                            <button type="button" class="btn btn-danger ico-buy-button">Buy ICO</button>
+
+                                            <div class="slidecontainer">
+                                                <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+                                              <div id="left_pct">1%</div><div id="demo"></div><div id="right_pct">100%</div>
+
+
+                                              </div>
+                              </div>
+
+                                                   
+                        <div class="ico_pot">325.123 RIG</div>
+                        <div class="ico_pot_under">Currently raised</div>  
+
+                        <div class="ico_pot_eth">ICO Pot currently equal with 0.35 <i class="fab fa-ethereum"></i></div> 
+                    </div>
+                  -->
+
+                  <button type="button" class="btn btn-primary btn-sm">Network Stat:</button>
+                  <button type="button" class="btn btn-secondary btn-sm">ICO Of The Day:</button>
+                  <div class="divider_small"></div>
+                  <div id="network-stat">
                     <ul class="list-group">
                         <li id="networkhodl" class="list-group-item">Total Supply: </li>
                         <li id="networkpot" class="list-group-item">Network HODL: N/A <i class="fab fa-ethereum"></i></li>
@@ -152,6 +182,7 @@ and open the template in the editor.
                         <li id="networkshare" class="list-group-item">Your Network Share: Less than 0.01%</li>
                         <li id="unclaimedshare" class="list-group-item">Unlcaimed share: Less than 0.001 <i class="fab fa-ethereum"></i></li>
                       </ul>
+                  </div>   
                       <div class="divider_small"></div>
                     <button type="button" id="start" class="btn btn-success btn-lg beauty_button beauty_button_big">Start game</button>
                     <div class="divider_small"></div>

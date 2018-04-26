@@ -84,41 +84,6 @@
 		"type": "function"
 	},
 	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "rigIdx",
-				"type": "uint8"
-			}
-		],
-		"name": "GetRigData",
-		"outputs": [
-			{
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"name": "production",
-				"type": "uint256"
-			},
-			{
-				"name": "upgrade",
-				"type": "uint256"
-			},
-			{
-				"name": "limit",
-				"type": "uint256"
-			},
-			{
-				"name": "priceETH",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -175,33 +140,6 @@
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "rigIdx",
-				"type": "uint256"
-			},
-			{
-				"name": "count",
-				"type": "uint256"
-			},
-			{
-				"name": "owned",
-				"type": "uint256"
-			}
-		],
-		"name": "GetPriceOfRigs",
-		"outputs": [
-			{
-				"name": "price",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -323,15 +261,6 @@
 	{
 		"constant": false,
 		"inputs": [],
-		"name": "SnapshotAndDistributePot",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
 		"name": "WithdrawDevFunds",
 		"outputs": [],
 		"payable": false,
@@ -346,37 +275,6 @@
 			{
 				"name": "",
 				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "idx",
-				"type": "uint256"
-			},
-			{
-				"name": "count",
-				"type": "uint256"
-			},
-			{
-				"name": "owned",
-				"type": "uint256"
-			}
-		],
-		"name": "GetPriceOfTroops",
-		"outputs": [
-			{
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"name": "priceETH",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -429,6 +327,20 @@
 		"constant": false,
 		"inputs": [
 			{
+				"name": "amount",
+				"type": "uint64"
+			}
+		],
+		"name": "FundICO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "recipient",
 				"type": "address"
 			},
@@ -465,20 +377,6 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "GetNumberOfRigs",
-		"outputs": [
-			{
-				"name": "rigNum",
-				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -588,10 +486,6 @@
 				"type": "uint256"
 			},
 			{
-				"name": "lastPot",
-				"type": "uint256"
-			},
-			{
 				"name": "hasBooster",
 				"type": "bool"
 			},
@@ -624,6 +518,15 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [],
+		"name": "WithdrawICOEarnings",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -647,17 +550,12 @@
 		"type": "function"
 	},
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [],
-		"name": "NUMBER_OF_BOOSTERS",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"name": "ReleaseICO",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

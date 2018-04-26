@@ -147,3 +147,139 @@ table.light tr td {
     left: 0px;
 }
 
+.ico_box{
+  display: inline-block;
+  height: 300px;  
+  background-color: #959595;
+  width: 100%;
+  border-radius: 5px;
+  background-image: url(..//images/soe.png);
+  color: #ffffff;
+}
+
+.ico_box h5{
+    margin: auto;
+    text-align: center
+  }
+
+.pull-mid{
+    text-align: center;
+    display: inline-block;
+    width:100%;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top:10px;
+}
+
+.ico_box h6{
+    margin-top: 10px;
+    text-align: center
+}  
+
+.ico_countdown{
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    font-size: 30px;
+}  
+
+.ico_pot_eth
+{
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;  
+}
+
+
+#left_pct{
+   display: inline-block; 
+   text-align: left;
+   width:33%;
+   font-size: 12px;
+}
+
+#demo{
+    display: inline-block; 
+    width:33%;
+ }
+
+ #right_pct{
+    display: inline-block; 
+    text-align: right;
+    width:33%;
+    font-size: 12px;
+ }
+
+
+ .ico_pot{
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    font-size: 26px;
+    margin-top:-5px;
+}  
+
+.ico_pot_under{
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+    margin-top:-5px;
+    margin-bottom:10px;
+}  
+
+.ico-progress
+{
+    width: 90%;  
+    margin: auto;
+}
+
+.ico-buy-button
+{
+    margin-bottom:5px; 
+}
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+   background: #d3d3d3;  
+    outline: none; /* Remove outline */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .8s;
+    border-radius: 2px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background:   #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background:   #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 50%;
+}

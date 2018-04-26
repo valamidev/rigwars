@@ -64,7 +64,7 @@ function minerdata (error, result)
 {
         if(!error)
         {
-            /* (uint money, uint lastupdate, uint prodPerSec, uint[9] rigs, uint[3] upgrades, uint unclaimedPot, uint lastPot, bool hasBooster, uint unconfirmedMoney) */
+         /* (uint money, uint lastupdate, uint prodPerSec, uint[9] rigs, uint[3] upgrades, uint unclaimedPot, bool hasBooster, uint unconfirmedMoney) */
             game.balance = result[0].toNumber()+1;  // Add +1 To avoid start game stuck!
             game.sincedbalance = game.balance;
             game.lastupdate = result[1].toNumber();
@@ -73,9 +73,8 @@ function minerdata (error, result)
             game.upgrades = result[4].toString();
             game.unclaimedPot = web3.fromWei(result[5],'ether');
 
-          //  game.unused = result[6].toString();
-            game.hasbooster = result[7].toString();
-            game.unconfirmedbalance = result[8].toNumber();
+            game.hasbooster = result[6].toString();
+            game.unconfirmedbalance = result[7].toNumber();
 
             for (let index = 0; index < result.length; index++) {
               console.log('Minerdata - Index: '+index+" Value: "+result[index].toString());
@@ -243,7 +242,6 @@ function buy_action_army (data)
         if(count>=1)
         { 
             console.log("Index: "+buy_id+" Coint: "+count+" Price: "+price+"Owned: "+owned_supply);
-            price_army(buy_id,count,owned_supply);
             buy_army(buy_id,count,0); 
 
         }
@@ -521,7 +519,7 @@ function update_leaderboard()
                             {
 
                                 game.leaderboard[counter] = minerdata;
-                                    game.leaderboard[counter][19] = address;
+                                    game.leaderboard[counter][18] = address;
                                             let pvpdata =  result.toString();
                                                 pvpdata = pvpdata.split(",");
 
@@ -594,5 +592,22 @@ $( document ).ready(function() {
             window.windowage = window.windowage+1;
         }
 
+        var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+
+            output.innerHTML = slider.value; // Display the default slider value
+
+            // Update the current slider value (each time you drag the slider handle)
+            slider.oninput = function() {
+
+                if(game.futurebalance > 2)
+                {
+                    output.innerHTML = show_big_values(this.value*game.futurebalance);   
+                }
+                else
+                {
+                output.innerHTML = this.value;
+                }
+            } 
 
 });
