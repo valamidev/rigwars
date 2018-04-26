@@ -299,6 +299,16 @@ table.light tr td {
     margin-bottom:5px; 
 }
 
+#debug_newico
+{
+    margin-bottom:5px; 
+}
+
+.green-background{
+  background-color: #006700;  
+}
+
+
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }

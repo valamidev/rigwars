@@ -72,10 +72,12 @@ function update_dash_slow()
         if(toETH(game.ico_unclaimed) >= 0.001)
         {
             $('#claim_ico_share').removeClass( "btn-outline-success " ).addClass( "btn-success " ); 
+            $('#unclaimedshare').addClass("green-background");
         }     
         else
         {
             $('#claim_ico_share').removeClass( "btn-success " ).addClass( "btn-outline-success " );   
+            $('#unclaimedshare').removeClass("green-background");
         } 
 
 
