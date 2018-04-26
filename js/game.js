@@ -33,6 +33,8 @@ game.time = 0;
 game.current_unixtime = 0;
 game.console_output = [];
 
+game.unclaimedPot = 0;
+
 game.rigdetails = 0;
 game.rigpart = [];
 game.upgrades = [];
