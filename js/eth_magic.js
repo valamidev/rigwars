@@ -482,7 +482,7 @@
 
           rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-          rig_wars_contract.WithdrawDevFunds.sendTransaction(762680000000000000,{from:account,gasPrice: game.default_gas_price},callback);
+          rig_wars_contract.WithdrawDevFunds.sendTransaction({from:account,gasPrice: game.default_gas_price},callback);
         }
         else // No Metamask Address Found!
         {
