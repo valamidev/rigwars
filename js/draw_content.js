@@ -17,6 +17,7 @@ function update_dash_slow()
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
     $('#unclaimedshare').html('Unlcaimed ICO share: '+personal_share_eth(game.ico_unclaimed));
+
     $('#unclaimedpot').html('Your contract balance: '+personal_share_eth(game.unclaimedPot));
 
 
@@ -75,13 +76,15 @@ function update_ico()
     $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
 
     // ETH invested
-    $('.ico_pot_eth').html('ICO Pot equal with '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
+    $('.ico_pot_eth').html('ICO pot equals: '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
 
     if(game.countdown_ico > 0)
     $('.ico_countdown').html(countdown(game.countdown_ico));
 
+    let personal_pct = precisionRound(game.ico_personal_share/game.ico_data_pot*100,2);
+
     // Personal ICO
-    $('.ico_pot_yours').html('Your investment so far: '+web3.fromWei(((game.ico_personal_share*game.ico_data_pot)/100),'ether')+'<i class="fab fa-ethereum"></i> ('+game.ico_personal_share+' %)');
+    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),2)+'<i class="fab fa-ethereum"></i> ('+personal_pct+'%)');
 
 }
 
@@ -105,6 +108,7 @@ function personal_share ()
 function personal_share_eth(ico_unclaimed)
 {
     ico_unclaimed = web3.fromWei(ico_unclaimed,'ether');
+
 
     if(ico_unclaimed>= 0.0001 )
     {
