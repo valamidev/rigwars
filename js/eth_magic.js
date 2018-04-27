@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x82530e6b0172bb40d737f6ea1feb74f0f7c99ea8";
+      const contract_address = "0x6be70eb4fc62C8096814D193a226Be96F85C8Fc5";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -23,6 +23,8 @@
        //   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
           // ROPSTEN
           web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+          //Local testnet
+        //web3 = new Web3(new Web3.providers.HttpProvider("http://173.212.250.245:7545"));
 
           contract_init(); // GAME LOAD!
       }    
@@ -56,8 +58,10 @@
 
           // ICO FEATURE
           GetCurrentICOCycle();
-          GetMinerUnclaimedICOShare();
-          
+          if(game.ico_cycle > 0)
+          {
+            GetMinerUnclaimedICOShare();
+          }
           // GET ETH BALANCE OF USER
           web3.eth.getBalance(game.user_address,function(err,ress){
            if(!err)

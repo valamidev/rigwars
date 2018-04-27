@@ -32,9 +32,13 @@ $(function(){
 
 $(function(){
     $("#debug_devfund").click(function(){
-        debug_devfund();
+       debug_devfund();
     });
 });
+
+
+
+
 
 $(function(){
     $("#debug_newico").click(function(){
