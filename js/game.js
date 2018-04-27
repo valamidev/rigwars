@@ -171,7 +171,8 @@ function booster_init (error, result)
         {
            /* public constant returns (address[5] _boosterHolders, uint currentPrice, uint currentIndex)*/ 
 
-            game.boosterprice = result[1].toNumber();
+            game.boosterprice = result[1];
+
 
             for (let index = 0; index < result.length; index++) {
               console.log('Booster init: - Index: '+index+" Value: "+result[index].toString());
