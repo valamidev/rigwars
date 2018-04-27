@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x00DC4dA9fE8C82D5647c2Ad0119c3e0E142b970a";
+      const contract_address = "0xD731C88890cA047cD1beD2E6eA1562C7A425C29d";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -20,7 +20,7 @@
       function startApp(web3) 
       {
           // MAINNET
-       //   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
+         web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
           // ROPSTEN
          // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
 
