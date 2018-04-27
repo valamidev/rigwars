@@ -247,6 +247,7 @@ function update_army_ui(id,count,possible_buy,cost_next)
 
     $('.card').find('[data-owned-count-army="' + id + '"]').html(count+'X');
 
+    $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));    
 
     if(troopData[id].eth > 0 || possible_buy == 0 )
     {
@@ -257,7 +258,6 @@ function update_army_ui(id,count,possible_buy,cost_next)
             $('.card').find('[data-army-count="' + id+'-1000"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
             can_buy = 0;
     }
-
 
 
     if(possible_buy >= 1  && troopData[id].price > 0)
