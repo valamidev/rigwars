@@ -11,7 +11,7 @@
             });
    // WEB3 INIT DONE!
   
-      const contract_address = "0x6be70eb4fc62C8096814D193a226Be96F85C8Fc5";
+      const contract_address = "0x00DC4dA9fE8C82D5647c2Ad0119c3e0E142b970a";
       var account =  web3.eth.accounts[0];
 
       //  var account = web3.eth.accounts[0];
@@ -22,9 +22,8 @@
           // MAINNET
        //   web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
           // ROPSTEN
-          web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
-          //Local testnet
-        //web3 = new Web3(new Web3.providers.HttpProvider("http://173.212.250.245:7545"));
+         // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
+
 
           contract_init(); // GAME LOAD!
       }    
