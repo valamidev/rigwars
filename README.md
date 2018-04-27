@@ -1,6 +1,6 @@
-# RigWars
-
-![Alt text](https://avatars1.githubusercontent.com/u/38579657?s=460&v=4 "RigWars Logo")
+<p align="center">
+  <img width="250" src="https://avatars1.githubusercontent.com/u/38579657?s=460&v=4">
+</p>
 
 RigWars ETH Idle Game guide:
 
