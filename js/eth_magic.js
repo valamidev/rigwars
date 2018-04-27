@@ -355,9 +355,11 @@
 
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
-        let value = price;
+        let value = price - (price % 10000000) + 10000000;
 
-        console.log(price);
+        console.log("BOOSTER: "+price);
+
+        console.log("BOOSTER: "+value);
 
         if(game.debug==1)
         {
