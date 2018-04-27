@@ -1,5 +1,7 @@
 # RigWars
 
+![Alt text](https://avatars1.githubusercontent.com/u/38579657?s=460&v=4 "RigWars Logo")
+
 RigWars ETH Idle Game guide:
 
 How to start new game:
@@ -10,6 +12,10 @@ How to start new game:
    To reach that you have multiple options:
    1: Buy Miner components. There are 9 levels of miners each has increasingly higher prices and yields.
    2: Attack other players. You can buy several types of attack/defend units and try to attack other players and loot half of their money.
+   
+# Picture about the Game interface:
+![Alt text](https://i.imgur.com/NsN8TkJ.png "Game Interface")
+   
    
 - How does mining work?
  - Miners can buy 9 type of "Rig Equipment", all of them produce a specified number of money (Hash/s).
