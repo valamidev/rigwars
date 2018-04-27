@@ -187,6 +187,7 @@ function booster_init (error, result)
 
 function buy_boost_button()
 {
+
     buy_boost(game.boosterprice);
 }
 

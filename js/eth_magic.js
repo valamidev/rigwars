@@ -353,7 +353,6 @@
       function buy_boost(price)
       {
 
-
         rig_wars_contract = web3.eth.contract(abi).at(contract_address);
 
         let value = price;
