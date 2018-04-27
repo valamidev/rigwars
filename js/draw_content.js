@@ -90,7 +90,7 @@ function update_ico()
     $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
 
     // ETH invested
-    $('.ico_pot_eth').html('ICO pot equals: '+web3.fromWei(game.ico_data_pot,'ether')+' <i class="fab fa-ethereum"></i>');
+    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <i class="fab fa-ethereum"></i>');
 
     if(game.countdown_ico > 0)
     {
