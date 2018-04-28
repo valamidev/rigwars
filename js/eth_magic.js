@@ -188,9 +188,12 @@
                       game.ico_personal_share = ress[1].toNumber();
                       game.ico_personal_lastclaim = ress[2].toNumber();
 
+                      console.log("ICO cycle: "+game.ico_cycle+"Last claim: "+game.ico_personal_lastclaim)
+
                       if(game.ico_cycle > game.ico_personal_lastclaim)
                       {
-                        game.ico_unclaime = 1;   
+                        game.ico_unclaimed = 1;   
+                        console.log("Game unclaime ICO: "+game.ico_unclaime)
                       }
 
                       console.log(game.ico_personal_fund,game.ico_personal_share,game.ico_personal_lastclaim);
@@ -212,7 +215,6 @@
              if(!err)
              {
              game.ico_unclaimed = ress.toNumber();
-             console.log("Unclaimed ICO: "+game.ico_unclaimed);
              } 
              else
              {

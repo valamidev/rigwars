@@ -8,7 +8,10 @@ $(function(){
 
 $(function(){
     $("#claim_ico_share").click(function(){
+        if(game.ico_cycle > game.ico_personal_lastclaim)
+         {
         WithdrawICOEarnings();
+         }
     });
 });
 

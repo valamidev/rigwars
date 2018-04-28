@@ -69,7 +69,8 @@ function update_dash_slow()
                 $('#withdraw1').removeClass( "btn-warning" ).addClass( "btn-outline-warning" );   
             } 
 
-        if(toETH(game.ico_unclaimed) >= 0.001)
+
+        if(game.ico_unclaimed >= 0.001)
         {
             $('#claim_ico_share').removeClass( "btn-outline-success " ).addClass( "btn-success " ); 
             $('#unclaimedshare').addClass("green-background");
