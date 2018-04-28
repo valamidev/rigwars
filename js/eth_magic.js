@@ -188,6 +188,11 @@
                       game.ico_personal_share = ress[1].toNumber();
                       game.ico_personal_lastclaim = ress[2].toNumber();
 
+                      if(game.ico_cycle > game.ico_personal_lastclaim)
+                      {
+                        game.ico_unclaime = 1;   
+                      }
+
                       console.log(game.ico_personal_fund,game.ico_personal_share,game.ico_personal_lastclaim);
                   }
              } 
@@ -206,8 +211,8 @@
            {
              if(!err)
              {
-              game.ico_unclaimed = ress.toNumber();
-              console.log("Unclaimed ICO: "+game.ico_unclaimed);
+             game.ico_unclaimed = ress.toNumber();
+             console.log("Unclaimed ICO: "+game.ico_unclaimed);
              } 
              else
              {

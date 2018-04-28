@@ -16,7 +16,7 @@ function update_dash_slow()
     $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
-    $('#unclaimedshare').html('Unclaimed ICO share: '+personal_share_eth(game.ico_unclaimed));
+
 
     $('#unclaimedpot').html('Your contract balance: '+personal_share_eth(game.unclaimedPot));
 
@@ -73,6 +73,7 @@ function update_dash_slow()
         {
             $('#claim_ico_share').removeClass( "btn-outline-success " ).addClass( "btn-success " ); 
             $('#unclaimedshare').addClass("green-background");
+
         }     
         else
         {
