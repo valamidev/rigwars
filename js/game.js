@@ -152,8 +152,8 @@ function network_money (error, result) // NETWORK VIRTUAL CURRENCY STATS
         if(!error)
         {
            
-            game.networkhodl = result[0].toNumber();
-            game.networkhash = result[1].toNumber();
+            game.networkhodl = result[0];
+            game.networkhash = result[1];
 
             for (let index = 0; index < result.length; index++) {
               console.log('Network money - Index: '+index+" Value: "+result[index].toString());
