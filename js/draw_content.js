@@ -343,7 +343,8 @@ function generate_leaderboard()
 {
     let content = "";
 
-    for (let index = 0; index < game.leaderboard.length; index++) {
+    for (let index = 0; index < game.leaderboard.length; index++) 
+    {
             let user_data = game.leaderboard[index];
             let button = "";
             /*
@@ -356,6 +357,14 @@ function generate_leaderboard()
             */
             // game.leaderboard[index][21] immunity en
 
+         if(index>=1)
+         {
+                if(game.leaderboard[index][18] == game.leaderboard[index-1][18]) 
+                {   
+                    continue;    
+                }
+         }   
+
           if(game.leaderboard[index][21] < game.current_unixtime)  
             {
 
@@ -363,7 +372,7 @@ function generate_leaderboard()
                     button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';
                 else // Protected
                 {
-                    button = '<a class="btn btn-outline-secondary" >Protected</a>';  
+                    button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-secondary">Protected</button>';
                 }
 
             }

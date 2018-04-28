@@ -596,6 +596,7 @@ $( document ).ready(function() {
                 }
         };
 
+        
 
         setInterval(update, 300); // Main Loop every 100ms
 
