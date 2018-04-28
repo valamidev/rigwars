@@ -396,7 +396,8 @@ function generate_leaderboard()
             content+= "<tr>"+
             "<td>"+game.leaderboard[index][18]+"</td>"+ 
             "<td>"+show_big_values(game.leaderboard[index][17])+"</td>"+
-            "<td>"+game.leaderboard[index][20]+"</td>"+
+            "<td>"+show_big_values(game.leaderboard[index][19])+"</td>"+
+            "<td>"+show_big_values(game.leaderboard[index][20])+"</td>"+
             "<td>"+button+"</td>"+
             "</tr>";
     }
