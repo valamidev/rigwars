@@ -544,7 +544,7 @@ function update_leaderboard()
             
                                             game.leaderboard.sort(function(a, b)
                                                     {
-                                                        return b[0]-a[0];
+                                                        return b[17]-a[17];
                                                     });   
                                 counter++;  
                             });
