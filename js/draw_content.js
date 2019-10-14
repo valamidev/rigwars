@@ -13,7 +13,7 @@ function update_dash()
 function update_dash_slow()
 {
     $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" Token");
-    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-trxereum"></i>');
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-tron"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
 
