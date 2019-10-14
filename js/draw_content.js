@@ -13,12 +13,12 @@ function update_dash()
 function update_dash_slow()
 {
     $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" Token");
-    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-trxereum"></i>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
 
 
-    $('#unclaimedpot').html('Your contract balance: '+personal_share_eth(game.unclaimedPot));
+    $('#unclaimedpot').html('Your contract balance: '+personal_share_trx(game.unclaimedPot));
 
 
     $('.console-text').html(generate_output());
@@ -92,7 +92,7 @@ function update_ico()
     $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
 
     // ETH invested
-    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <i class="fab fa-ethereum"></i>');
+    $('.ico_pot_trx').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'trxer'),4)+' <i class="fab fa-trxereum"></i>');
 
     if(game.countdown_ico > 0)
     {
@@ -117,7 +117,7 @@ function update_ico()
     let personal_pct = precisionRound(game.ico_personal_share/game.ico_data_pot*100,2);
   
     // Personal ICO
-    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<i class="fab fa-ethereum"></i> ('+personal_pct+'%)');
+    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'trxer'),4)+'<i class="fab fa-trxereum"></i> ('+personal_pct+'%)');
 
 }
 
@@ -138,19 +138,19 @@ function personal_share ()
     }
 }
 
-function personal_share_eth(ico_unclaimed)
+function personal_share_trx(ico_unclaimed)
 {
-    ico_unclaimed = web3.fromWei(ico_unclaimed,'ether');
+    ico_unclaimed = web3.fromWei(ico_unclaimed,'trxer');
 
 
     if(ico_unclaimed>= 0.0001 )
     {
 
-     return precisionRound(ico_unclaimed,4)+'<i class="fab fa-ethereum"></i>';
+     return precisionRound(ico_unclaimed,4)+'<i class="fab fa-trxereum"></i>';
     }
     else
     {
-      return 'Less than 0.0001 <i class="fab fa-ethereum"></i>';  
+      return 'Less than 0.0001 <i class="fab fa-trxereum"></i>';  
     }
 
 }
@@ -183,7 +183,7 @@ function update_rig_ui(id,count,possible_buy,cost_next)
         $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" Coin");    
     }
   
-        if(possible_buy == 0 || count==rigData[id].limit || rigData[id].eth > 0)
+        if(possible_buy == 0 || count==rigData[id].limit || rigData[id].trx > 0)
         {
             $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );
             $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-primary" ).addClass( "btn-secondary" );  
@@ -206,17 +206,17 @@ function update_rig_ui(id,count,possible_buy,cost_next)
     }
 
     // ETH RIG SHOW 1 PIECE
-    if(game.ethbalance > rigData[id].eth && rigData[id].eth > 0 && count!=rigData[id].limit)
+    if(game.trxbalance > rigData[id].trx && rigData[id].trx > 0 && count!=rigData[id].limit)
     {
          $('.card').find('[data-buyrig-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
          can_buy = 1;
     }
-    if(game.ethbalance > (rigData[id].eth*5) && rigData[id].eth > 0 && count!=rigData[id].limit)
+    if(game.trxbalance > (rigData[id].trx*5) && rigData[id].trx > 0 && count!=rigData[id].limit)
     {
          $('.card').find('[data-buyrig-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
          can_buy = 1;
     }
-    if(game.ethbalance > (rigData[id].eth*10) && rigData[id].eth > 0 && count!=rigData[id].limit)
+    if(game.trxbalance > (rigData[id].trx*10) && rigData[id].trx > 0 && count!=rigData[id].limit)
     {
          $('.card').find('[data-buyrig-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );  
          can_buy = 1;  
@@ -251,7 +251,7 @@ function update_army_ui(id,count,possible_buy,cost_next)
 
     $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));    
 
-    if(troopData[id].eth > 0 || possible_buy == 0 )
+    if(troopData[id].trx > 0 || possible_buy == 0 )
     {
         $('.card').find('[data-price-next-army="' + id+'-1"]').html(show_big_values(cost_next));
 
@@ -276,17 +276,17 @@ function update_army_ui(id,count,possible_buy,cost_next)
 
 
          // ETH TROOP SHOW 1 PIECE
-                if(game.ethbalance > troopData[id].eth && troopData[id].eth > 0 )
+                if(game.trxbalance > troopData[id].trx && troopData[id].trx > 0 )
                 {
                     $('.card').find('[data-army-count="' + id+'-1"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
                     can_buy = 1;
                 }
-                if(game.ethbalance > (troopData[id].eth*5) && troopData[id].eth > 0 )
+                if(game.trxbalance > (troopData[id].trx*5) && troopData[id].trx > 0 )
                 {
                     $('.card').find('[data-army-count="' + id+'-5"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );    
                     can_buy = 1;
                 }
-                if(game.ethbalance > (troopData[id].eth*10) && troopData[id].eth > 0 )
+                if(game.trxbalance > (troopData[id].trx*10) && troopData[id].trx > 0 )
                 {
                     $('.card').find('[data-army-count="' + id+'-1000"]').removeClass( "btn-secondary" ).addClass( "btn-warning" );  
                     can_buy = 1;  
@@ -323,7 +323,7 @@ function update_booster_ui (own,price)
 {
     let id = 0;
 
-    $('.card').find('[data-price-booster="' + id+ '"]').html(precisionRound(web3.fromWei(price,'ether'),4));
+    $('.card').find('[data-price-booster="' + id+ '"]').html(precisionRound(web3.fromWei(price,'trxer'),4));
 
     if(game.prodPerSec>0)
     {
