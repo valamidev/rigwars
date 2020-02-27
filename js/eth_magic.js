@@ -20,7 +20,7 @@
       function startApp(web3) 
       {
           // MAINNET
-         web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
+         web3 = new Web3(new Web3.providers.HttpProvider("mainnet.infura.io/v3/09784a60e4924f3b9d949642d68f40c6"));
           // ROPSTEN
          // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
 
