@@ -25,7 +25,7 @@ game.optimalclaim = 86400;
 game.lastupdate = 0;
 game.prodPerSec = 0;
 game.balance = 0;
-game.ethbalance = 0;
+game.trxbalance = 0;
 game.sincedbalance = 0;
 game.futurebalance = 0;
 game.unconfirmedbalance = 0;
@@ -131,7 +131,7 @@ function plotdata (error, result) // NETWORK ETH
         if(!error)
         {   
            /* GetPotInfo() public constant returns (uint _honeyPotAmount, uint _devFunds, uint _jaskPot, uint _nextDistributionTime)*/
-            game.networkpot =  web3.fromWei(result[0],'ether');   
+            game.networkpot =  web3.fromWei(result[0],'trx');   
             game.next_ico = result[3].toNumber();
          //   game.jackpot = result[2].toString();
           //  game.nextdistributiontime = result[3].toString();
@@ -221,10 +221,10 @@ function buy_action_army (data)
     var buy_id = parseInt(res[1]);
     var base_data = troopData[buy_id];
     
-    if(base_data.eth !=0) // ETH SHOPING!
+    if(base_data.trx !=0) // ETH SHOPING!
     {
-        console.log(buy_id,base_data.eth);
-        buy_army(buy_id,buying_count,(base_data.eth*buying_count));
+        console.log(buy_id,base_data.trx);
+        buy_army(buy_id,buying_count,(base_data.trx*buying_count));
 
        return 0; 
     }
@@ -276,16 +276,16 @@ function buy_action_rig (data)
     var buying_count = parseInt(res[2]);
     var base_data = rigData[rigID];
 
-    if(base_data.eth !=0) // ETH SHOPING!
+    if(base_data.trx !=0) // ETH SHOPING!
     {
         if(buying_count != 1000)
         {
-        buy_rig_eth(rigID,limit_check(buying_count,owned_supply,base_data.limit));
+        buy_rig_trx(rigID,limit_check(buying_count,owned_supply,base_data.limit));
         }
         else
         {
-            var count = parseInt(game.ethbalance / base_data.eth); 
-            buy_rig_eth(rigID,limit_check(count,owned_supply,base_data.limit));  
+            var count = parseInt(game.trxbalance / base_data.trx); 
+            buy_rig_trx(rigID,limit_check(count,owned_supply,base_data.limit));  
         }
 
        return 0; 

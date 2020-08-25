@@ -16,12 +16,12 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js" ></script>
-        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/tron/web3.js/dist/web3.min.js"></script>
 
         <script src="./js/constants/game_constant.js" ></script>
         <script src="./js/contract/abi.js" ></script>
         <script src="./js/game.js" ></script>
-        <script src="./js/eth_magic.js" ></script>
+        <script src="./js/trx_magic.js" ></script>
         <script src="./js/buttons.js" ></script>
         <script src="./js/draw_content.js" ></script>
         
@@ -46,8 +46,8 @@ and open the template in the editor.
               <ul class="list-unstyled">
                 <li><a href="https://discord.gg/VtuT96Q" class="text-white">Discord</a></li>
                 <li><a href="https://www.reddit.com/r/rigwars/" class="text-white">Check us on Reddit</a></li>
-                <li><a href="https://medium.com/@CoinDealShip/play-rigwars-free-idle-game-try-yourself-in-virtual-mining-earn-real-eth-84fb62962a0d" class="text-white">How to play Guide</a></li>
-                <li><a href="https://etherscan.io/address/0xd731c88890ca047cd1bed2e6ea1562c7a425c29d" class="text-white">Contract(Etherscan)</a></li>
+                <li><a href="https://medium.com/@CoinDealShip/play-rigwars-free-idle-game-try-yourself-in-virtual-mining-earn-real-trx-84fb62962a0d" class="text-white">How to play Guide</a></li>
+                <li><a href="https://trxerscan.io/address/0xd731c88890ca047cd1bed2e6ea1562c7a425c29d" class="text-white">Contract(Etherscan)</a></li>
                 <li><a href="https://github.com/rigwars/rigwars" class="text-white">Github</a></li>
               </ul>
             </div>
@@ -107,9 +107,9 @@ and open the template in the editor.
                         <div class="network-stat">* Future Network *
                           <ul class="">
                             <li id="networkhodl" class="">Total Open Supply: </li>
-                            <li id="networkpot" class="">Network HODL: N/A <i class="fab fa-ethereum"></i></li>
+                            <li id="networkpot" class="">Network HODL: N/A <i class="fab fa-tron"></i></li>
                             <li id="networkhash" class="">Network hash: 0 Hash/s </li>
-                            <li id="unclaimedpot" class="">Your contract balance: Less than 0.001 <i class="fab fa-ethereum"></i></li>
+                            <li id="unclaimedpot" class="">Your contract balance: Less than 0.001 <i class="fab fa-tron"></i></li>
                           </ul>
                         </div> 
                         <div class="pvp-stat">* Hacking Stats *
@@ -160,8 +160,8 @@ and open the template in the editor.
                                           <div class="ico_pot">n/a Token</div>
                                           <div class="ico_pot_under">Total investment<span id="ico_by_you"></span></div>  
 
-                                          <div class="ico_pot_eth">ICO pot equals: n/a <i class="fab fa-ethereum"></i></div> 
-                                          <div class="ico_pot_yours">Your investment so far: n/a<i class="fab fa-ethereum"></i></div> 
+                                          <div class="ico_pot_trx">ICO pot equals: n/a <i class="fab fa-tron"></i></div> 
+                                          <div class="ico_pot_yours">Your investment so far: n/a<i class="fab fa-tron"></i></div> 
                                       </div>
                                 
                                     <div class="divider_small"></div>
@@ -169,7 +169,7 @@ and open the template in the editor.
                                       <button type="button" id="start" class="btn btn-success btn-lg beauty_button beauty_button_big">Start game</button>
                                       <div class="divider_small"></div>
                                       <button type="button" id="claim_ico_share" class="btn btn-outline-success btn-lg beauty_button">Claim ICO Share</button>
-                                      <button type="button" id="withdraw1" class="btn btn-outline-warning btn-lg beauty_button">Withdraw <i class="fab fa-ethereum"></i></button>
+                                      <button type="button" id="withdraw1" class="btn btn-outline-warning btn-lg beauty_button">Withdraw <i class="fab fa-tron"></i></button>
                                       <div class="divider_small"></div>
                                       <button type="button" id="leaderboard" class="btn btn-outline-info btn-lg btn-block beauty_button_big">Leaderboard</button>
                                       <div class="divider_small"></div>
@@ -303,7 +303,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: 65536 Hash/s
                         <br>
-                        Cost: <span>0.01</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.01</span> <i class="fab fa-tron"></i>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-buyrig-count="4-1"   class="btn btn-secondary active ">
@@ -378,7 +378,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: 3000000 Hash/s
                         <br>
-                        Cost: <span>0.1</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.1</span> <i class="fab fa-tron"></i>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-buyrig-count="7-1"   class="btn btn-secondary active ">
@@ -481,7 +481,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Attack: +100000
                         <br>
-                        Cost: <span>0.01</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.01</span> <i class="fab fa-tron"></i>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="2-1"   class="btn btn-secondary  active ">
@@ -553,7 +553,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Defense: +150000
                         <br>
-                        Cost: <span>0.01</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.01</span> <i class="fab fa-tron"></i>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="5-1"   class="btn btn-secondary  active ">
@@ -591,7 +591,7 @@ and open the template in the editor.
                   <p class="card-text">
                     Hashrate: + 500%
                     <br>
-                    Cost: <span data-price-booster="0">0.1</span> <i class="fab fa-ethereum"></i>
+                    Cost: <span data-price-booster="0">0.1</span> <i class="fab fa-tron"></i>
                   </p>
                     <div class="input-group">
                         <button type="button" data-booster-button="0" style="display: none" class="buy_booster btn btn-success beauty_button_big">Invest!</button>
@@ -610,7 +610,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: + 30%
                         <br>
-                        Cost: 0.01 <i class="fab fa-ethereum"></i>
+                        Cost: 0.01 <i class="fab fa-tron"></i>
                       </p>
                         <div class="input-group">
                             <button type="button" data-upgrade-button="0" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
@@ -627,7 +627,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: + 50%
                         <br>
-                        Cost: 0.1 <i class="fab fa-ethereum"></i>
+                        Cost: 0.1 <i class="fab fa-tron"></i>
                       </p>
                         <div class="input-group">
                             <button type="button" data-upgrade-button="1" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
@@ -644,7 +644,7 @@ and open the template in the editor.
                 <p class="card-text">
                   Hashrate: + 100%
                   <br>
-                  Cost: 1 <i class="fab fa-ethereum"></i>
+                  Cost: 1 <i class="fab fa-tron"></i>
                 </p>
                   <div class="input-group">
                       <button type="button" data-upgrade-button="2" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>

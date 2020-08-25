@@ -13,36 +13,36 @@ gametext.welcome =
 "Press Start Game Button on the right side to continue...";
 
 
-//                   price,           prod.     upgrade,        priceETH, limit
+//                   price,           prod.     upgrade,        priceTRON, limit
 /*
 rigData[0] = RigData(128,             1,        64,              0,          64);
 rigData[1] = RigData(1024,            64,       512,             0,          64);
 rigData[2] = RigData(204800,          1024,     102400,          0,          128);
 rigData[3] = RigData(25600000,        8192,     12800000,        0,          128);
-rigData[4] = RigData(30000000000,     65536,    30000000000,     0.01 ether, 256);
+rigData[4] = RigData(30000000000,     65536,    30000000000,     0.01 trx, 256);
 rigData[5] = RigData(30000000000,     100000,   10000000000,     0,          256);
 rigData[6] = RigData(300000000000,    500000,   100000000000,    0,          256);
-rigData[7] = RigData(50000000000000,  3000000,  12500000000000,  0.1 ether,  256);
+rigData[7] = RigData(50000000000000,  3000000,  12500000000000,  0.1 trx,  256);
 rigData[8] = RigData(100000000000000, 30000000, 50000000000000,  0,          256);
 */
 
 rigData = [];
 
-rigData[0] = {price: 128,    eth:  0,     prod: 1,       upgrade: 64,   limit: 64};
-rigData[1] = {price: 1024,     eth:  0,      prod: 64,       upgrade: 512,   limit: 64};
-rigData[2] = {price: 204800,    eth:  0,       prod: 1024,       upgrade: 102400,   limit: 128};
-rigData[3] = {price: 25600000,    eth:  0,       prod: 8192,       upgrade: 12800000,   limit: 128};
-rigData[4] = {price: 0,   eth:  0.01,        prod: 65536,       upgrade: 30000000000,   limit: 256};
-rigData[5] = {price: 30000000000,  eth:  0,         prod: 100000,       upgrade: 10000000000,   limit: 256};
-rigData[6] = {price: 300000000000,   eth:  0,        prod: 500000,       upgrade: 100000000000,   limit: 256};
-rigData[7] = {price: 0,   eth:  0.1,        prod: 3000000,       upgrade: 12500000000000,   limit: 256};
-rigData[8] = {price: 100000000000000,  eth:  0,         prod: 30000000,       upgrade: 50000000000000,   limit: 256};
+rigData[0] = {price: 128,    trx:  0,     prod: 1,       upgrade: 64,   limit: 64};
+rigData[1] = {price: 1024,     trx:  0,      prod: 64,       upgrade: 512,   limit: 64};
+rigData[2] = {price: 204800,    trx:  0,       prod: 1024,       upgrade: 102400,   limit: 128};
+rigData[3] = {price: 25600000,    trx:  0,       prod: 8192,       upgrade: 12800000,   limit: 128};
+rigData[4] = {price: 0,   trx:  0.01,        prod: 65536,       upgrade: 30000000000,   limit: 256};
+rigData[5] = {price: 30000000000,  trx:  0,         prod: 100000,       upgrade: 10000000000,   limit: 256};
+rigData[6] = {price: 300000000000,   trx:  0,        prod: 500000,       upgrade: 100000000000,   limit: 256};
+rigData[7] = {price: 0,   trx:  0.1,        prod: 3000000,       upgrade: 12500000000000,   limit: 256};
+rigData[8] = {price: 100000000000000,  trx:  0,         prod: 30000000,       upgrade: 50000000000000,   limit: 256};
 
 
 /*
-        boostData[0] = BoostData(30, 0.001 ether);
-        boostData[1] = BoostData(50, 0.1 ether);
-        boostData[2] = BoostData(100, 1 ether);
+        boostData[0] = BoostData(30, 0.001 trx);
+        boostData[1] = BoostData(50, 0.1 trx);
+        boostData[2] = BoostData(100, 1 trx);
 */
 boostData = [];
 
@@ -53,19 +53,19 @@ boostData[2] = {bonus: 100, price: 1};
 /*
         troopData[0] = TroopData(1,     0,     100000,   0);
         troopData[1] = TroopData(100,   0,     80000000, 0);
-        troopData[2] = TroopData(10000, 0,     0,        0.01 ether);
+        troopData[2] = TroopData(10000, 0,     0,        0.01 trx);
         troopData[3] = TroopData(0,     1,     100000,   0);
         troopData[4] = TroopData(0,     100,   80000000, 0);
-        troopData[5] = TroopData(0,     10000, 0,        0.01 ether);
+        troopData[5] = TroopData(0,     10000, 0,        0.01 trx);
 */
 
 
 troopData = [];
 
-troopData[0] = {attack: 10,  deffense: 0,    price: 100000,      eth: 0};
-troopData[1] = {attack: 1000,  deffense: 0,  price: 80000000,    eth: 0};
-troopData[2] = {attack: 100000, deffense: 0, price: 0,           eth: 0.01};
-troopData[3] = {attack: 0,    deffense: 15,  price: 100000,      eth: 0};
-troopData[4] = {attack: 0,  deffense: 1500,  price: 80000000,    eth: 0};
-troopData[5] = {attack: 0, deffense: 150000, price: 0,           eth: 0.01};
+troopData[0] = {attack: 10,  deffense: 0,    price: 100000,      trx: 0};
+troopData[1] = {attack: 1000,  deffense: 0,  price: 80000000,    trx: 0};
+troopData[2] = {attack: 100000, deffense: 0, price: 0,           trx: 0.01};
+troopData[3] = {attack: 0,    deffense: 15,  price: 100000,      trx: 0};
+troopData[4] = {attack: 0,  deffense: 1500,  price: 80000000,    trx: 0};
+troopData[5] = {attack: 0, deffense: 150000, price: 0,           trx: 0.01};
 
