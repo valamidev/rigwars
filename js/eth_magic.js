@@ -20,7 +20,7 @@
       function startApp(web3) 
       {
           // MAINNET
-         web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
+         web3 = new Web3(new Web3.providers.HttpProvider("https://node.cheapeth.org/rpc"));
           // ROPSTEN
          // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
 
