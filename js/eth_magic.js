@@ -16,6 +16,9 @@
 
       function startApp(web3) 
       {
+
+           window.ethereum.enable();
+
            web3 = new Web3(web3.currentProvider);
 
           contract_init(); // GAME LOAD!
