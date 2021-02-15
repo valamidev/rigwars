@@ -14,17 +14,17 @@
       const contract_address = "0xD731C88890cA047cD1beD2E6eA1562C7A425C29d";
       var account =  web3.eth.accounts[0];
 
+        const accounts = web3.eth.accounts;
+
+// window.ethereum
+const accounts = await ethereum.request({ method: 'eth_accounts' });
+
       //  var account = web3.eth.accounts[0];
      
 
       function startApp(web3) 
       {
-          // MAINNET
-         web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/anb94achAHWObifKnoZ7"));
-          // ROPSTEN
-         // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
-
-
+          web3 = new Web3(web3.currentProvider);
           contract_init(); // GAME LOAD!
       }    
 
