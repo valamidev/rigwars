@@ -32,10 +32,10 @@ rigData[0] = {price: 128,    eth:  0,     prod: 1,       upgrade: 64,   limit: 6
 rigData[1] = {price: 1024,     eth:  0,      prod: 64,       upgrade: 512,   limit: 64};
 rigData[2] = {price: 204800,    eth:  0,       prod: 1024,       upgrade: 102400,   limit: 128};
 rigData[3] = {price: 25600000,    eth:  0,       prod: 8192,       upgrade: 12800000,   limit: 128};
-rigData[4] = {price: 0,   eth:  0.01,        prod: 65536,       upgrade: 30000000000,   limit: 256};
+rigData[4] = {price: 0,   eth:  0.5,        prod: 65536,       upgrade: 30000000000,   limit: 256};
 rigData[5] = {price: 30000000000,  eth:  0,         prod: 100000,       upgrade: 10000000000,   limit: 256};
 rigData[6] = {price: 300000000000,   eth:  0,        prod: 500000,       upgrade: 100000000000,   limit: 256};
-rigData[7] = {price: 0,   eth:  0.1,        prod: 3000000,       upgrade: 12500000000000,   limit: 256};
+rigData[7] = {price: 0,   eth:  5.0,        prod: 3000000,       upgrade: 12500000000000,   limit: 256};
 rigData[8] = {price: 100000000000000,  eth:  0,         prod: 30000000,       upgrade: 50000000000000,   limit: 256};
 
 
@@ -46,9 +46,9 @@ rigData[8] = {price: 100000000000000,  eth:  0,         prod: 30000000,       up
 */
 boostData = [];
 
-boostData[0] = {bonus: 30, price: 0.01};
-boostData[1] = {bonus: 50, price: 0.1};
-boostData[2] = {bonus: 100, price: 1};
+boostData[0] = {bonus: 30, price: 0.05};
+boostData[1] = {bonus: 50, price: 5};
+boostData[2] = {bonus: 100, price: 50};
 
 /*
         troopData[0] = TroopData(1,     0,     100000,   0);
@@ -64,8 +64,8 @@ troopData = [];
 
 troopData[0] = {attack: 10,  deffense: 0,    price: 100000,      eth: 0};
 troopData[1] = {attack: 1000,  deffense: 0,  price: 80000000,    eth: 0};
-troopData[2] = {attack: 100000, deffense: 0, price: 0,           eth: 0.01};
+troopData[2] = {attack: 100000, deffense: 0, price: 0,           eth: 0.5};
 troopData[3] = {attack: 0,    deffense: 15,  price: 100000,      eth: 0};
 troopData[4] = {attack: 0,  deffense: 1500,  price: 80000000,    eth: 0};
-troopData[5] = {attack: 0, deffense: 150000, price: 0,           eth: 0.01};
+troopData[5] = {attack: 0, deffense: 150000, price: 0,           eth: 0.5};
 
