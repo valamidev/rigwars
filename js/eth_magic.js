@@ -14,16 +14,13 @@
       const contract_address = "0x4d22551cceae995628dd9f13587e18f619a2a217";
       var account =  web3.eth.accounts[0];
 
-      //  var account = web3.eth.accounts[0];
+        // window.ethereum
+        const accounts = await ethereum.request({ method: 'eth_accounts' });   
      
 
       function startApp(web3) 
       {
-          // MAINNET
-         web3 = new Web3(new Web3.providers.HttpProvider("https://node.cheapeth.org/rpc"));
-          // ROPSTEN
-         // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/anb94achAHWObifKnoZ7"));
-
+           web3 = new Web3(web3.currentProvider);
 
           contract_init(); // GAME LOAD!
       }    
