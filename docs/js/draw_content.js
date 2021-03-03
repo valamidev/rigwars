@@ -370,7 +370,7 @@ function generate_leaderboard()
           if(game.leaderboard[index][21] < game.current_unixtime)  
             {
 
-                if(game.attackpower > parseInt(game.leaderboard[index][20])) //Attackable!
+                if(game.attackpower >= parseInt(game.leaderboard[index][20])) //Attackable!
                     button = '<button type="button" onclick="leader_attack('+index+')" class="btn btn-outline-success">Click to Attack</button>';
                 else // Protected
                 {
@@ -380,7 +380,7 @@ function generate_leaderboard()
             }
           if(game.leaderboard[index][21] > game.current_unixtime) 
           {
-            button = '<a class="btn btn-outline-secondary" >Immune</a>';    
+            button = '<a class="btn btn-outline-danger" >Immune</a>';    
           } 
 
           if(game.debug == 1)
@@ -394,11 +394,11 @@ function generate_leaderboard()
           }
 
             content+= "<tr>"+
-            "<td>"+game.leaderboard[index][18]+"</td>"+ 
-            "<td>"+show_big_values(game.leaderboard[index][17])+"</td>"+
-            "<td>"+show_big_values(game.leaderboard[index][19])+"</td>"+
-            "<td>"+show_big_values(game.leaderboard[index][20])+"</td>"+
-            "<td>"+button+"</td>"+
+            "<td style='text-align: left'>"+game.leaderboard[index][18]+"</td>"+ 
+            "<td style='text-align: center'>"+show_big_values(game.leaderboard[index][17])+"</td>"+
+            "<td style='text-align: center'>"+show_big_values(game.leaderboard[index][19])+"</td>"+
+            "<td style='text-align: center'>"+show_big_values(game.leaderboard[index][20])+"</td>"+
+            "<td style='text-align: center'>"+button+"</td>"+
             "</tr>";
     }
 

@@ -1,6 +1,11 @@
-    window.addEventListener('load', function() {
+   window.rigwarsLoaded = 0;
+   
+   window.addEventListener('load', function() {
             if (typeof web3 !== 'undefined') 
             {
+
+            window.ethereum.enable();
+
             startApp(web3);
             } 
             else 
@@ -21,7 +26,13 @@
 
            web3 = new Web3(web3.currentProvider);
 
-          contract_init(); // GAME LOAD!
+
+           web3.eth.getAccounts().then(() =>{
+            contract_init(); // GAME LOAD!
+           }
+           );
+
+          
       }    
 
       function contract_init()
@@ -86,10 +97,12 @@
            }
          ) })();
 
+         window.rigwarsLoaded = 1;
+
         }
         else // No Metamask Address Found!
         {
-          $('#metamask_alert_message').html(gametext.error[1]);
+          $('#metamask_alert_message').html(gametext.error[2]);
           $('#metamask_alert').modal('show');
         }  
       }

@@ -5,6 +5,14 @@ gametext.error = [];
 
 gametext.error[0] = "<p>Please install or activate your Metamask Plugin in your browser. <br> You can't play RigWars without Metamask installed.</p>";
 gametext.error[1] = "<p>Your Metamask locked or you have no valid address please reload the page!</p>";
+gametext.error[2] = `<p>Please allow your Metamask to connect to this website, and make sure that you are using the following network:<br>
+<center>
+Network Name: cheapETH <br>
+New RPC URL: https://node.cheapeth.org/rpc <br>
+Chain ID: 777 <br>
+Currency Symbol: cTH <br>
+</center>
+</p>`;
 gametext.welcome = 
 "<span>C:/Mining/Start > RigWarsBeta0.1.exe --tutorial</span> <br> Welcome on RigWars.io the Original Crypto Mining Idle game DAPP <br><br>"+
 "- Setup your own Mining Rig and help the Futurehash network to mint more and more Coin. "+
