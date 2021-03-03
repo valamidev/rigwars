@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>RigWars.io | cTH (CheapETH) Idle Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ethereum Idle game with daily 20% ETH dividens!"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+        <script src="./js/constants/game_constant.js" ></script>
+        <script src="./js/contract/abi.js" ></script>
+        <script src="./js/game.js" ></script>
+        <script src="./js/eth_magic.js" ></script>
+        <script src="./js/buttons.js" ></script>
+        <script src="./js/draw_content.js" ></script>
+        
+        
+
+        <link rel="stylesheet" href="./css/style.css">    
+            
+    </head>
+    <body>
+      
+  
+<header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">RigWars cTH(cheapETH) based Idle game about the life of the miners, catch the Algorithms and buy more Hash power to make a better future.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://discord.gg/TygDDYaXNw" class="text-white">Discord</a></li>
+                <li><a href="https://medium.com/@CoinDealShip/play-rigwars-free-idle-game-try-yourself-in-virtual-mining-earn-real-eth-84fb62962a0d" class="text-white">How to play Guide</a></li>
+                <li><a href="https://explore.cheapswap.io/account/0x8dc727e0cc8ad6911d110b1fec592b2ed1547e11" class="text-white">Contract Explorer</a></li>
+                <li><a href="https://github.com/rigwars/Contract" class="text-white">Contract(GitHub)</a></li>
+                <li><a href="https://github.com/rigwars/rigwars" class="text-white">Github</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+             <span class="logo">  <i class="fas fa-server"></i>  </span> 
+            <strong> RigWars cTH/cheapETH Idle Game</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron">
+
+     <div class="container">
+        <div class="row">
+          <h2 id="user_address">0x8dc727e0cc8ad6911d110b1fec592b2ed1547e11</h2>
+        </div>
+        
+
+
+        <div class="divider"></div>
+         
+                <div class="row">
+                  <div class="minestat col-8">
+                     <div class="mining-anim">
+                      <div class="console-text">
+                        
+                      </div>
+                      <div class="mining-text">
+                        <table class="dos-mining" >
+                          <tr>
+                            <td>Algorithm</td>
+                            <td>Accepted speed</td>
+                            <td>Profitability</td>
+                            <td>Total Balance</td>
+                          </tr> 
+                          <tr>
+                            <td >FutureHash</td>
+                            <td id="prodPerSec">N/A Hash/s </td>
+                            <td id="prodPerDay">N/A /day</td>
+                            <td id="balance">N/A</td>
+                          </tr> 
+                        </table>
+                      </div>
+
+                      <div class="static-anim">
+                        <div class="network-stat">* Future Network *
+                          <ul class="">
+                            <li id="networkhodl" class="">Total Open Supply: </li>
+                            <li id="networkpot" class="">Network HODL: N/A <i class="fab fa-ethereum"></i></li>
+                            <li id="networkhash" class="">Network hash: 0 Hash/s </li>
+                            <li id="unclaimedpot" class="">Your contract balance: Less than 0.001 <i class="fab fa-ethereum"></i></li>
+                          </ul>
+                        </div> 
+                        <div class="pvp-stat">* Hacking Stats *
+                          <ul class="">
+                            <li id="" class="">Attack power: <span id="attackpower"></span> <i class="fas fa-keyboard"></i></li>
+                            <li id="" class="">Defense power: <span id="defensepower"></span> <i class="fas fa-shield-alt"></i></li>
+                            <li id="" class=""> Attack: <span id="exhaust"></span> </li>
+                            <li id="" class="">Immunity: <span id="immunity"></span></li>
+                            <li class="">Maximum stealing: 50% </li>
+                          </ul>
+                        </div> 
+
+                       
+                      </div>
+
+                     </div>
+
+                     <br> 
+
+                     
+                    <!-- Market Selector -->
+                    <div class="market_buttons">
+                    <button type="button" id="showrig"  class="btn btn-outline-primary">Mining equipments</button>      
+                    <button type="button" id="showarmy" class="btn btn-outline-primary">Hacking equipments</button>
+                    </div>
+                    <!-- Market Selector -->        
+
+                    
+                  </div>
+                                 <div  class="col-4" style="margin-bottom: 50px;">
+                                      <div class="ico_box">
+                                          <h5>ICO of the day:</h5>
+                                          <h6>Daily SALE is live, ends in</h6>
+                                          <span class="ico_countdown">-:-:-</span>
+                                                <div class="pull-mid">
+                                                              <button type="button"  style="display: none" class="btn btn-danger ico-buy-button">Buy ICO</button>
+                                                              <button type="button" id="debug_newico" style="display: none" class="btn btn btn-outline-warning">Release New ICO</button>
+
+                                                              <div class="slidecontainer">
+                                                                  <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+                                                                <div id="left_pct">1%</div><div id="demo">-</div><div id="right_pct">100%</div>
+
+
+                                                                </div>
+                                                </div>
+
+                                                                    
+                                          <div class="ico_pot">n/a Token</div>
+                                          <div class="ico_pot_under">Total investment<span id="ico_by_you"></span></div>  
+
+                                          <div class="ico_pot_eth">ICO pot equals: n/a <i class="fab fa-ethereum"></i></div> 
+                                          <div class="ico_pot_yours">Your investment so far: n/a<i class="fab fa-ethereum"></i></div> 
+                                      </div>
+                                
+                                    <div class="divider_small"></div>
+                                        <div class="divider_small"></div>
+                                      <button type="button" id="start" class="btn btn-success btn-lg beauty_button beauty_button_big">Start game</button>
+                                      <div class="divider_small"></div>
+                                      <button type="button" id="claim_ico_share" class="btn btn-outline-success btn-lg beauty_button">Claim ICO Share</button>
+                                      <button type="button" id="withdraw1" class="btn btn-outline-warning btn-lg beauty_button">Withdraw <i class="fab fa-ethereum"></i></button>
+                                      <div class="divider_small"></div>
+                                      <button type="button" id="leaderboard" class="btn btn-outline-info btn-lg btn-block beauty_button_big">Leaderboard</button>
+
+
+                                      <debug id="debug">
+                                      <div class="divider_small"></div>
+                                      <button type="button" id="debug_devfund" class="btn btn-secondary btn-lg btn-block beauty_button_big">Debug</button>
+                                    </debug>   
+
+                                    </div>
+                </div>
+              </div>   
+      </section>
+
+        
+    <section class="marketplace">      
+       <div class="container">
+
+        <div class="row">
+        <div class="col-8"> 
+              <div class="row">    
+
+              <!-- RIG ITEMS -->
+              <div class="card" style="width: 15.5rem;" data-card="1-0-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-0" data-owned-count-rig="0" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/cloud.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Cloud mining</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Everyone start somewhere</h6>
+                      <p class="card-text">
+                        Hashrate: 1 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="0-1">128</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="0-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="0-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="0-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="0"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="0"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-1-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-1" data-owned-count-rig="1" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/ntel.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Ntel Spectre</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Mine with CPU then,meltdown</h6>
+                      <p class="card-text">
+                        Hashrate: 64 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="1-1">1024</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="1-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="1-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="1-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="1"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="1"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-2-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-2" data-owned-count-rig="2" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/atti.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Atti Vegan 65</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Best red GPU on the market</h6>
+                      <p class="card-text">
+                        Hashrate: 1024 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="2-1">204800</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="2-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="2-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="2-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="2"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="2"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-3-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-3" data-owned-count-rig="3" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/hddminer.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">30TB HDD</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Burstcoin?!</h6>
+                      <p class="card-text">
+                        Hashrate: 8192 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="3-1">25600000</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="3-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="3-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="3-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="3"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="3"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-4-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-4" data-owned-count-rig="4" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/mvidia.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Mvidia 1090GTX</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Best green GPU on the market</h6>
+                      <p class="card-text">
+                        Hashrate: 65536 Hash/s
+                        <br>
+                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="4-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="4-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="4-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="4"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="4"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-5-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-5" data-owned-count-rig="5" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/asic.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">ASIC miner</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">No way to resist him</h6>
+                      <p class="card-text">
+                        Hashrate: 100000 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="5-1">30000000000</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="5-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="5-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="5-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="5"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="5"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-6-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-6" data-owned-count-rig="6" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/serverroom.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Mining Farm</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">There is no more chance to hide, your Rigs need more space</h6>
+                      <p class="card-text">
+                        Hashrate: 500000 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="6-1">300000000000</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="6-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="6-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="6-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="6"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="6"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-7-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-7" data-owned-count-rig="7" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/quantum.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">The Wave 3000 Q</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Every non-Quantumproof coin is under your control</h6>
+                      <p class="card-text">
+                        Hashrate: 3000000 Hash/s
+                        <br>
+                        Cost: <span>5.0</span> <i class="fab fa-ethereum"></i>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="7-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="7-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="7-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="7"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="7"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div><div class="card" style="width: 15.5rem;" data-card="1-8-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="1-8" data-owned-count-rig="8" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/hidden.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Hidden ??</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Nobody know what is this, but it can mine crypto!</h6>
+                      <p class="card-text">
+                        Hashrate: 30000000 Hash/s
+                        <br>
+                        Cost: <span data-price-next-rig="8-1">1.0E+14</span>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-buyrig-count="8-1"   class="btn btn-secondary active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-buyrig-count="8-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-buyrig-count="8-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyrig-button="8"  class="buy_rig btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-maxrig-button="8"  style="display: none" class=" btn btn-outline-success beauty_button_mid">MAX</button>
+                    </div>
+              </div>
+              <!-- RIG ITEMS -->     
+
+
+              <!-- FIRST ARMY -->
+              <div class="card" style="width: 15.5rem;" data-card="3-0-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-0" data-owned-count-army="0" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/loic.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">L.O.I.C.</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">DDoS were never so easy designed by 4Chan</h6>
+                      <p class="card-text">
+                        Attack: +10
+                        <br>
+                        Cost: <span data-price-next-army="0-1">100000</span> Coin
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="0-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="0-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="0-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="0"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div> <div class="card" style="width: 15.5rem;" data-card="3-1-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-1" data-owned-count-army="1" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/h4ck3r.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">H4CK3R Guy</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Without them you cannot build a succesor army</h6>
+                      <p class="card-text">
+                        Attack: +1000
+                        <br>
+                        Cost: <span data-price-next-army="1-1">80000000</span> Coin
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="1-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="1-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="1-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="1"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div> <div class="card" style="width: 15.5rem;" data-card="3-2-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-2" data-owned-count-army="2" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/kali.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Kali Linux</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">The ultimate toolkit for hacking, still need to be in good hands</h6>
+                      <p class="card-text">
+                        Attack: +100000
+                        <br>
+                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="2-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="2-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="2-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="2"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div> <div class="card" style="width: 15.5rem;" data-card="3-3-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-3" data-owned-count-army="3" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/firewall.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Vindows Firewall</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">It cannot be uninstalled or turn off, even if you need!</h6>
+                      <p class="card-text">
+                        Defense: +15
+                        <br>
+                        Cost: <span data-price-next-army="3-1">100000</span> Coin
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="3-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="3-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="3-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="3"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div> <div class="card" style="width: 15.5rem;" data-card="3-4-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-4" data-owned-count-army="4" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/trezor.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Hardware Wallet</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Are you really keep money on a piece of paper, Trezor it now!</h6>
+                      <p class="card-text">
+                        Defense: +1500
+                        <br>
+                        Cost: <span data-price-next-army="4-1">80000000</span> Coin
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="4-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="4-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="4-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="4"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div> <div class="card" style="width: 15.5rem;" data-card="3-5-1" > <!-- Data: category,id,count, -->
+                <span class="owned_card" data-owned="3-5" data-owned-count-army="5" ></span> <!-- Data: category,id -->
+                    <img class="card-img-top" src="./images/mcaffee.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Mr. Mccafee</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">He will defend you, if not, I will eat...</h6>
+                      <p class="card-text">
+                        Defense: +150000
+                        <br>
+                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                      </p>
+                      <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
+                          <label data-army-count="5-1"   class="btn btn-secondary  active ">
+                            <input type="radio" name="options_buy" value="1" autocomplete="off" checked> 1x
+                          </label>
+                          <label data-army-count="5-5" class="btn btn-secondary">
+                            <input type="radio" name="options_buy"  value="5" autocomplete="off"> 5x
+                          </label>
+                          <label data-army-count="5-1000" class="btn btn-secondary ">
+                            <input type="radio" name="options_buy" value="1000" autocomplete="off"> All
+                          </label>
+                        </div> 
+                      <button type="button" data-buyarmy-button="5"  class="buy_army btn btn-success beauty_button_mid">Buy</button>
+                    </div>
+              </div>
+        <!-- FIRST ARMY --> 
+
+
+
+
+
+
+            </div>  
+      </div>    
+    <!-- Cards End --> 
+    <!-- UPGRADES -->
+    <div class="col-4">    
+
+        <!-- BOOSTER-->
+              <div class="card" style="width: 16rem;" data-card="4-0-1"> <!-- Data: category,id,count, -->
+                <img class="card-img-top" src="./images/bitconeeeee.png" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">Bitconeeeeeect</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Only 5 space exist, if you are outbuyed 20% interest is yours. Invest to Bitconnect now!</h6>
+                  <p class="card-text">
+                    Hashrate: + 500%
+                    <br>
+                    Cost: <span data-price-booster="0">5</span> <i class="fab fa-ethereum"></i>
+                  </p>
+                    <div class="input-group">
+                        <button type="button" data-booster-button="0" style="display: none" class="buy_booster btn btn-success beauty_button_big">Invest!</button>
+                        <button type="button" data-booster-own-button="0" style="display: none" class="btn btn btn-outline-success beauty_button_big">Invested</button>
+                    </div>
+                </div>
+            </div>
+      <!-- BOOSTER -->
+
+        <!-- FIRST UPGRADE-->
+            <div class="card" style="width: 16rem;" data-card="2-0-1"> <!-- Data: category,id,count, -->
+                    <img class="card-img-top" src="./images/overclock.png" alt="Card image cap">
+                    <div class="card-body">
+                     <h5 class="card-title">Overclock</h5>
+                     <h6 class="card-subtitle mb-2 text-muted">Dont't worry your Rig life-cycle is already decided anyway...</h6>
+                      <p class="card-text">
+                        Hashrate: + 30%
+                        <br>
+                        Cost: 0.05 <i class="fab fa-ethereum"></i>
+                      </p>
+                        <div class="input-group">
+                            <button type="button" data-upgrade-button="0" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
+                            <button type="button" data-upgrade-own-button="0" style="display: none" class="btn btn btn-outline-success ">Installed</button>
+                        </div>
+                    </div>
+             </div>
+          <!-- FIRST UPGRADE -->   
+                  <div class="card" style="width: 16rem;" data-card="2-1-1"> <!-- Data: category,id,count, -->
+                    <img class="card-img-top" src="./images/watercool.png" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">Watercooling</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Keep them chill and increase your hashrate AF</h6>
+                      <p class="card-text">
+                        Hashrate: + 50%
+                        <br>
+                        Cost: 5 <i class="fab fa-ethereum"></i>
+                      </p>
+                        <div class="input-group">
+                            <button type="button" data-upgrade-button="1" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
+                            <button type="button" data-upgrade-own-button="1" style="display: none" class="btn btn btn-outline-success ">Installed</button>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="card" style="width: 16rem;" data-card="2-2-1"> <!-- Data: category,id,count, -->
+              <img class="card-img-top" src="./images/linus.png" alt="Card image cap">
+              <div class="card-body">
+              <h5 class="card-title">HOLY $H!T</h5>
+              <h6 class="card-subtitle mb-2 text-muted">100% OC is not a big deal for him, BUT CAN IT RUN CRYSIS?</h6>
+                <p class="card-text">
+                  Hashrate: + 100%
+                  <br>
+                  Cost: 50 <i class="fab fa-ethereum"></i>
+                </p>
+                  <div class="input-group">
+                      <button type="button" data-upgrade-button="2" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
+                      <button type="button" data-upgrade-own-button="2" style="display: none" class="btn btn btn-outline-success ">Installed</button>
+                  </div>
+              </div>
+      </div>
+        
+      </div>
+    <!-- UPGRADES -->
+            </div>
+      </div>
+   </section>
+
+    </main>
+
+    <div id="metamask_alert" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Metamask Alert!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="metamask_alert_message" class="modal-body">
+            <p>Please install or activate your Metamask Plugin in your browser. <br> You can't play RigWars without Metamask installed.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="leaderboard_modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog leaderboard" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Leaderboard</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div  class="modal-body">
+              <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Address</th>
+                      <th>Balance</th>
+                      <th>Attack</th>
+                      <th>Defense</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leaderboard_modal_content">
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>  
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Just a game don't get it more serious that it is!</p>
+      </div>
+    </footer>
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+
+    </body>
+</html>
