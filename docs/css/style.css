@@ -320,12 +320,12 @@ table.light tr td {
     appearance: none;
     width: 100%; /* Full-width */
     height: 25px; /* Specified height */
-   background: #d3d3d3;  
+    background: #6f6f6f;  
     outline: none; /* Remove outline */
     opacity: 1; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .8s;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 /* Mouse-over effects */
@@ -339,7 +339,7 @@ table.light tr td {
     appearance: none;
     width: 15px; /* Set a specific slider handle width */
     height: 15px; /* Slider handle height */
-    background:   #ffffff; /* Green background */
+    background:   #06f3f3; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
 }
@@ -347,7 +347,7 @@ table.light tr td {
 .slider::-moz-range-thumb {
     width: 15px; /* Set a specific slider handle width */
     height: 15px; /* Slider handle height */
-    background:   #ffffff; /* Green background */
+    background:   #06f3f3; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
 }

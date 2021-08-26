@@ -3,7 +3,7 @@ window.showarmy = 0;
 
 game = [];
 
-game.default_gas_price = web3.toHex(1000000000);
+game.default_gas_price = web3.toHex(10000000000);
 
 game.debug = 0; // TRUE DEBUG!
 

@@ -26,7 +26,7 @@ $(function(){
 $(function(){
     $(".ico-buy-button").click(function(){
        var slider_val = $("#myRange").val();
-         var invest_amount = (slider_val*game.futurebalance)/105; // 5% can be desinced worst case!
+         var invest_amount = (slider_val*game.futurebalance)/105; // 5% can be de-synced worst case!
          FundICO(invest_amount);
     });
 });

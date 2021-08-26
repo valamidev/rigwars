@@ -578,7 +578,7 @@ function generate_output()
         }
 
 
-            if(game.console_output.length>11)
+            if(game.console_output.length>12)
             {
                 game.console_output.shift();  
             }     
