@@ -12,8 +12,8 @@ function update_dash()
 
 function update_dash_slow()
 {
-    $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" Token");
-    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<i class="fab fa-ethereum"></i>');
+    $('#networkhodl').html('Total Open Supply: '+show_big_values(game.networkhodl)+" RIG");
+    $('#networkpot').html('Network HODL: '+precisionRound(game.networkpot,4)+'<b>BNB</b>');
     $('#networkhash').html('Network hash: '+show_big_values_hash(game.networkhash)+' /s');
     $('#networkshare').html('Your Network Share: '+personal_share()+"%");
 
@@ -89,10 +89,10 @@ function update_dash_slow()
 function update_ico()
 {
     // Token ivested
-    $('.ico_pot').html(show_big_values(game.ico_data_fund)+" Token");
+    $('.ico_pot').html(show_big_values(game.ico_data_fund)+" RIG");
 
     // ETH invested
-    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <i class="fab fa-ethereum"></i>');
+    $('.ico_pot_eth').html('ICO pot equals: '+precisionRound(web3.fromWei(game.ico_data_pot,'ether'),4)+' <b>BNB</b>');
 
     if(game.countdown_ico > 0)
     {
@@ -117,7 +117,7 @@ function update_ico()
     let personal_pct = precisionRound(game.ico_personal_share/game.ico_data_pot*100,2);
   
     // Personal ICO
-    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<i class="fab fa-ethereum"></i> ('+personal_pct+'%)');
+    $('.ico_pot_yours').html('Your investment so far: '+precisionRound(web3.fromWei(game.ico_personal_share,'ether'),4)+'<b>BNB</b> ('+personal_pct+'%)');
 
 }
 
@@ -146,11 +146,11 @@ function personal_share_eth(ico_unclaimed)
     if(ico_unclaimed>= 0.0001 )
     {
 
-     return precisionRound(ico_unclaimed,4)+'<i class="fab fa-ethereum"></i>';
+     return precisionRound(ico_unclaimed,4)+'<b>BNB</b>';
     }
     else
     {
-      return 'Less than 0.0001 <i class="fab fa-ethereum"></i>';  
+      return 'Less than 0.0001 <b>BNB</b>';  
     }
 
 }
@@ -180,7 +180,7 @@ function update_rig_ui(id,count,possible_buy,cost_next)
     }
     else
     {
-        $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" Coin");    
+        $('.card').find('[data-price-next-rig="' + id+'-1"]').html(show_big_values(cost_next)+" RIG");    
     }
   
         if(possible_buy == 0 || count==rigData[id].limit || rigData[id].eth > 0)

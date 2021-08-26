@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>RigWars.io | BNB DeFi mining game</title>
+        <title>RigWars.io | BSC DeFi mining game</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Ethereum Idle game with daily 20% ETH dividens!"/>
@@ -40,7 +40,7 @@ and open the template in the editor.
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">About</h4>
-              <p class="text-muted">RigWars cTH(cheapETH) based Idle game about the life of the miners, catch the Algorithms and buy more Hash power to make a better future.</p>
+              <p class="text-muted">RigWars BSC based Idle game about the life of the miners, catch the Algorithms and buy more Hash power to make a better future.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">Contact</h4>
@@ -59,7 +59,7 @@ and open the template in the editor.
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
              <span class="logo">  <i class="fas fa-server"></i>  </span> 
-            <strong> RigWars cTH/cheapETH Idle Game</strong>
+            <strong> RigWars BSC DeFi mining game</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -108,9 +108,9 @@ and open the template in the editor.
                         <div class="network-stat">* Future Network *
                           <ul class="">
                             <li id="networkhodl" class="">Total Open Supply: </li>
-                            <li id="networkpot" class="">Network HODL: N/A <i class="fab fa-ethereum"></i></li>
+                            <li id="networkpot" class="">Network HODL: N/A <b>BNB</b></li>
                             <li id="networkhash" class="">Network hash: 0 Hash/s </li>
-                            <li id="unclaimedpot" class="">Your contract balance: Less than 0.001 <i class="fab fa-ethereum"></i></li>
+                            <li id="unclaimedpot" class="">Your contract balance: Less than 0.001 <b>BNB</b></li>
                           </ul>
                         </div> 
                         <div class="pvp-stat">* Hacking Stats *
@@ -146,7 +146,7 @@ and open the template in the editor.
                                           <h6>Liquidity Wallet is open, locks in</h6>
                                           <span class="ico_countdown">-:-:-</span>
                                                 <div class="pull-mid">
-                                                              <button type="button"  style="display: none" class="btn btn-danger ico-buy-button">Add Token to LP</button>
+                                                              <button type="button"  style="display: none" class="btn btn-danger ico-buy-button">Add RIG to LP</button>
                                                               <button type="button" id="debug_newico" style="display: none" class="btn btn btn-outline-warning">Start New Round</button>
 
                                                               <div class="slidecontainer">
@@ -158,21 +158,21 @@ and open the template in the editor.
                                                 </div>
 
                                                                     
-                                          <div class="ico_pot">n/a Token</div>
+                                          <div class="ico_pot">n/a RIG</div>
                                           <div class="ico_pot_under">Total investment<span id="ico_by_you"></span></div>  
 
-                                          <div class="ico_pot_eth">ICO pot equals: n/a <i class="fab fa-ethereum"></i></div> 
-                                          <div class="ico_pot_yours">Your investment so far: n/a<i class="fab fa-ethereum"></i></div> 
+                                          <div class="ico_pot_eth">ICO pot equals: n/a <b>BNB</b></div> 
+                                          <div class="ico_pot_yours">Your investment so far: n/a <b>BNB</b></div> 
                                       </div>
                                 
                                     <div class="divider_small"></div>
                                         <div class="divider_small"></div>
                                       <button type="button" id="start" class="btn btn-success btn-lg beauty_button beauty_button_big">Start game</button>
                                       <div class="divider_small"></div>
-                                      <button type="button" id="claim_ico_share" class="btn btn-outline-success btn-lg beauty_button">Claim ICO Share</button>
-                                      <button type="button" id="withdraw1" class="btn btn-outline-warning btn-lg beauty_button">Withdraw <i class="fab fa-ethereum"></i></button>
+                                      <button type="button" id="claim_ico_share" class="btn btn-outline-success btn-lg beauty_button">Claim LP Share</button>
+                                      <button type="button" id="withdraw1" class="btn btn-outline-warning btn-lg beauty_button">Withdraw</button>
                                       <div class="divider_small"></div>
-                                      <button type="button" id="leaderboard" class="btn btn-outline-info btn-lg btn-block beauty_button_big">Leaderboard</button>
+                                      <button type="button" id="leaderboard" class="btn btn-outline-info btn-lg btn-block beauty_button_big">Leader board</button>
 
 
                                       <debug id="debug">
@@ -303,7 +303,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: 65536 Hash/s
                         <br>
-                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.5</span> <b>BNB</b>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-buyrig-count="4-1"   class="btn btn-secondary active ">
@@ -378,7 +378,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: 3000000 Hash/s
                         <br>
-                        Cost: <span>5.0</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>5.0</span> <b>BNB</b>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-buyrig-count="7-1"   class="btn btn-secondary active ">
@@ -433,7 +433,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Attack: +10
                         <br>
-                        Cost: <span data-price-next-army="0-1">100000</span> Coin
+                        Cost: <span data-price-next-army="0-1">100000</span> RIG
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="0-1"   class="btn btn-secondary  active ">
@@ -457,7 +457,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Attack: +1000
                         <br>
-                        Cost: <span data-price-next-army="1-1">80000000</span> Coin
+                        Cost: <span data-price-next-army="1-1">80000000</span> RIG
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="1-1"   class="btn btn-secondary  active ">
@@ -481,7 +481,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Attack: +100000
                         <br>
-                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.5</span> <b>BNB</b>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="2-1"   class="btn btn-secondary  active ">
@@ -505,7 +505,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Defense: +15
                         <br>
-                        Cost: <span data-price-next-army="3-1">100000</span> Coin
+                        Cost: <span data-price-next-army="3-1">100000</span> RIG
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="3-1"   class="btn btn-secondary  active ">
@@ -529,7 +529,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Defense: +1500
                         <br>
-                        Cost: <span data-price-next-army="4-1">80000000</span> Coin
+                        Cost: <span data-price-next-army="4-1">80000000</span> RIG
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="4-1"   class="btn btn-secondary  active ">
@@ -553,7 +553,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Defense: +150000
                         <br>
-                        Cost: <span>0.5</span> <i class="fab fa-ethereum"></i>
+                        Cost: <span>0.5</span> <b>BNB</b>
                       </p>
                       <div class="buy_toggle btn-group btn-group-toggle" data-toggle="buttons">
                           <label data-army-count="5-1"   class="btn btn-secondary  active ">
@@ -591,7 +591,7 @@ and open the template in the editor.
                   <p class="card-text">
                     Hashrate: + 500%
                     <br>
-                    Cost: <span data-price-booster="0">5</span> <i class="fab fa-ethereum"></i>
+                    Cost: <span data-price-booster="0">5</span> <b>BNB</b>
                   </p>
                     <div class="input-group">
                         <button type="button" data-booster-button="0" style="display: none" class="buy_booster btn btn-success beauty_button_big">Invest!</button>
@@ -610,7 +610,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: + 30%
                         <br>
-                        Cost: 0.05 <i class="fab fa-ethereum"></i>
+                        Cost: 0.05 <b>BNB</b>
                       </p>
                         <div class="input-group">
                             <button type="button" data-upgrade-button="0" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
@@ -627,7 +627,7 @@ and open the template in the editor.
                       <p class="card-text">
                         Hashrate: + 50%
                         <br>
-                        Cost: 5 <i class="fab fa-ethereum"></i>
+                        Cost: 5 <b>BNB</b>
                       </p>
                         <div class="input-group">
                             <button type="button" data-upgrade-button="1" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
@@ -644,7 +644,7 @@ and open the template in the editor.
                 <p class="card-text">
                   Hashrate: + 100%
                   <br>
-                  Cost: 50 <i class="fab fa-ethereum"></i>
+                  Cost: 50 <b>BNB</b>
                 </p>
                   <div class="input-group">
                       <button type="button" data-upgrade-button="2" class="buy_upgrade btn btn-success beauty_button_mid">Buy</button>
