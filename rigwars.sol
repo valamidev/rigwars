@@ -124,15 +124,15 @@ contract RigIdle  {
         rigData[1] = RigData(1024,            64,       512,             0,          64);
         rigData[2] = RigData(204800,          1024,     102400,          0,          128);
         rigData[3] = RigData(25600000,        8192,     12800000,        0,          128);
-        rigData[4] = RigData(30000000000,     65536,    30000000000,     0.05 ether,  256);
+        rigData[4] = RigData(30000000000,     65536,    30000000000,     0.5 ether,  256);
         rigData[5] = RigData(30000000000,     100000,   10000000000,     0,          256);
         rigData[6] = RigData(300000000000,    500000,   100000000000,    0,          256);
-        rigData[7] = RigData(50000000000000,  3000000,  12500000000000,  0.1 ether,  256);
+        rigData[7] = RigData(50000000000000,  3000000,  12500000000000,  5.0 ether,  256);
         rigData[8] = RigData(100000000000000, 30000000, 50000000000000,  0,          256);
         
-        boostData[0] = BoostData(30,  0.05 ether);
-        boostData[1] = BoostData(50,  0.1 ether);
-        boostData[2] = BoostData(100, 0.3 ether);
+        boostData[0] = BoostData(30,  0.5 ether);
+        boostData[1] = BoostData(50,  5 ether);
+        boostData[2] = BoostData(100, 50 ether);
         
         topindex = 0;
         honeyPotAmount = 0;
@@ -154,10 +154,10 @@ contract RigIdle  {
         //pvp
         troopData[0] = TroopData(10,     0,      100000,   0);
         troopData[1] = TroopData(1000,   0,      80000000, 0);
-        troopData[2] = TroopData(100000, 0,      0,        0.03 ether);
+        troopData[2] = TroopData(100000, 0,      0,        0.5 ether);
         troopData[3] = TroopData(0,      15,     100000,   0);
         troopData[4] = TroopData(0,      1500,   80000000, 0);
-        troopData[5] = TroopData(0,      150000, 0,        0.01 ether);
+        troopData[5] = TroopData(0,      150000, 0,        0.5 ether);
         
         honeyPotPerCycle.push(0);
         globalICOPerCycle.push(1);
