@@ -2,12 +2,12 @@
   <img width="250" src="https://i.imgur.com/FAEOb7D.jpg">
 </p>
 
-**RigWars ETH Idle Game guide:
+##RigWars ETH Idle Game guide:
 
-**How to start new game:
+##How to start new game:
  - Click the "Start Game" button. Complete the transaction. You get 1x level 1 mining rig and you can start playing.
    
-**What is the goal?
+##What is the goal?
  - Get as much money and real ETH as you can. 
    To reach that you have multiple options:
    1: Buy Miner components. There are 9 levels of miners each has increasingly higher prices and yields.
