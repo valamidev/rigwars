@@ -8,7 +8,7 @@ gametext.error[1] =
   "<p>Your Metamask locked or you have no valid address please reload the page!</p>";
 gametext.error[2] = `<p>Please allow your Metamask to connect to this website, and make sure that you are using the following network:<br>
 <center>
-Network Name: rEthereum <br>
+Network Name: Rethereum <br>
 New RPC URL: https://rpc.rethereum.org/ <br>
 Chain ID: 622277 <br>
 Currency Symbol: RTH <br>
