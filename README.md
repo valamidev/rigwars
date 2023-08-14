@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" src="https://i.imgur.com/LjpukyD.png">
+  <img width="250"  src="https://i.imgur.com/LjpukyD.png">
 </p>
 
 ## RigWars ETH Idle Game guide:
