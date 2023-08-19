@@ -197,13 +197,24 @@ table.light tr td {
 }
 
 .ico_box{
-  display: inline-block;
-  height: 320px;  
+  display: inline-block; 
   background-color: #959595;
   width: 100%;
   border-radius: 5px;
   padding: 5px;
-  background-image: url(..//images/ico2.png);
+  background-image: linear-gradient(
+  320deg,
+  hsl(240deg 100% 20%) 9%,
+  hsl(224deg 100% 27%) 38%,
+  hsl(217deg 100% 31%) 48%,
+  hsl(212deg 100% 34%) 56%,
+  hsl(205deg 100% 35%) 62%,
+  hsl(197deg 100% 33%) 67%,
+  hsl(184deg 100% 30%) 72%,
+  hsl(169deg 100% 31%) 77%,
+  hsl(155deg 100% 34%) 83%,
+  hsl(141deg 88% 40%) 100%
+    );
   color: #ffffff;
 }
 
